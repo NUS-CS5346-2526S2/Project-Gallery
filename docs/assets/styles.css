@@ -110,6 +110,23 @@ h1 {
   overflow-wrap: break-word;
 }
 
+.teaching-team {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+
+.teaching-label {
+  color: var(--teal);
+  font-weight: 800;
+}
+
+.header-teaching {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 18px;
+}
+
 .summary-panel {
   background: rgba(255, 255, 255, 0.76);
   border: 1px solid var(--line);
@@ -316,6 +333,12 @@ main {
   margin: 10px auto 0;
   max-width: 1180px;
   padding: 0 24px 34px;
+}
+
+.site-footer p {
+  border-top: 1px solid var(--line);
+  margin: 0;
+  padding-top: 22px;
 }
 
 @media (max-width: 860px) {
