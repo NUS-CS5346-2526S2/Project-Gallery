@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Changing Face of Singapore's Workforce — 1990–2025</title>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --muted: #666;
+    --light: #999;
+    --border: #e0e0e0;
+    --res: #2c5f7c;
+    --nonres: #c49a2a;
+    --delta-up: #2a7f62;
+    --delta-down: #8b7355;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── Intro ─── */
+  .intro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 24px 48px;
+    text-align: center;
+  }
+  .intro h1 {
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .intro p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .intro .meta {
+    font-size: 0.8rem;
+    color: var(--light);
+    margin-top: 12px;
+  }
+  .scroll-hint {
+    margin-top: 32px;
+    font-size: 0.85rem;
+    color: var(--light);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(4px); }
+  }
+
+  /* ─── Scroll-driven section ─── */
+  .scroll-section { position: relative; }
+
+  .sticky-viz {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    background: var(--bg);
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .scroll-spacer { height: 450vh; pointer-events: none; }
+
+  /* Year background */
+  .year-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(6rem, 18vw, 11rem);
+    font-weight: 700;
+    color: #edede8;
+    pointer-events: none;
+    font-variant-numeric: tabular-nums;
+    z-index: 0;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  /* Viz content wrapper */
+  .viz-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 960px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  .stat .label {
+    font-size: 0.7rem;
+    color: var(--light);
+    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .stat .from-val {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+
+  /* Chart common */
+  svg text { font-family: 'Inter', sans-serif; }
+  .axis text { font-size: 11px; fill: var(--muted); }
+  .axis path, .axis line { stroke: var(--border); }
+  .axis .domain { display: none; }
+  .grid line { stroke: var(--border); stroke-opacity: 0.4; stroke-dasharray: 2 4; }
+  .grid .domain { display: none; }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 18px;
+    justify-content: center;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.73rem;
+    color: var(--muted);
+  }
+  .legend-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+  }
+  .legend-swatch-stripe {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 2px, #d5d5d0 2px, #d5d5d0 3.5px
+    );
+  }
+
+  /* Sector note */
+  .sector-note {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--light);
+    margin-top: 2px;
+    font-style: italic;
+    min-height: 1.2em;
+  }
+
+  /* ─── Dual-handle timeline ─── */
+  .timeline-container {
+    width: 100%;
+    max-width: 960px;
+    margin-top: 10px;
+    padding: 8px 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .timeline-track {
+    position: relative;
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .timeline-fill {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: var(--text);
+    border-radius: 3px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+  .timeline-handle {
+    position: absolute;
+    top: 50%;
+    width: 16px;
+    height: 16px;
+    background: var(--text);
+    border: 2px solid var(--bg);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: grab;
+    z-index: 5;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.18);
+    touch-action: none;
+  }
+  .timeline-handle:active { cursor: grabbing; }
+  .timeline-handle-start { display: none; }
+  .timeline-ticks {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0 0;
+    font-size: 9px;
+    color: var(--light);
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+  .timeline-tip {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #666;
+    margin-top: 6px;
+    padding: 4px 12px;
+    background: #f0eeeb;
+    border-radius: 4px;
+    transition: opacity 0.4s;
+  }
+  .timeline-tip.hidden { opacity: 0; pointer-events: none; }
+
+  /* ─── Comparison banner ─── */
+  .compare-banner {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 14px;
+    background: #f0eeea;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 0.8rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .compare-banner.active { display: flex; }
+  .compare-banner .hint {
+    color: var(--light);
+    font-weight: 400;
+    font-size: 0.72rem;
+  }
+  .compare-banner button {
+    background: none;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: var(--muted);
+    padding: 0 5px;
+    line-height: 1.3;
+    margin-left: 2px;
+  }
+  .compare-banner button:hover { background: #e8e6e2; }
+
+  /* ─── Delta badges (comparison mode) ─── */
+  .stat .delta {
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    margin-top: 1px;
+    line-height: 1;
+  }
+  .delta-up { color: var(--delta-up); }
+  .delta-down { color: var(--delta-down); }
+  .delta-zero { color: var(--light); }
+
+  /* ─── Side-by-side comparison panels ─── */
+  .bar-compare-wrapper {
+    display: none;
+    gap: 8px;
+    width: 100%;
+  }
+  .bar-compare-wrapper.active { display: flex; }
+  .bar-panel { flex: 1; min-width: 0; }
+
+  /* Tooltip */
+  .tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(26,26,26,0.92);
+    color: #fff;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    max-width: 280px;
+    z-index: 200;
+    opacity: 0;
+    transition: opacity 0.12s;
+  }
+  .tooltip .tt-title {
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  /* Outro */
+  .outro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    text-align: center;
+  }
+  .outro p {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .outro .source {
+    font-size: 0.78rem;
+    color: var(--light);
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+
+  /* Chart title */
+  .chart-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-align: center;
+    margin: 4px 0 2px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Annotation */
+  .anno-text {
+    font-size: 9px;
+    fill: var(--light);
+    pointer-events: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .intro { padding: 48px 20px 32px; }
+    .stats-row { gap: 14px; }
+    .stat .value { font-size: 1.2rem; }
+    .stat .label { font-size: 0.62rem; }
+    .sticky-viz { padding: 8px 10px; }
+    .scroll-spacer { height: 320vh; }
+  }
+</style>
+</head>
+<body>
+
+<div class="intro">
+  <h1>The Changing Face of Singapore's Workforce</h1>
+  <p>
+    How the balance between resident and non-resident workers evolved across
+    industries over 35 years — scroll to watch it unfold.
+  </p>
+  <p class="meta">
+    Data: Ministry of Manpower &amp; Dept of Statistics &nbsp;·&nbsp;
+    All figures in thousands of workers
+  </p>
+  <div class="scroll-hint">↓ Scroll to explore 1990 – 2025</div>
+</div>
+
+<div class="scroll-section" id="scrollSection">
+  <div class="sticky-viz" id="stickyViz">
+    <div class="year-bg" id="yearBg">1990</div>
+    <div class="viz-content">
+
+      <!-- Comparison banner (hidden by default) -->
+      <div class="compare-banner" id="compareBanner">
+        <span id="compareLabel">Comparing 1990 → 2025</span>
+        <span class="hint">Drag handles · Esc to exit</span>
+        <button id="compareExit" title="Exit comparison">✕</button>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat">
+          <div class="value" id="statTotal">—</div>
+          <div class="label">Total</div>
+        </div>
+        <div class="stat">
+          <div class="value" style="color:var(--res)" id="statRes">—</div>
+          <div class="label">Residents</div>
+        </div>
+        <div class="stat">
+          <div class="value" style="color:var(--nonres)" id="statNR">—</div>
+          <div class="label">Non-Residents</div>
+        </div>
+        <div class="stat">
+          <div class="value" id="statShare">—</div>
+          <div class="label">Foreign Share</div>
+        </div>
+      </div>
+
+      <div class="chart-title">Total Workforce — Resident vs Non-Resident</div>
+      <svg id="areaChart"></svg>
+
+      <!-- Normal mode: single bar chart -->
+      <div class="chart-title">Employment by Sector</div>
+      <svg id="barChart"></svg>
+
+      <!-- Comparison mode: two bar charts side by side -->
+      <div class="bar-compare-wrapper" id="barCompareWrapper">
+        <div class="bar-panel">
+          <svg id="barChartLeft"></svg>
+        </div>
+        <div class="bar-panel">
+          <svg id="barChartRight"></svg>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-swatch" style="background:var(--res);opacity:0.7"></span>Resident
+        </div>
+        <div class="legend-item">
+          <span class="legend-swatch" style="background:var(--nonres);opacity:0.6"></span>Non-resident
+        </div>
+        <div class="legend-item" style="margin-left:6px">
+          <span class="legend-swatch-stripe"></span>No data
+        </div>
+        <div class="legend-item" style="margin-left:6px;font-size:0.7rem;color:#999">
+          Percentage = foreign share
+        </div>
+      </div>
+      <div class="sector-note" id="sectorNote"></div>
+    </div>
+
+    <!-- Dual-handle timeline -->
+    <div class="timeline-container" id="timelineContainer">
+      <div class="timeline-track" id="timelineTrack">
+        <div class="timeline-fill" id="timelineFill"></div>
+        <div class="timeline-handle timeline-handle-end" id="handleEnd"></div>
+        <div class="timeline-handle timeline-handle-start" id="handleStart"></div>
+      </div>
+      <div class="timeline-ticks" id="timelineTicks"></div>
+      <div class="timeline-tip" id="timelineTip">💡 Click a year, then another to compare side-by-side</div>
+    </div>
+  </div>
+
+  <div class="scroll-spacer"></div>
+</div>
+
+<div class="outro">
+  <p>
+    From <strong>1.5 million</strong> workers in 1990 to over
+    <strong>4.1 million</strong> in 2025 — Singapore's workforce transformation
+    has been driven by different forces in each sector.
+    <strong>Construction</strong> became heavily dependent on foreign labour (82%),
+    while <strong>Services</strong> — by far the largest sector — maintained a
+    more balanced mix (~33%).
+  </p>
+  <p>
+    The COVID-19 shock of 2020 revealed just how deeply embedded foreign workers
+    are in Singapore's economic structure: when ~173k left in a single year,
+    it exposed structural dependence in essential sectors, not a surplus of
+    replaceable workers.
+  </p>
+  <p class="source">
+    <strong>Sources:</strong> MOM Administrative Records, MOM Labour Force
+    Survey via SingStat, Dept of Statistics (GDP by industry).
+    Non-resident employment is derived (total − resident).
+    Pre-2009 data is reconstructed. See project README for methodology.
+  </p>
+</div>
+
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ═══════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════
+var RES  = '#2c5f7c';   // dark slate blue
+var NR   = '#c49a2a';   // warm amber / gold
+
+var SECTOR_COLS = {
+  construction:      '#e08430',
+  manufacturing:     '#8b6aaf',
+  services:          '#3d8c52',
+  others:            '#8a8a8a',
+  accomm_food:       '#9e6b8a',
+  admin_support:     '#5f72c0',
+  info_comms:        '#a8b030',
+  professional:      '#c48fb0',
+  real_estate:       '#d4764e',
+  transport_storage: '#6a9bc5',
+
+  wholesale_retail:  '#8c7050'
+};
+
+var SECTOR_LABELS = {
+  construction:      'Construction',
+  manufacturing:     'Manufacturing',
+  services:          'Services',
+  others:            'Others',
+  accomm_food:       'Accomm. & Food',
+  admin_support:     'Admin & Support',
+  info_comms:        'Info & Comms',
+  professional:      'Professional Services',
+  real_estate:       'Real Estate',
+  transport_storage: 'Transport & Storage',
+  wholesale_retail:  'Wholesale & Retail'
+};
+
+var FIXED_ORDER = [
+  'construction', 'manufacturing', 'services',
+  'admin_support', 'accomm_food', 'professional',
+  'info_comms', 'wholesale_retail', 'real_estate',
+  'transport_storage', 'others'
+];
+
+var L1_SECTORS = ['construction', 'manufacturing', 'services', 'others'];
+
+var fmt  = d3.format(',.0f');
+var fmtD = d3.format('.1f');
+var tooltip = d3.select('#tooltip');
+
+function showTip(ev, html) {
+  tooltip.html(html).style('opacity', 1);
+  var box = tooltip.node().getBoundingClientRect();
+  var tx = ev.clientX + 14, ty = ev.clientY - 28;
+  if (tx + box.width > window.innerWidth - 20) tx = ev.clientX - box.width - 14;
+  if (ty < 10) ty = ev.clientY + 16;
+  tooltip.style('left', tx + 'px').style('top', ty + 'px');
+}
+function hideTip() { tooltip.style('opacity', 0); }
+
+function vizWidth() { return Math.min(960, window.innerWidth - 48); }
+
+// ═══════════════════════════════════════════
+// COMPARISON STATE
+// ═══════════════════════════════════════════
+var comparisonMode = false;
+var scrollPaused   = false;
+var compareStart   = null;
+var compareEnd     = null;
+var currentYear    = null;
+
+// ═══════════════════════════════════════════
+// DATA LOADING
+// ═══════════════════════════════════════════
+function loadJSON(path) {
+  return d3.json(path).catch(function() {
+    return d3.json();
+  });
+}
+
+Promise.all([
+  loadJSON('../data/d3_overview.json'),
+  loadJSON('../data/d3_timeseries.json')
+]).then(function(result) {
+  var overviewData = result[0];
+  var timeseriesData = result[1];
+
+  var years = overviewData.map(function(d) { return d.year; });
+  var minYear = years[0];
+  var maxYear = years[years.length - 1];
+
+  // ─── Process sector data by year ───
+  var sectorByYear = {};
+  timeseriesData
+    .filter(function(d) { return FIXED_ORDER.indexOf(d.sector_key) !== -1; })
+    .forEach(function(d) {
+      if (!sectorByYear[d.year]) sectorByYear[d.year] = {};
+      var isL1Key = L1_SECTORS.indexOf(d.sector_key) !== -1;
+      if ((isL1Key && d.level === 1) || (!isL1Key && d.level === 2)) {
+        sectorByYear[d.year][d.sector_key] = {
+          res:   Math.max(0, d.resident_emp || 0),
+          nr:    Math.max(0, d.nonresident_emp || 0),
+          share: d.nonresident_share_pct,
+          total: d.total_emp || 0
+        };
+      }
+    });
+
+  var globalMaxEmp = 0;
+  Object.keys(sectorByYear).forEach(function(yr) {
+    FIXED_ORDER.forEach(function(k) {
+      var s = (sectorByYear[yr] || {})[k];
+      if (s) globalMaxEmp = Math.max(globalMaxEmp, s.res + s.nr);
+    });
+  });
+
+  // ─── Build charts ───
+  var areaCtrl = buildAreaChart(overviewData, minYear, maxYear);
+  var barCtrl  = buildBarChart(sectorByYear, globalMaxEmp);
+
+  // ═══════════════════════════════════════════
+  // TIMELINE SETUP
+  // ═══════════════════════════════════════════
+  var hStartEl = document.getElementById('handleStart');
+  var hEndEl   = document.getElementById('handleEnd');
+  var tFillEl  = document.getElementById('timelineFill');
+  var tTrackEl = document.getElementById('timelineTrack');
+
+  [1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025].forEach(function(yr) {
+    var span = document.createElement('span');
+    span.textContent = yr;
+    document.getElementById('timelineTicks').appendChild(span);
+  });
+
+  function yearToFrac(yr) { return (yr - minYear) / (maxYear - minYear); }
+  function fracToYear(f) {
+    var idx = Math.round(Math.max(0, Math.min(1, f)) * (years.length - 1));
+    return years[idx];
+  }
+  function pointerToFrac(clientX) {
+    var rect = tTrackEl.getBoundingClientRect();
+    return Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+  }
+
+  function updateTimeline() {
+    if (comparisonMode) {
+      var fA = yearToFrac(compareStart) * 100;
+      var fB = yearToFrac(compareEnd) * 100;
+      var lo = Math.min(fA, fB), hi = Math.max(fA, fB);
+      hStartEl.style.display = 'block';
+      hStartEl.style.left = lo + '%';
+      hEndEl.style.left = hi + '%';
+      tFillEl.style.left = lo + '%';
+      tFillEl.style.width = (hi - lo) + '%';
+    } else {
+      hStartEl.style.display = 'none';
+      var f = yearToFrac(currentYear || minYear) * 100;
+      hEndEl.style.left = f + '%';
+      tFillEl.style.left = '0%';
+      tFillEl.style.width = f + '%';
+    }
+  }
+
+  // ═══════════════════════════════════════════
+  // COMPARISON FUNCTIONS
+  // ═══════════════════════════════════════════
+  function enterComparison(yearA, yearB) {
+    if (yearA === yearB) return;
+    comparisonMode = true;
+    scrollPaused = true;
+    compareStart = Math.min(yearA, yearB);
+    compareEnd = Math.max(yearA, yearB);
+
+    // Show comparison UI, hide normal bar chart
+    document.getElementById('compareBanner').classList.add('active');
+    document.getElementById('barChart').style.display = 'none';
+    document.getElementById('barCompareWrapper').classList.add('active');
+    const tip = document.getElementById('timelineTip');
+    if (tip) tip.classList.add('hidden');
+
+    updateComparisonDisplay();
+    updateTimeline();
+  }
+
+  function exitComparison() {
+    comparisonMode = false;
+    scrollPaused = false;
+    compareStart = null;
+    compareEnd = null;
+
+    // Restore normal UI
+    document.getElementById('compareBanner').classList.remove('active');
+    document.getElementById('barCompareWrapper').classList.remove('active');
+    document.getElementById('barChart').style.display = '';
+    const tip = document.getElementById('timelineTip');
+    if (tip) tip.classList.remove('hidden');
+
+    areaCtrl.exitComparison();
+
+    // Force refresh from scroll
+    currentYear = null;
+    onScroll();
+  }
+
+  function updateComparisonDisplay() {
+    var lo = compareStart, hi = compareEnd;
+
+    document.getElementById('compareLabel').textContent =
+      'Comparing ' + lo + ' → ' + hi;
+
+    document.getElementById('yearBg').textContent = lo + ' → ' + hi;
+
+    // Stats with both values + delta
+    var ovA = overviewData.find(function(d) { return d.year === lo; });
+    var ovB = overviewData.find(function(d) { return d.year === hi; });
+    if (ovA && ovB) {
+      setStatDelta('statTotal', ovA.total_emp, ovB.total_emp, 'k', null);
+      setStatDelta('statRes', ovA.resident_emp, ovB.resident_emp, 'k', 'var(--res)');
+      setStatDelta('statNR', ovA.nonresident_emp, ovB.nonresident_emp, 'k', 'var(--nonres)');
+      setShareDelta('statShare', ovA.nonresident_share_pct, ovB.nonresident_share_pct);
+    }
+
+    // Sector note
+    var note = document.getElementById('sectorNote');
+    if (lo < 2009 && hi >= 2009) {
+      note.textContent = 'Sub-sector data available from 2009 — start year pre-dates sub-sector breakdown';
+    } else if (hi < 2009) {
+      note.textContent = 'Sub-sector data not available — both years pre-date 2009 breakdown';
+    } else {
+      note.textContent = '';
+    }
+
+    // Area chart: two cursors
+    areaCtrl.updateComparison(lo, hi);
+
+    // Side-by-side bar charts
+    var panelW = Math.floor((vizWidth() - 8) / 2);
+    renderComparisonPanel('#barChartLeft', sectorByYear, lo, globalMaxEmp, panelW, {
+      yearLabel: String(lo),
+      showDelta: false
+    });
+    renderComparisonPanel('#barChartRight', sectorByYear, hi, globalMaxEmp, panelW, {
+      yearLabel: String(hi),
+      showDelta: true,
+      refYear: lo,
+      refData: sectorByYear[lo] || {}
+    });
+  }
+
+  function setStatDelta(id, valA, valB, suffix, color) {
+    var delta = valB - valA;
+    var prefix = delta >= 0 ? '+' : '';
+    var cls = delta > 0 ? 'delta-up' : delta < 0 ? 'delta-down' : 'delta-zero';
+    var colorStyle = color ? ' style="color:' + color + '"' : '';
+    document.getElementById(id).innerHTML =
+      '<span class="from-val">' + fmt(valA) + suffix + ' →</span> ' +
+      '<span' + colorStyle + '>' + fmt(valB) + suffix + '</span>' +
+      '<div class="delta ' + cls + '">' + prefix + fmt(delta) + suffix + '</div>';
+  }
+
+  function setShareDelta(id, valA, valB) {
+    var delta = valB - valA;
+    var prefix = delta >= 0 ? '+' : '';
+    var cls = delta > 0 ? 'delta-up' : delta < 0 ? 'delta-down' : 'delta-zero';
+    document.getElementById(id).innerHTML =
+      '<span class="from-val">' + fmtD(valA) + '% →</span> ' +
+      fmtD(valB) + '%' +
+      '<div class="delta ' + cls + '">' + prefix + fmtD(delta) + 'pp</div>';
+  }
+
+  // ═══════════════════════════════════════════
+  // UPDATE & SCROLL
+  // ═══════════════════════════════════════════
+  function updateViz(year) {
+    if (year === currentYear) return;
+    currentYear = year;
+
+    document.getElementById('yearBg').textContent = year;
+
+    var ov = overviewData.find(function(d) { return d.year === year; });
+    if (ov) {
+      document.getElementById('statTotal').textContent = fmt(ov.total_emp) + 'k';
+      document.getElementById('statRes').textContent   = fmt(ov.resident_emp) + 'k';
+      document.getElementById('statNR').textContent    = fmt(ov.nonresident_emp) + 'k';
+      document.getElementById('statShare').textContent = fmtD(ov.nonresident_share_pct) + '%';
+    }
+
+    areaCtrl.update(year);
+    barCtrl.update(year);
+
+    var note = document.getElementById('sectorNote');
+    if (year < 2009) {
+      note.textContent = 'Sub-sector data available from 2009 — hatched bars indicate no data';
+    } else if (year === 2009) {
+      note.textContent = 'Sub-sector breakdown now available (direct MOM data from 2009)';
+    } else {
+      note.textContent = '';
+    }
+
+    updateTimeline();
+  }
+
+  function onScroll() {
+    if (scrollPaused) return;
+    var section = document.getElementById('scrollSection');
+    var rect = section.getBoundingClientRect();
+    var scrolled = Math.max(0, -rect.top);
+    var scrollable = section.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    var fraction = Math.max(0, Math.min(1, scrolled / scrollable));
+    var idx = Math.round(fraction * (years.length - 1));
+    updateViz(years[idx]);
+  }
+
+  // ═══════════════════════════════════════════
+  // TIMELINE DRAG HANDLERS
+  // ═══════════════════════════════════════════
+  var dragTarget = null;
+
+  function onHandleDrag(ev) {
+    var frac = pointerToFrac(ev.clientX);
+    var yr = fracToYear(frac);
+
+    if (dragTarget === 'start') {
+      compareStart = yr;
+    } else if (dragTarget === 'end') {
+      compareEnd = yr;
+    }
+
+    if (compareStart > compareEnd) {
+      var tmp = compareStart;
+      compareStart = compareEnd;
+      compareEnd = tmp;
+      dragTarget = (dragTarget === 'start') ? 'end' : 'start';
+    }
+
+    if (compareStart === compareEnd) {
+      onDragEnd(ev);
+      exitComparison();
+      return;
+    }
+
+    updateComparisonDisplay();
+    updateTimeline();
+  }
+
+  function onDragEnd() {
+    dragTarget = null;
+    document.removeEventListener('pointermove', onHandleDrag);
+    document.removeEventListener('pointerup', onDragEnd);
+  }
+
+  hStartEl.addEventListener('pointerdown', function(ev) {
+    ev.preventDefault();
+    ev.stopPropagation();
+    dragTarget = 'start';
+    hStartEl.setPointerCapture(ev.pointerId);
+    document.addEventListener('pointermove', onHandleDrag);
+    document.addEventListener('pointerup', onDragEnd);
+  });
+
+  hEndEl.addEventListener('pointerdown', function(ev) {
+    if (!comparisonMode) return;
+    ev.preventDefault();
+    ev.stopPropagation();
+    dragTarget = 'end';
+    hEndEl.setPointerCapture(ev.pointerId);
+    document.addEventListener('pointermove', onHandleDrag);
+    document.addEventListener('pointerup', onDragEnd);
+  });
+
+  tTrackEl.addEventListener('pointerdown', function(ev) {
+    if (ev.target === hStartEl || ev.target === hEndEl) return;
+    var frac = pointerToFrac(ev.clientX);
+    var clickedYear = fracToYear(frac);
+
+    if (!comparisonMode) {
+      if (clickedYear === currentYear) return;
+      enterComparison(currentYear, clickedYear);
+    } else {
+      var fracA = yearToFrac(compareStart);
+      var fracB = yearToFrac(compareEnd);
+      if (Math.abs(frac - fracA) < Math.abs(frac - fracB)) {
+        compareStart = clickedYear;
+      } else {
+        compareEnd = clickedYear;
+      }
+      if (compareStart > compareEnd) {
+        var tmp = compareStart;
+        compareStart = compareEnd;
+        compareEnd = tmp;
+      }
+      if (compareStart === compareEnd) {
+        exitComparison();
+        return;
+      }
+      updateComparisonDisplay();
+      updateTimeline();
+    }
+  });
+
+  document.getElementById('compareExit').addEventListener('click', exitComparison);
+
+  document.addEventListener('keydown', function(ev) {
+    if (ev.key === 'Escape' && comparisonMode) {
+      exitComparison();
+    }
+  });
+
+  // ─── Init ───
+  window.addEventListener('scroll', onScroll, { passive: true });
+  updateViz(minYear);
+  onScroll();
+});
+
+// ═══════════════════════════════════════════
+// CHART: STACKED AREA (Overview timeline)
+// ═══════════════════════════════════════════
+function buildAreaChart(data, minYear, maxYear) {
+  var M = { top: 20, right: 24, bottom: 24, left: 52 };
+  var W = vizWidth(), H = 190;
+  var w = W - M.left - M.right, h = H - M.top - M.bottom;
+
+  var svg = d3.select('#areaChart').attr('width', W).attr('height', H);
+  var g = svg.append('g').attr('transform', 'translate(' + M.left + ',' + M.top + ')');
+
+  var x = d3.scaleLinear().domain([minYear, maxYear]).range([0, w]);
+  var y = d3.scaleLinear()
+    .domain([0, d3.max(data, function(d) { return d.total_emp; }) * 1.08])
+    .range([h, 0]);
+
+  g.append('g').attr('class', 'grid')
+    .call(d3.axisLeft(y).tickSize(-w).tickFormat('').ticks(4));
+
+  var areaRes = d3.area()
+    .x(function(d) { return x(d.year); })
+    .y0(h)
+    .y1(function(d) { return y(d.resident_emp); })
+    .curve(d3.curveMonotoneX);
+
+  var areaNR = d3.area()
+    .x(function(d) { return x(d.year); })
+    .y0(function(d) { return y(d.resident_emp); })
+    .y1(function(d) { return y(d.total_emp); })
+    .curve(d3.curveMonotoneX);
+
+  var lineTot = d3.line()
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.total_emp); })
+    .curve(d3.curveMonotoneX);
+
+  // Comparison band
+  var compareBand = g.append('rect')
+    .attr('y', 0).attr('height', h)
+    .attr('fill', NR).attr('opacity', 0)
+    .attr('pointer-events', 'none');
+
+  // Ghost preview (full range)
+  g.append('path').datum(data).attr('d', areaRes)
+    .attr('fill', RES).attr('opacity', 0.04);
+  g.append('path').datum(data).attr('d', areaNR)
+    .attr('fill', NR).attr('opacity', 0.03);
+  g.append('path').datum(data).attr('d', lineTot)
+    .attr('fill', 'none').attr('stroke', '#ccc').attr('stroke-width', 1)
+    .attr('stroke-dasharray', '3 3');
+
+  // Clip path
+  svg.append('defs').append('clipPath').attr('id', 'area-clip')
+    .append('rect').attr('x', 0).attr('y', 0).attr('width', 0).attr('height', H);
+
+  var clipped = g.append('g').attr('clip-path', 'url(#area-clip)');
+  clipped.append('path').datum(data).attr('d', areaRes)
+    .attr('fill', RES).attr('opacity', 0.52);
+  clipped.append('path').datum(data).attr('d', areaNR)
+    .attr('fill', NR).attr('opacity', 0.42);
+
+  // Boundary line between resident and non-resident bands
+  var boundaryLine = d3.line()
+    .x(function(d) { return x(d.year); })
+    .y(function(d) { return y(d.resident_emp); })
+    .curve(d3.curveMonotoneX);
+  clipped.append('path').datum(data).attr('d', boundaryLine)
+    .attr('fill', 'none').attr('stroke', '#fff').attr('stroke-width', 2)
+    .attr('stroke-opacity', 0.85);
+
+  clipped.append('path').datum(data).attr('d', lineTot)
+    .attr('fill', 'none').attr('stroke', '#1a1a1a').attr('stroke-width', 1.5);
+
+  var cursor = g.append('line')
+    .attr('y1', -4).attr('y2', h)
+    .attr('stroke', '#1a1a1a').attr('stroke-width', 1.5)
+    .attr('stroke-opacity', 0.6);
+  var dot = g.append('circle').attr('r', 4).attr('fill', '#1a1a1a');
+
+  var cursor2 = g.append('line')
+    .attr('y1', -4).attr('y2', h)
+    .attr('stroke', '#1a1a1a').attr('stroke-width', 1.5)
+    .attr('stroke-opacity', 0)
+    .attr('stroke-dasharray', '4 3');
+  var dot2 = g.append('circle').attr('r', 4).attr('fill', '#1a1a1a').attr('opacity', 0);
+
+  var events = [
+    { year: 1998, label: 'Asian Crisis' },
+    { year: 2009, label: 'GFC / Sub-sectors →' },
+    { year: 2020, label: 'COVID-19' }
+  ];
+  events.forEach(function(ev) {
+    g.append('line')
+      .attr('x1', x(ev.year)).attr('x2', x(ev.year))
+      .attr('y1', -4).attr('y2', h)
+      .attr('stroke', '#ccc').attr('stroke-width', 0.8)
+      .attr('stroke-dasharray', '2 3');
+    g.append('text').attr('class', 'anno-text')
+      .attr('x', x(ev.year)).attr('y', -7)
+      .attr('text-anchor', 'middle')
+      .text(ev.label);
+  });
+
+  g.append('g').attr('class', 'axis')
+    .attr('transform', 'translate(0,' + h + ')')
+    .call(d3.axisBottom(x).tickFormat(d3.format('d')).ticks(7).tickSize(3));
+
+  g.append('g').attr('class', 'axis')
+    .call(d3.axisLeft(y).ticks(4).tickFormat(d3.format(',')));
+
+  svg.append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -(M.top + h / 2)).attr('y', 12)
+    .attr('text-anchor', 'middle')
+    .attr('font-size', 9).attr('fill', '#999')
+    .text('Workers (thousands)');
+
+  svg.append('rect')
+    .attr('x', M.left).attr('y', M.top).attr('width', w).attr('height', h)
+    .attr('fill', 'transparent')
+    .on('mousemove', function(ev) {
+      var mx = d3.pointer(ev, g.node())[0];
+      var yr = Math.round(x.invert(mx));
+      yr = Math.max(minYear, Math.min(maxYear, yr));
+      var d = data.find(function(r) { return r.year === yr; });
+      if (!d) return;
+      showTip(ev, '<div class="tt-title">' + d.year + '</div>' +
+        'Total: <strong>' + fmt(d.total_emp) + 'k</strong><br>' +
+        '<span style="color:' + RES + '">&#9632;</span> Residents: ' + fmt(d.resident_emp) + 'k<br>' +
+        '<span style="color:' + NR + '">&#9632;</span> Non-Residents: ' + fmt(d.nonresident_emp) + 'k<br>' +
+        'Foreign share: <strong>' + fmtD(d.nonresident_share_pct) + '%</strong>');
+    })
+    .on('mouseleave', hideTip);
+
+  function update(year) {
+    var cx = x(year);
+    svg.select('#area-clip rect').attr('width', cx);
+    cursor.attr('x1', cx).attr('x2', cx);
+    var d = data.find(function(r) { return r.year === year; });
+    if (d) dot.attr('cx', cx).attr('cy', y(d.total_emp));
+    cursor2.attr('stroke-opacity', 0);
+    dot2.attr('opacity', 0);
+    compareBand.attr('opacity', 0);
+  }
+
+  function updateAreaComparison(lo, hi) {
+    var cxLo = x(lo), cxHi = x(hi);
+    svg.select('#area-clip rect').attr('width', cxHi);
+    cursor.attr('x1', cxLo).attr('x2', cxLo);
+    var dLo = data.find(function(r) { return r.year === lo; });
+    if (dLo) dot.attr('cx', cxLo).attr('cy', y(dLo.total_emp));
+    cursor2.attr('x1', cxHi).attr('x2', cxHi).attr('stroke-opacity', 0.6);
+    var dHi = data.find(function(r) { return r.year === hi; });
+    if (dHi) dot2.attr('cx', cxHi).attr('cy', y(dHi.total_emp)).attr('opacity', 1);
+    compareBand
+      .attr('x', cxLo)
+      .attr('width', Math.max(0, cxHi - cxLo))
+      .attr('opacity', 0.06);
+  }
+
+  function exitAreaComparison() {
+    cursor2.attr('stroke-opacity', 0);
+    dot2.attr('opacity', 0);
+    compareBand.attr('opacity', 0);
+  }
+
+  return {
+    update: update,
+    updateComparison: updateAreaComparison,
+    exitComparison: exitAreaComparison
+  };
+}
+
+// ═══════════════════════════════════════════
+// CHART: VERTICAL BAR — normal scroll mode
+// ═══════════════════════════════════════════
+function buildBarChart(sectorByYear, globalMax) {
+  var M = { top: 28, right: 20, bottom: 110, left: 52 };
+  var W = vizWidth(), H = 330;
+  var w = W - M.left - M.right, h = H - M.top - M.bottom;
+
+  var svg = d3.select('#barChart').attr('width', W).attr('height', H);
+  var g = svg.append('g').attr('transform', 'translate(' + M.left + ',' + M.top + ')');
+
+  var defs = svg.append('defs');
+  var pat = defs.append('pattern')
+    .attr('id', 'pat-nodata')
+    .attr('width', 6).attr('height', 6)
+    .attr('patternUnits', 'userSpaceOnUse')
+    .attr('patternTransform', 'rotate(45)');
+  pat.append('line')
+    .attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
+    .attr('stroke', '#d5d5d0').attr('stroke-width', 1.5);
+
+  var xScale = d3.scaleBand()
+    .domain(FIXED_ORDER)
+    .range([0, w])
+    .padding(0.18);
+
+  var yMax = Math.ceil(globalMax / 500) * 500;
+  var yScale = d3.scaleLinear()
+    .domain([0, yMax])
+    .nice()
+    .range([h, 0]);
+
+  g.append('g').attr('class', 'grid')
+    .call(d3.axisLeft(yScale).tickSize(-w).tickFormat('').ticks(5));
+
+  var xAxisG = g.append('g').attr('class', 'axis')
+    .attr('transform', 'translate(0,' + h + ')')
+    .call(d3.axisBottom(xScale).tickFormat(function(k) { return SECTOR_LABELS[k]; }).tickSize(0));
+  xAxisG.select('.domain').remove();
+  xAxisG.selectAll('text')
+    .attr('transform', 'rotate(-38)')
+    .attr('text-anchor', 'end')
+    .attr('dx', '-4px')
+    .attr('dy', '4px')
+    .style('font-size', '10px')
+    .attr('font-weight', function(d) {
+      return L1_SECTORS.indexOf(d) !== -1 ? 600 : 400;
+    });
+
+  g.append('g').attr('class', 'axis')
+    .call(d3.axisLeft(yScale).ticks(5).tickFormat(d3.format(',')));
+
+  svg.append('text')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -(M.top + h / 2)).attr('y', 12)
+    .attr('text-anchor', 'middle')
+    .attr('font-size', 9).attr('fill', '#999')
+    .text('Employment (thousands)');
+
+  var els = {};
+  var placeholderH = 36;
+
+  FIXED_ORDER.forEach(function(key) {
+    var col = SECTOR_COLS[key];
+    var cx = xScale(key);
+    var bw = xScale.bandwidth();
+    var sG = g.append('g').attr('class', 'bar-g-' + key);
+
+    var ph = sG.append('rect')
+      .attr('x', cx).attr('y', h - placeholderH)
+      .attr('width', bw).attr('height', placeholderH)
+      .attr('fill', 'url(#pat-nodata)')
+      .attr('stroke', '#ccc').attr('stroke-width', 0.5)
+      .attr('rx', 2)
+      .attr('opacity', 0);
+
+    var phLbl = sG.append('text')
+      .attr('x', cx + bw / 2).attr('y', h - placeholderH / 2 + 1)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', 8).attr('fill', '#aaa')
+      .text('no data')
+      .attr('opacity', 0);
+
+    var resBar = sG.append('rect')
+      .attr('x', cx).attr('width', bw)
+      .attr('y', h).attr('height', 0)
+      .attr('fill', col).attr('opacity', 0.75)
+      .attr('rx', 2);
+
+    var nrBar = sG.append('rect')
+      .attr('x', cx).attr('width', bw)
+      .attr('y', h).attr('height', 0)
+      .attr('fill', col).attr('opacity', 0.28)
+      .attr('rx', 2);
+
+    var divider = sG.append('line')
+      .attr('x1', cx + 1).attr('x2', cx + bw - 1)
+      .attr('y1', h).attr('y2', h)
+      .attr('stroke', 'white').attr('stroke-width', 1.5)
+      .attr('stroke-opacity', 0);
+
+    var shareLbl = sG.append('text')
+      .attr('x', cx + bw / 2).attr('y', h)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', 10).attr('font-weight', 700)
+      .attr('fill', 'var(--text)')
+      .attr('font-variant-numeric', 'tabular-nums');
+
+    var hoverRect = sG.append('rect')
+      .attr('x', cx).attr('y', 0)
+      .attr('width', bw).attr('height', h)
+      .attr('fill', 'transparent')
+      .style('cursor', 'pointer');
+
+    els[key] = {
+      placeholder: ph, placeholderLbl: phLbl,
+      resBar: resBar, nrBar: nrBar, divider: divider,
+      shareLbl: shareLbl, hoverRect: hoverRect,
+      cx: cx, bw: bw
+    };
+  });
+
+  function update(year) {
+    var yd = sectorByYear[year] || {};
+    var t = d3.transition().duration(280).ease(d3.easeCubicOut);
+
+    FIXED_ORDER.forEach(function(key) {
+      var d = yd[key];
+      var e = els[key];
+      var hasData = d && (d.res + d.nr) > 0;
+
+      if (!hasData) {
+        e.placeholder.transition(t).attr('opacity', 0.7);
+        e.placeholderLbl.transition(t).attr('opacity', 0.7);
+        e.resBar.transition(t).attr('y', h).attr('height', 0);
+        e.nrBar.transition(t).attr('y', h).attr('height', 0);
+        e.divider.transition(t).attr('stroke-opacity', 0);
+        e.shareLbl.text('');
+
+        (function(k, yr) {
+          e.hoverRect
+            .on('mousemove', function(ev) {
+              showTip(ev,
+                '<div class="tt-title">' + SECTOR_LABELS[k] + ' (' + yr + ')</div>' +
+                '<span style="color:#aaa">Sub-sector data not available before 2009</span>');
+            })
+            .on('mouseleave', hideTip);
+        })(key, year);
+        return;
+      }
+
+      e.placeholder.transition(t).attr('opacity', 0);
+      e.placeholderLbl.transition(t).attr('opacity', 0);
+
+      var total = d.res + d.nr;
+      var resTop = yScale(d.res);
+      var resH = h - resTop;
+      e.resBar.transition(t).attr('y', resTop).attr('height', Math.max(0, resH));
+
+      var nrTop = yScale(total);
+      var nrH = resTop - nrTop;
+      e.nrBar.transition(t).attr('y', nrTop).attr('height', Math.max(0, nrH));
+
+      e.divider.transition(t)
+        .attr('y1', resTop).attr('y2', resTop)
+        .attr('stroke-opacity', nrH > 2 ? 0.7 : 0);
+
+      var shareStr = (d.share != null && d.share > 0)
+        ? fmtD(Math.max(0, d.share)) + '%' : '';
+      var lblY = Math.max(8, nrTop - 5);
+      e.shareLbl
+        .transition(t)
+        .attr('y', lblY)
+        .tween('text', function() {
+          var node = this;
+          return function() { node.textContent = shareStr; };
+        });
+
+      (function(dd, k, yr) {
+        e.hoverRect
+          .on('mousemove', function(ev) {
+            showTip(ev,
+              '<div class="tt-title">' + SECTOR_LABELS[k] + ' (' + yr + ')</div>' +
+              'Residents: <strong>' + fmt(dd.res) + 'k</strong><br>' +
+              'Non-Residents: <strong>' + fmt(dd.nr) + 'k</strong><br>' +
+              'Total: ' + fmt(dd.res + dd.nr) + 'k<br>' +
+              'Foreign share: <strong>' + (dd.share != null ? fmtD(Math.max(0, dd.share)) + '%' : 'n/a') + '</strong>');
+          })
+          .on('mouseleave', hideTip);
+      })(d, key, year);
+    });
+  }
+
+  return { update: update };
+}
+
+// ═══════════════════════════════════════════
+// COMPARISON PANEL RENDERER
+// Renders a complete bar chart into an SVG
+// for side-by-side comparison display.
+// ═══════════════════════════════════════════
+function renderComparisonPanel(svgSelector, sectorByYear, year, globalMax, panelW, opts) {
+  var M = { top: 24, right: 8, bottom: 100, left: 40 };
+  var H = 360;
+  var w = panelW - M.left - M.right;
+  var h = H - M.top - M.bottom;
+  var placeholderH = 32;
+
+  var svg = d3.select(svgSelector).attr('width', panelW).attr('height', H);
+  svg.selectAll('*').remove();
+
+  var defs = svg.append('defs');
+  var pat = defs.append('pattern')
+    .attr('id', 'pat-nd-' + year)
+    .attr('width', 6).attr('height', 6)
+    .attr('patternUnits', 'userSpaceOnUse')
+    .attr('patternTransform', 'rotate(45)');
+  pat.append('line')
+    .attr('x1', 0).attr('y1', 0).attr('x2', 0).attr('y2', 6)
+    .attr('stroke', '#d5d5d0').attr('stroke-width', 1.5);
+
+  var g = svg.append('g').attr('transform', 'translate(' + M.left + ',' + M.top + ')');
+
+  // Year label
+  g.append('text')
+    .attr('x', w / 2).attr('y', -8)
+    .attr('text-anchor', 'middle')
+    .attr('font-size', 13).attr('font-weight', 600)
+    .attr('fill', 'var(--text)')
+    .text(opts.yearLabel);
+
+  // Scales (shared yMax for fair comparison)
+  var xScale = d3.scaleBand()
+    .domain(FIXED_ORDER)
+    .range([0, w])
+    .padding(0.15);
+
+  var yMax = Math.ceil(globalMax / 500) * 500;
+  var yScale = d3.scaleLinear()
+    .domain([0, yMax])
+    .nice()
+    .range([h, 0]);
+
+  // Grid
+  g.append('g').attr('class', 'grid')
+    .call(d3.axisLeft(yScale).tickSize(-w).tickFormat('').ticks(5));
+
+  // X Axis
+  var xAxisG = g.append('g').attr('class', 'axis')
+    .attr('transform', 'translate(0,' + h + ')')
+    .call(d3.axisBottom(xScale).tickFormat(function(k) { return SECTOR_LABELS[k]; }).tickSize(0));
+  xAxisG.select('.domain').remove();
+  xAxisG.selectAll('text')
+    .attr('transform', 'rotate(-50)')
+    .attr('text-anchor', 'end')
+    .attr('dx', '-4px')
+    .attr('dy', '4px')
+    .style('font-size', '9px')
+    .attr('font-weight', function(d) {
+      return L1_SECTORS.indexOf(d) !== -1 ? 600 : 400;
+    });
+
+  // Y Axis
+  g.append('g').attr('class', 'axis')
+    .call(d3.axisLeft(yScale).ticks(5).tickFormat(d3.format(',')));
+
+  // Bars
+  var yd = sectorByYear[year] || {};
+
+  FIXED_ORDER.forEach(function(key) {
+    var d = yd[key];
+    var col = SECTOR_COLS[key];
+    var cx = xScale(key);
+    var bw = xScale.bandwidth();
+    var hasData = d && (d.res + d.nr) > 0;
+
+    if (!hasData) {
+      g.append('rect')
+        .attr('x', cx).attr('y', h - placeholderH)
+        .attr('width', bw).attr('height', placeholderH)
+        .attr('fill', 'url(#pat-nd-' + year + ')')
+        .attr('stroke', '#ccc').attr('stroke-width', 0.5)
+        .attr('rx', 2).attr('opacity', 0.7);
+      g.append('text')
+        .attr('x', cx + bw / 2).attr('y', h - placeholderH / 2 + 1)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', 7).attr('fill', '#aaa')
+        .text('no data');
+      return;
+    }
+
+    var total = d.res + d.nr;
+    var resTop = yScale(d.res);
+    var nrTop = yScale(total);
+
+    // Resident bar
+    g.append('rect')
+      .attr('x', cx).attr('width', bw)
+      .attr('y', resTop).attr('height', h - resTop)
+      .attr('fill', col).attr('opacity', 0.75).attr('rx', 2);
+
+    // NR bar
+    var nrH = resTop - nrTop;
+    g.append('rect')
+      .attr('x', cx).attr('width', bw)
+      .attr('y', nrTop).attr('height', nrH)
+      .attr('fill', col).attr('opacity', 0.28).attr('rx', 2);
+
+    // Divider
+    if (nrH > 2) {
+      g.append('line')
+        .attr('x1', cx + 1).attr('x2', cx + bw - 1)
+        .attr('y1', resTop).attr('y2', resTop)
+        .attr('stroke', 'white').attr('stroke-width', 1.5).attr('stroke-opacity', 0.7);
+    }
+
+    // Share label
+    var shareStr = (d.share != null && d.share > 0)
+      ? fmtD(Math.max(0, d.share)) + '%' : '';
+    g.append('text')
+      .attr('x', cx + bw / 2).attr('y', Math.max(8, nrTop - 4))
+      .attr('text-anchor', 'middle')
+      .attr('font-size', 9).attr('font-weight', 700)
+      .attr('fill', 'var(--text)').attr('font-variant-numeric', 'tabular-nums')
+      .text(shareStr);
+
+    // Delta label (right panel only)
+    if (opts.showDelta && opts.refData) {
+      var dRef = opts.refData[key];
+      if (dRef && (dRef.res + dRef.nr) > 0) {
+        var refTotal = dRef.res + dRef.nr;
+        var delta = total - refTotal;
+        var prefix = delta >= 0 ? '+' : '';
+        var deltaColor = delta > 0 ? 'var(--delta-up)' : delta < 0 ? 'var(--delta-down)' : '#999';
+        g.append('text')
+          .attr('x', cx + bw / 2).attr('y', Math.max(8, nrTop - 15))
+          .attr('text-anchor', 'middle')
+          .attr('font-size', 8).attr('font-weight', 600)
+          .attr('fill', deltaColor).attr('font-variant-numeric', 'tabular-nums')
+          .text(prefix + fmt(delta) + 'k');
+      }
+    }
+
+    // Hover rect for tooltip
+    (function(dd, k, yr) {
+      g.append('rect')
+        .attr('x', cx).attr('y', 0)
+        .attr('width', bw).attr('height', h)
+        .attr('fill', 'transparent')
+        .style('cursor', 'pointer')
+        .on('mousemove', function(ev) {
+          var lines = ['<div class="tt-title">' + SECTOR_LABELS[k] + ' (' + yr + ')</div>'];
+          lines.push('Residents: <strong>' + fmt(dd.res) + 'k</strong>');
+          lines.push('Non-Residents: <strong>' + fmt(dd.nr) + 'k</strong>');
+          lines.push('Total: ' + fmt(dd.res + dd.nr) + 'k');
+          lines.push('Foreign share: <strong>' + (dd.share != null ? fmtD(Math.max(0, dd.share)) + '%' : 'n/a') + '</strong>');
+
+          if (opts.showDelta && opts.refData && opts.refData[k]) {
+            var ref = opts.refData[k];
+            if ((ref.res + ref.nr) > 0) {
+              var td = total - (ref.res + ref.nr);
+              var sd = (dd.share || 0) - (ref.share || 0);
+              lines.push('<br><span style="color:var(--light)">vs ' + opts.refYear + ':</span> ' +
+                '<strong>' + (td >= 0 ? '+' : '') + fmt(td) + 'k</strong>, ' +
+                (sd >= 0 ? '+' : '') + fmtD(sd) + 'pp');
+            }
+          }
+          showTip(ev, lines.join('<br>'));
+        })
+        .on('mouseleave', hideTip);
+    })(d, key, year);
+  });
+}
+</script>
+</body>
+</html>

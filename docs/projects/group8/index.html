@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Are Singaporeans Being Replaced by Foreign Labour?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="content.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    overscroll-behavior: none;          /* prevent browser bounce */
+  }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0d1117;
+    color: #e6edf3;
+    text-align: center;
+    padding: 60px 24px;
+  }
+  .hero-overline {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #58a6ff;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+    max-width: 700px;
+  }
+  .hero .subtitle {
+    font-size: 1.05rem;
+    color: #8b949e;
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .scroll-cue {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #484f58;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+  /* ── NAV DOTS ── */
+  .nav-dots {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 200;
+  }
+  .nav-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    border: 1.5px solid rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .nav-dot.active { background: #58a6ff; border-color: #58a6ff; }
+  .nav-dot::after {
+    content: attr(data-label);
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.65rem;
+    color: #8b949e;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+    background: rgba(13,17,23,0.85);
+    padding: 2px 8px;
+    border-radius: 4px;
+  }
+  .nav-dot:hover::after { opacity: 1; }
+
+  /* ── SECTION HEADERS ── */
+  .section-header {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 60px 32px 24px;
+  }
+  .viz-section + .viz-section .section-header,
+  .viz-section + .section-header {
+    padding-top: 80px;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 24px;
+  }
+  .section-num {
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #58a6ff;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .section-header h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 8px;
+  }
+  .section-header p {
+    font-size: 0.92rem;
+    color: #555;
+    max-width: 640px;
+    line-height: 1.8;
+  }
+
+  /* ── SCROLL-SYNCED IFRAME SECTIONS ── */
+  .scroll-section {
+    position: relative;
+    border-top: 1px solid #e5e7eb;
+  }
+  .scroll-section:nth-child(even) { background: #f7f8fa; }
+  .scroll-section .iframe-sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+  }
+  .scroll-section .iframe-sticky iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+  /* ── INLINE D3 CHART SECTIONS ── */
+  .viz-section {
+    position: relative;
+    border-top: 1px solid #e5e7eb;
+  }
+  .viz-section:nth-child(odd) { background: #f7f8fa; }
+
+  .chart-area {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 32px 60px;
+  }
+  .chart-container { width: 100%; overflow-x: auto; }
+  .chart-container svg { width: 100%; display: block; }
+
+  /* Stance chart filter controls */
+  #filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .filter-label { font-size: 0.8rem; color: #999; }
+  .button-group { display: flex; gap: 4px; flex-wrap: wrap; }
+  .filter-btn {
+    padding: 4px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    background: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover { border-color: #1a1a2e; color: #1a1a2e; }
+  .filter-btn.active { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+
+  .chart-insight {
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 16px;
+    padding-left: 16px;
+    border-left: 3px solid #ddd;
+  }
+
+  /* Word cloud pair */
+  .cloud-pair {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    min-height: 320px;
+  }
+  .cloud-side { padding: 12px 0; }
+  .cloud-side h3 {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .cloud-anti h3 { color: #c62828; }
+  .cloud-pro h3 { color: #1565c0; }
+  .cloud-divider { background: #e0e0e0; }
+  .cloud-side svg { width: 100%; height: 280px; }
+  .inline-anti { color: #c62828; font-weight: 600; }
+  .inline-pro { color: #1565c0; font-weight: 600; }
+
+  /* ── TOOLTIP ── */
+  .tooltip {
+    position: fixed;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    pointer-events: none;
+    z-index: 500;
+    max-width: 300px;
+    font-size: 0.82rem;
+    transition: opacity 0.15s;
+  }
+  .tooltip.hidden { opacity: 0; pointer-events: none; }
+  .tooltip-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+  .tooltip-topic { font-weight: 700; font-size: 0.9rem; }
+  .tooltip-stance { padding: 2px 8px; border-radius: 3px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+  .tooltip-stance.anti { background: #fde0dc; color: #c62828; }
+  .tooltip-stance.pro { background: #dceefb; color: #1565c0; }
+  .tooltip-count { font-size: 0.78rem; color: #888; margin-bottom: 4px; }
+  .tooltip-quote { font-size: 0.75rem; color: #999; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 6px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0d1117;
+    color: #484f58;
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CONCLUSION ── */
+  .conclusion {
+    background: #0d1117;
+    color: #e6edf3;
+    padding: 80px 24px 60px;
+  }
+  .conclusion-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .conclusion h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #fff;
+  }
+  .conclusion .answer {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #58a6ff;
+    margin-bottom: 28px;
+    line-height: 1.6;
+  }
+  .conclusion p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #b1bac4;
+    margin-bottom: 18px;
+  }
+  .conclusion .evidence-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #58a6ff;
+    margin-bottom: 6px;
+    margin-top: 28px;
+  }
+  .conclusion strong { color: #e6edf3; }
+  .conclusion .closing {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid #21262d;
+    font-style: italic;
+    color: #8b949e;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 1.6rem; }
+    .cloud-pair { grid-template-columns: 1fr; }
+    .cloud-divider { height: 1px; width: 100%; }
+    .nav-dots { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAV DOTS ═══════ -->
+<nav class="nav-dots">
+  <div class="nav-dot active" data-label="Top" onclick="document.getElementById('hero-section').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="nav-dot" data-label="Perception" onclick="document.getElementById('sec-stance').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="nav-dot" data-label="Divide" onclick="document.getElementById('sec-clouds').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="nav-dot" data-label="Origins" onclick="document.getElementById('hdr-globe').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="nav-dot" data-label="Evidence" onclick="document.getElementById('hdr-labor').scrollIntoView({behavior:'smooth'})"></div>
+  <div class="nav-dot" data-label="Conclusion" onclick="document.getElementById('sec-conclusion').scrollIntoView({behavior:'smooth'})"></div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero-section">
+  <div class="hero-overline" id="txt-hero-overline"></div>
+  <h1 id="txt-hero-title"></h1>
+  <p class="subtitle" id="txt-hero-subtitle"></p>
+  <div class="scroll-cue" id="txt-hero-cue"></div>
+</section>
+
+<!-- ═══════ VIZ 1: STANCE CHART — inline D3 ═══════ -->
+<section class="viz-section" id="sec-stance">
+  <div class="section-header">
+    <div class="section-num" id="txt-stance-num"></div>
+    <h2 id="txt-stance-title"></h2>
+    <p id="txt-stance-desc"></p>
+  </div>
+  <div class="chart-area">
+    <div class="chart-container"><svg id="stance-chart"></svg></div>
+    <div id="filter-controls">
+      <span class="filter-label">Source:</span>
+      <div class="button-group" id="source-filters">
+        <button class="filter-btn active" data-source="all">All</button>
+      </div>
+    </div>
+    <p class="chart-insight" id="insight-stance"></p>
+  </div>
+</section>
+
+<!-- ═══════ VIZ 2: WORD CLOUDS — inline D3 ═══════ -->
+<section class="viz-section" id="sec-clouds">
+  <div class="section-header">
+    <div class="section-num" id="txt-clouds-num"></div>
+    <h2 id="txt-clouds-title"></h2>
+    <p id="txt-clouds-desc"></p>
+  </div>
+  <div class="chart-area">
+    <div class="cloud-pair">
+      <div class="cloud-side cloud-anti">
+        <h3 id="txt-clouds-anti"></h3>
+        <svg id="cloud-anti"></svg>
+      </div>
+      <div class="cloud-divider"></div>
+      <div class="cloud-side cloud-pro">
+        <h3 id="txt-clouds-pro"></h3>
+        <svg id="cloud-pro"></svg>
+      </div>
+    </div>
+    <p class="chart-insight">Two camps, same country — the words reveal how differently people experience the same reality.</p>
+  </div>
+</section>
+
+<!-- ═══════ VIZ 3: GLOBE — scroll-synced iframe ═══════ -->
+<div class="section-header" id="hdr-globe">
+  <div class="section-num" id="txt-globe-num"></div>
+  <h2 id="txt-globe-title"></h2>
+  <p id="txt-globe-desc"></p>
+</div>
+<section class="scroll-section" id="sec-globe" style="height: 800vh;">
+  <div class="iframe-sticky">
+    <iframe id="iframe-globe" src="src/globe/index.html" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ═══════ VIZ 4: LABOR SHARE — scroll-synced iframe ═══════ -->
+<div class="section-header" id="hdr-labor">
+  <div class="section-num" id="txt-labor-num"></div>
+  <h2 id="txt-labor-title"></h2>
+  <p id="txt-labor-desc"></p>
+</div>
+<section class="scroll-section" id="sec-labor" style="height: 550vh;">
+  <div class="iframe-sticky">
+    <iframe id="iframe-labor" src="src/labor-share.html" loading="lazy"></iframe>
+  </div>
+</section>
+
+<!-- ═══════ CONCLUSION ═══════ -->
+<section class="conclusion" id="sec-conclusion">
+  <div class="conclusion-inner">
+    <h2 id="txt-conclusion-title"></h2>
+    <div class="answer" id="txt-conclusion-answer"></div>
+
+    <div class="evidence-label" id="txt-conclusion-ev1-label"></div>
+    <p id="txt-conclusion-ev1"></p>
+
+    <div class="evidence-label" id="txt-conclusion-ev2-label"></div>
+    <p id="txt-conclusion-ev2"></p>
+
+    <div class="evidence-label" id="txt-conclusion-ev3-label"></div>
+    <p id="txt-conclusion-ev3"></p>
+
+    <div class="evidence-label" id="txt-conclusion-ev4-label"></div>
+    <p id="txt-conclusion-ev4"></p>
+
+    <p class="closing" id="txt-conclusion-closing"></p>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer id="txt-footer"></footer>
+
+<!-- ═══════ TOOLTIP ═══════ -->
+<div id="tooltip" class="tooltip hidden">
+  <div class="tooltip-header">
+    <span class="tooltip-topic"></span>
+    <span class="tooltip-stance"></span>
+  </div>
+  <div class="tooltip-count"></div>
+  <div class="tooltip-quote" style="display:none"></div>
+</div>
+
+<!-- ═══════ SCRIPTS ═══════ -->
+<script>
+// ── Inject text from content.js ──
+(function injectContent() {
+  const C = CONTENT;
+  const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
+
+  set("txt-hero-overline", C.hero.overline);
+  set("txt-hero-title",    C.hero.title);
+  set("txt-hero-subtitle", C.hero.subtitle);
+  set("txt-hero-cue",      C.hero.scrollCue);
+
+  set("txt-labor-num",   C.laborShare.num);
+  set("txt-labor-title", C.laborShare.title);
+  set("txt-labor-desc",  C.laborShare.desc);
+
+  set("txt-globe-num",   C.globe.num);
+  set("txt-globe-title", C.globe.title);
+  set("txt-globe-desc",  C.globe.desc);
+
+  set("txt-stance-num",   C.stance.num);
+  set("txt-stance-title", C.stance.title);
+  set("txt-stance-desc",  C.stance.desc);
+
+  set("txt-clouds-num",   C.clouds.num);
+  set("txt-clouds-title", C.clouds.title);
+  set("txt-clouds-desc",  C.clouds.desc);
+  set("txt-clouds-anti",  C.clouds.labelAnti);
+  set("txt-clouds-pro",   C.clouds.labelPro);
+
+  set("txt-conclusion-title",    C.conclusion.title);
+  set("txt-conclusion-answer",   C.conclusion.answer);
+  set("txt-conclusion-ev1-label", C.conclusion.ev1Label);
+  set("txt-conclusion-ev1",      C.conclusion.ev1);
+  set("txt-conclusion-ev2-label", C.conclusion.ev2Label);
+  set("txt-conclusion-ev2",      C.conclusion.ev2);
+  set("txt-conclusion-ev3-label", C.conclusion.ev3Label);
+  set("txt-conclusion-ev3",      C.conclusion.ev3);
+  set("txt-conclusion-ev4-label", C.conclusion.ev4Label);
+  set("txt-conclusion-ev4",      C.conclusion.ev4);
+  set("txt-conclusion-closing",  C.conclusion.closing);
+
+  set("txt-footer", C.footer);
+
+  document.title = C.hero.title;
+})();
+
+// ── Wheel/touch interception for iframe scroll-sections ──
+// Attach wheel listener INSIDE same-origin iframes to forward scroll to parent.
+// This avoids overlay divs that would block clicks/hover/drag on the viz.
+(function() {
+  const iframes = document.querySelectorAll('.scroll-section iframe');
+
+  iframes.forEach(iframe => {
+    iframe.addEventListener('load', () => {
+      try {
+        const iframeWin = iframe.contentWindow;
+        const iframeDoc = iframe.contentDocument || iframeWin.document;
+
+        // Capture wheel inside iframe → forward to parent scroll
+        iframeDoc.addEventListener('wheel', e => {
+          e.preventDefault();
+          window.scrollBy(0, e.deltaY);
+        }, { passive: false });
+
+        // Capture touch inside iframe → forward to parent scroll
+        let touchY = null;
+        iframeDoc.addEventListener('touchstart', e => {
+          touchY = e.touches[0].clientY;
+        }, { passive: true });
+        iframeDoc.addEventListener('touchmove', e => {
+          if (touchY === null) return;
+          const dy = touchY - e.touches[0].clientY;
+          touchY = e.touches[0].clientY;
+          e.preventDefault();
+          window.scrollBy(0, dy);
+        }, { passive: false });
+        iframeDoc.addEventListener('touchend', () => { touchY = null; }, { passive: true });
+      } catch(e) {
+        // Cross-origin fallback: won't happen for local files
+        console.warn('Cannot attach scroll listeners to iframe:', e);
+      }
+    });
+  });
+
+  // Also handle wheel on the parent document when over scroll-sections
+  // (covers the sticky container area outside the iframe bounds, if any)
+  const sections = document.querySelectorAll('.scroll-section');
+  document.addEventListener('wheel', e => {
+    for (const sec of sections) {
+      const r = sec.getBoundingClientRect();
+      if (r.top <= 0 && r.bottom > 0) {
+        e.preventDefault();
+        window.scrollBy(0, e.deltaY);
+        return;
+      }
+    }
+  }, { passive: false, capture: true });
+})();
+
+// ── Scroll-sync: parent scroll drives iframe scroll ──
+function setupScrollSync(sectionId, iframeId) {
+  const section = document.getElementById(sectionId);
+  const iframe  = document.getElementById(iframeId);
+  let maxScroll = 0;
+  let ready = false;
+
+  function measure() {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      maxScroll = doc.documentElement.scrollHeight - iframe.clientHeight;
+      ready = maxScroll > 0;
+    } catch(e) { ready = false; }
+  }
+
+  iframe.addEventListener("load", () => {
+    measure();
+    // Re-measure after a delay in case D3 charts inflate the content
+    setTimeout(measure, 500);
+    setTimeout(measure, 1500);
+  });
+
+  function sync() {
+    if (!ready) return;
+    const rect = section.getBoundingClientRect();
+    const scrollable = section.offsetHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+    const progress = Math.max(0, Math.min(1, -rect.top / scrollable));
+    try {
+      iframe.contentWindow.scrollTo({ top: Math.round(progress * maxScroll), behavior: 'instant' });
+    } catch(e) {}
+  }
+
+  window.addEventListener("scroll", sync, { passive: true });
+  window.addEventListener("resize", () => { measure(); sync(); });
+}
+
+setupScrollSync("sec-labor", "iframe-labor");
+setupScrollSync("sec-globe", "iframe-globe");
+
+// ── Tooltip ──
+const Tooltip = (() => {
+    let el;
+    function init() { el = document.getElementById("tooltip"); }
+    function show(event, d) {
+        if (!el) init();
+        el.querySelector(".tooltip-topic").textContent = d.topic || "";
+        const s = el.querySelector(".tooltip-stance");
+        s.textContent = d.stance || "";
+        s.className = "tooltip-stance " + (d.stance || "");
+        el.querySelector(".tooltip-count").textContent = d.detail || "";
+        const q = el.querySelector(".tooltip-quote");
+        if (d.quote) { q.textContent = d.quote; q.style.display = "block"; }
+        else { q.style.display = "none"; }
+        el.classList.remove("hidden");
+        move(event);
+    }
+    function move(e) {
+        const pad = 14;
+        let x = e.clientX + pad, y = e.clientY - (el.offsetHeight / 2);
+        if (x + el.offsetWidth > window.innerWidth) x = e.clientX - el.offsetWidth - pad;
+        if (y < pad) y = pad;
+        if (y + el.offsetHeight > window.innerHeight - pad) y = window.innerHeight - el.offsetHeight - pad;
+        el.style.left = x + "px"; el.style.top = y + "px";
+    }
+    function hide() { if (!el) init(); el.classList.add("hidden"); }
+    return { init, show, move, hide };
+})();
+
+// ── Stance Chart ──
+const StanceChart = (() => {
+    const C = { anti: "#c62828", pro: "#1565c0", neutral: "#ccc" };
+    const margin = { top: 24, right: 70, bottom: 20, left: 160 };
+    let svg, g, width, height;
+    function init(selector) {
+        svg = d3.select(selector);
+        const w = svg.node().parentElement.getBoundingClientRect().width;
+        width = w - margin.left - margin.right;
+        height = 240;
+        svg.attr("width", w).attr("height", height + margin.top + margin.bottom);
+        g = svg.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    }
+    function render(data, samplePosts) {
+        g.selectAll("*").remove();
+        data = data.filter(d => d.total >= 5 && d.topic !== "General");
+        data.sort((a, b) => b.antiPct - a.antiPct);
+        const y = d3.scaleBand().domain(data.map(d => d.topic)).range([0, height]).padding(0.3);
+        const maxVal = d3.max(data, d => Math.max(d.anti, d.pro));
+        const x = d3.scaleLinear().domain([0, maxVal * 1.15]).range([0, width / 2]);
+        g.append("line").attr("x1", width/2).attr("x2", width/2).attr("y1",-8).attr("y2",height).attr("stroke","#e0e0e0");
+        g.append("text").attr("x",width/4).attr("y",-12).attr("text-anchor","middle").style("font-size","10px").style("font-weight","600").style("fill",C.anti).text("Concerned");
+        g.append("text").attr("x",width*3/4).attr("y",-12).attr("text-anchor","middle").style("font-size","10px").style("font-weight","600").style("fill",C.pro).text("Supportive");
+        g.append("g").call(d3.axisLeft(y).tickSize(0).tickPadding(10)).select(".domain").remove();
+        g.selectAll(".tick text").style("font-size","11px").style("font-weight","600");
+        g.selectAll(".bar-a").data(data).enter().append("rect")
+            .attr("x",d=>width/2-x(d.anti)).attr("y",d=>y(d.topic)).attr("width",0).attr("height",y.bandwidth())
+            .attr("rx",3).attr("fill",C.anti).attr("opacity",0.8)
+            .on("mouseenter",function(e,d){d3.select(this).attr("opacity",1);Tooltip.show(e,{topic:d.topic,stance:"anti",detail:`${d.anti} posts (${d.antiPct}%)`,quote:findQuote(samplePosts,d.topic,"anti")});})
+            .on("mousemove",e=>Tooltip.move(e)).on("mouseleave",function(){d3.select(this).attr("opacity",0.8);Tooltip.hide();})
+            .transition().duration(600).ease(d3.easeCubicOut).attr("width",d=>x(d.anti));
+        g.selectAll(".bar-p").data(data).enter().append("rect")
+            .attr("x",width/2).attr("y",d=>y(d.topic)).attr("width",0).attr("height",y.bandwidth())
+            .attr("rx",3).attr("fill",C.pro).attr("opacity",0.8)
+            .on("mouseenter",function(e,d){d3.select(this).attr("opacity",1);Tooltip.show(e,{topic:d.topic,stance:"pro",detail:`${d.pro} posts (${d.proPct}%)`,quote:findQuote(samplePosts,d.topic,"pro")});})
+            .on("mousemove",e=>Tooltip.move(e)).on("mouseleave",function(){d3.select(this).attr("opacity",0.8);Tooltip.hide();})
+            .transition().duration(600).ease(d3.easeCubicOut).attr("width",d=>x(d.pro));
+        g.selectAll(null).data(data).enter().append("text").attr("x",d=>width/2-x(d.anti)-6).attr("y",d=>y(d.topic)+y.bandwidth()/2+4).attr("text-anchor","end").style("font-size","10px").style("font-weight","600").style("fill",C.anti).text(d=>d.anti);
+        g.selectAll(null).data(data).enter().append("text").attr("x",d=>width/2+x(d.pro)+6).attr("y",d=>y(d.topic)+y.bandwidth()/2+4).style("font-size","10px").style("font-weight","600").style("fill",C.pro).text(d=>d.pro);
+        const totalN=data.reduce((s,d)=>s+d.total,0);
+        g.append("text").attr("x",width/2).attr("y",height+14).attr("text-anchor","middle").style("font-size","9px").style("fill","#bbb").text(`Based on ${totalN.toLocaleString()} posts${totalN<100?" (small sample)":""}`);
+    }
+    function findQuote(posts,topic,stance){if(!posts)return"";const m=posts.filter(p=>p.topic===topic&&p.stance===stance);return m.length?`"${m[Math.floor(Math.random()*m.length)].text}"`:""}
+    return { init, render };
+})();
+
+// ── Word Clouds ──
+const ThemeClouds = (() => {
+    function render(antiSel, proSel, data) {
+        if (!data || !data.anti || !data.pro) return;
+        renderCloud(antiSel, data.anti, "#c62828");
+        renderCloud(proSel, data.pro, "#1565c0");
+    }
+    function renderCloud(selector, words, color) {
+        const svg = d3.select(selector);
+        const w = svg.node().parentElement.getBoundingClientRect().width;
+        const h = 280;
+        svg.attr("width", w).attr("height", h);
+        const maxC = d3.max(words, d => d.count), minC = d3.min(words, d => d.count);
+        const fontSize = d3.scaleLinear().domain([minC, maxC]).range([11, 26]);
+        const opacity = d3.scaleLinear().domain([minC, maxC]).range([0.4, 1]);
+        const cx = w / 2, cy = h / 2;
+        const nodes = words.map(d => ({ text: d.theme, count: d.count, size: fontSize(d.count), x: cx + (Math.random()-0.5)*w*0.4, y: cy + (Math.random()-0.5)*h*0.4 }));
+        const sim = d3.forceSimulation(nodes).force("x",d3.forceX(cx).strength(0.04)).force("y",d3.forceY(cy).strength(0.04)).force("collide",d3.forceCollide(d=>d.size*2.2)).stop();
+        for (let i = 0; i < 120; i++) sim.tick();
+        svg.selectAll("text").data(nodes).enter().append("text")
+            .attr("x",d=>d.x).attr("y",d=>d.y).attr("text-anchor","middle").attr("dominant-baseline","middle")
+            .style("font-size",d=>d.size+"px").style("font-weight",d=>d.count>maxC*0.5?"700":"400")
+            .style("fill",color).style("opacity",d=>opacity(d.count)).style("cursor","default").text(d=>d.text)
+            .on("mouseenter",function(e,d){d3.select(this).style("opacity",1).style("font-weight","800");Tooltip.show(e,{topic:d.text,stance:color==="#c62828"?"anti":"pro",detail:`Mentioned in ${d.count} posts`});})
+            .on("mousemove",e=>Tooltip.move(e))
+            .on("mouseleave",function(e,d){d3.select(this).style("opacity",opacity(d.count)).style("font-weight",d.count>maxC*0.5?"700":"400");Tooltip.hide();});
+    }
+    return { render };
+})();
+
+// ── Main: load sentiment data, render inline charts ──
+(async function main() {
+    try {
+        const data = await d3.json("src/sentiment/viz_data.json");
+        if (!data || !data.perception) return;
+        Tooltip.init();
+
+        const topics = data.perception.byTopic.filter(t => t.total >= 5 && t.topic !== "General");
+        const topAnti = [...topics].sort((a, b) => b.antiPct - a.antiPct)[0];
+        if (topAnti) {
+            const el = document.getElementById("insight-stance");
+            if (el) el.textContent = `"${topAnti.topic}" has the highest concern at ${topAnti.antiPct}% — the most contested topic in online discourse.`;
+        }
+
+        // Source filters
+        const container = document.getElementById("source-filters");
+        const labels = { reddit: "Reddit", independent_sg: "Independent SG" };
+        data.meta.sources.forEach(src => {
+            const btn = document.createElement("button");
+            btn.className = "filter-btn"; btn.dataset.source = src;
+            btn.textContent = labels[src] || src;
+            container.appendChild(btn);
+        });
+        container.querySelectorAll(".filter-btn").forEach(btn => {
+            btn.addEventListener("click", () => {
+                container.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                const src = btn.dataset.source;
+                let filtered;
+                if (src === "all") { filtered = data.perception.byTopic; }
+                else {
+                    const raw = data.perception.byTopicAndSource.filter(d => d.source === src);
+                    const map = {};
+                    raw.forEach(d => { if (!map[d.topic]) map[d.topic]={topic:d.topic,anti:0,pro:0,neutral:0,total:0}; map[d.topic].anti+=d.anti;map[d.topic].pro+=d.pro;map[d.topic].neutral+=d.neutral;map[d.topic].total+=d.total; });
+                    filtered = Object.values(map).map(d => ({...d, antiPct:d.total?+(d.anti/d.total*100).toFixed(1):0, proPct:d.total?+(d.pro/d.total*100).toFixed(1):0}));
+                }
+                d3.select("#stance-chart").selectAll("*").remove();
+                StanceChart.init("#stance-chart");
+                StanceChart.render(filtered.filter(t=>t.total>=5&&t.topic!=="General"), data.perception.samplePosts);
+            });
+        });
+
+        // Scroll-triggered rendering for inline charts
+        const rendered = new Set();
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting && !rendered.has(e.target.id)) {
+                    rendered.add(e.target.id);
+                    if (e.target.id === "sec-stance") { StanceChart.init("#stance-chart"); StanceChart.render(topics, data.perception.samplePosts); }
+                    if (e.target.id === "sec-clouds" && data.perception.themes) { ThemeClouds.render("#cloud-anti", "#cloud-pro", data.perception.themes); }
+                }
+            });
+        }, { threshold: 0.15 });
+        document.querySelectorAll(".viz-section").forEach(s => observer.observe(s));
+    } catch (err) { console.error("Failed to load sentiment data:", err); }
+})();
+
+// ── Nav dot tracking ──
+(function() {
+    const dots = document.querySelectorAll(".nav-dot");
+    const sections = ["hero-section", "sec-stance", "sec-clouds", "hdr-globe", "hdr-labor", "sec-conclusion"];
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                const idx = sections.indexOf(e.target.id);
+                if (idx >= 0) { dots.forEach(d => d.classList.remove("active")); dots[idx].classList.add("active"); }
+            }
+        });
+    }, { threshold: 0.2 });
+    sections.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+})();
+</script>
+</body>
+</html>

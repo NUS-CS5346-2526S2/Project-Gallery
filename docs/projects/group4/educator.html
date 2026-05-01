@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sleep Signals | Educator View</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("sleep-signals-theme");
+      if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
+    } catch (error) {}
+  </script>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="brand-lockup" href="index.html">
+        <span class="brand-mark">SS</span>
+        <span class="brand-text">
+          <small>CS5346 Information Visualisation</small>
+          <strong>Sleep Signals</strong>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Overview</a>
+        <a class="nav-link" href="student.html">Student</a>
+        <a class="nav-link active" href="educator.html">Educator</a>
+        <a class="nav-link" href="context.html">Global Context</a>
+        <a class="nav-link" href="method.html">Data &amp; Method</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+
+    <!-- 1. FILTERS — first thing visible on load -->
+    <section class="section fade-up">
+      <div class="controls-panel">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Educator view</span>
+            <h2>Filter the evidence.</h2>
+          </div>
+          <div class="pill-row">
+            <span class="sample-pill" id="educatorSample">Filtered sample: —</span>
+            <span class="meta-pill" id="educatorRho">Selected factor: —</span>
+          </div>
+        </div>
+        <div class="controls-grid">
+          <div class="field">
+            <label for="educatorOutcome">Outcome</label>
+            <select id="educatorOutcome"></select>
+          </div>
+          <div class="field">
+            <label for="educatorYear">Year of study</label>
+            <select id="educatorYear"></select>
+          </div>
+          <div class="field">
+            <label for="educatorGender">Gender</label>
+            <select id="educatorGender"></select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SHORTLIST + HEATMAP -->
+    <section class="section fade-up">
+      <div class="educator-layout">
+        <aside class="surface-card">
+          <span class="section-kicker">Ranked shortlist</span>
+          <h3 class="panel-title">Select a factor</h3>
+          <div class="rank-list" id="rankingList">
+            <div class="loading-state">Loading factor ranking…</div>
+          </div>
+        </aside>
+
+        <div class="method-grid">
+          <article class="chart-card">
+            <span class="section-kicker">Factor heatmap</span>
+            <h3 id="educatorChartTitle">Outcome × factor heatmap</h3>
+            <p id="educatorChartCopy">
+              Darker cells mark a larger share within the selected factor level.
+            </p>
+            <div class="chart-toolbar" id="educatorViewModes" aria-label="Educator chart view modes"></div>
+            <div class="legend" id="educatorLegend"></div>
+            <div class="chart-shell" id="educatorChart"></div>
+            <p class="footnote" id="educatorFootnote">
+              Each row sums to 100%. Compare pattern shape across levels — row totals show sample size.
+            </p>
+          </article>
+
+          <article class="note-card" id="educatorPattern">
+            <div class="loading-state">Loading pattern summary…</div>
+          </article>
+
+          <article class="note-card">
+            <span class="section-kicker">Interpretation note</span>
+            <h3>What the ranking means</h3>
+            <p>
+              Positive Spearman ρ<span class="rho-info" data-tip="Rank correlation (−1 to +1). Positive = worse factor aligns with worse outcome.">?</span> means worse factor levels line up with worse outcome levels after ordinal coding. Negative values mean the coded order runs in the opposite direction, so the factor scale should be checked before inferring protection.
+            </p>
+          </article>
+
+          <article class="note-card">
+            <span class="section-kicker">Expanded scope</span>
+            <h3>How this sample sits in broader context</h3>
+            <p>
+              This survey is paired with country-level records for broader context. Use <a href="context.html">Global Context</a> to compare sleep patterns across countries.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. INTRO — moved below chart as a reference note -->
+    <section class="section fade-up">
+      <div class="split-notes">
+        <article class="note-card">
+          <span class="section-kicker">Reading the chart</span>
+          <h3>Factors ranked by association strength.</h3>
+          <p>
+            Select a factor from the shortlist to update the heatmap.
+          </p>
+        </article>
+        <article class="note-card">
+          <span class="section-kicker">About this view</span>
+          <h3>Ranking and distribution in one place.</h3>
+          <p>
+            First choose an outcome, then select the factor you want to inspect from the ranked shortlist.
+          </p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    For exact survey wording, respondent profile, and skew notes, open <a href="method.html">Data &amp; Method</a>.
+  </footer>
+
+  <script src="assets/vendor/d3.v7.min.js" defer></script>
+  <script src="data/local-survey-bundle.js" defer></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/charts.js" defer></script>
+  <script src="assets/theme.js" defer></script>
+  <script src="assets/educator.js" defer></script>
+</body>
+</html>

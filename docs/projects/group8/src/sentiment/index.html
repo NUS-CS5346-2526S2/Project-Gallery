@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are Singaporeans Being Replaced by Foreign Labour?</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+
+    <!-- ACT 1: EXPOSITION — Set the question -->
+    <header id="hero">
+        <div class="container">
+            <p class="overline">CS5346 Information Visualization</p>
+            <h1>Are Singaporeans Being Replaced<br>by Foreign Labour?</h1>
+            <p class="subtitle">We analyzed <strong id="stat-posts">—</strong> online posts from
+                Reddit and The Independent SG to find out
+                what Singaporeans actually think.</p>
+            <div class="scroll-cue">Scroll to explore</div>
+        </div>
+    </header>
+
+    <!-- ACT 2: RISING ACTION — The big picture -->
+    <section id="overview" class="section">
+        <div class="container">
+            <div class="narrative-text">
+                <h2>The Overall Picture</h2>
+                <p>Each post was classified by GPT-4o-mini as <span class="inline-anti">concerned</span>,
+                <span class="inline-pro">supportive</span>, or <span class="inline-neutral">neutral</span>
+                about foreign labour. Here's how concern and support differ by topic.</p>
+            </div>
+            <div class="chart-container"><svg id="stance-chart"></svg></div>
+            <div id="filter-controls">
+                <span class="filter-label">Filter by source:</span>
+                <div id="source-filters" class="button-group">
+                    <button class="filter-btn active" data-source="all">All</button>
+                </div>
+            </div>
+            <p class="chart-insight" id="insight-stance"></p>
+        </div>
+    </section>
+
+    <!-- ACT 3: RISING ACTION — How it changed -->
+    <section id="timeline" class="section section-alt">
+        <div class="container">
+            <div class="narrative-text">
+                <h2>Is the Anxiety Growing?</h2>
+                <p>Tracking the share of concerned vs supportive posts year by year.
+                   Does the conversation get more heated over time?</p>
+            </div>
+            <div class="chart-container"><svg id="sentiment-timeline"></svg></div>
+            <p class="chart-insight" id="insight-timeline"></p>
+        </div>
+    </section>
+
+    <!-- ACT 4: CLIMAX — The two worldviews -->
+    <section id="themes" class="section">
+        <div class="container">
+            <div class="narrative-text">
+                <h2>Two Different Worldviews</h2>
+                <p>What specific concerns do worried Singaporeans raise?
+                   And what do supportive voices emphasize?
+                   The larger the word, the more frequently it appears.</p>
+            </div>
+            <div class="cloud-pair">
+                <div class="cloud-side cloud-anti">
+                    <h3>Concerns</h3>
+                    <svg id="cloud-anti"></svg>
+                </div>
+                <div class="cloud-divider"></div>
+                <div class="cloud-side cloud-pro">
+                    <h3>Support</h3>
+                    <svg id="cloud-pro"></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACT 5: FALLING ACTION — The shifting conversation -->
+    <section id="topics" class="section section-alt">
+        <div class="container">
+            <div class="narrative-text">
+                <h2>How the Conversation Shifted</h2>
+                <p>The topics Singaporeans discuss change with events.
+                   COVID pushed worker welfare to the forefront.
+                   Elections spark policy debates.</p>
+            </div>
+            <div class="chart-container"><svg id="topic-stream"></svg></div>
+            <p class="chart-insight" id="insight-topics"></p>
+        </div>
+    </section>
+
+    <!-- ACT 6: RESOLUTION -->
+    <section id="resolution" class="section">
+        <div class="container">
+            <div class="narrative-text center">
+                <h2>What Does This Tell Us?</h2>
+                <p>Online sentiment reveals deep-seated anxiety about job competition
+                   and cultural change — but also genuine empathy for foreign workers.
+                   The conversation is more nuanced than headlines suggest.</p>
+            </div>
+            <p class="caveat">
+                <strong>Data collection:</strong> 4,000+ posts scraped from Reddit (r/singapore, r/askSingapore, r/SingaporeRaw)
+                and The Independent SG (2015–2025).
+                Reddit accounts for ~93% of posts; The Independent SG contributes ~7%.
+                When filtering by source, sample sizes vary significantly.
+                <br><strong>Classification:</strong> Each post was classified by OpenAI GPT-4o-mini for stance (concerned / supportive / neutral),
+                topic, and key themes. This is automated NLP classification, not human annotation — some misclassification is expected.
+                <br><strong>Limitations:</strong> Online forums skew younger, English-speaking, and more opinionated.
+                This is not a representative survey of Singaporean public opinion.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>CS5346 Information Visualization</p>
+    </footer>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="tooltip hidden">
+        <div class="tooltip-header">
+            <span class="tooltip-topic"></span>
+            <span class="tooltip-stance"></span>
+        </div>
+        <div class="tooltip-count"></div>
+        <div class="tooltip-quote"></div>
+    </div>
+
+    <script src="js/tooltip.js"></script>
+    <script src="js/stance_chart.js"></script>
+    <script src="js/sentiment_timeline.js"></script>
+    <script src="js/theme_clouds.js"></script>
+    <script src="js/topic_stream.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

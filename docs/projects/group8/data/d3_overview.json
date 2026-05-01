@@ -1,0 +1,254 @@
+[
+  {
+    "year": 1990,
+    "total_emp": 1478.0,
+    "resident_emp": 1127.6,
+    "nonresident_emp": 350.4,
+    "nonresident_share_pct": 23.71
+  },
+  {
+    "year": 1991,
+    "total_emp": 1530.5,
+    "resident_emp": 1142.4,
+    "nonresident_emp": 388.1,
+    "nonresident_share_pct": 25.36
+  },
+  {
+    "year": 1992,
+    "total_emp": 1570.9,
+    "resident_emp": 1176.8,
+    "nonresident_emp": 394.1,
+    "nonresident_share_pct": 25.09
+  },
+  {
+    "year": 1993,
+    "total_emp": 1641.5,
+    "resident_emp": 1206.4,
+    "nonresident_emp": 435.1,
+    "nonresident_share_pct": 26.51
+  },
+  {
+    "year": 1994,
+    "total_emp": 1713.5,
+    "resident_emp": 1239.3,
+    "nonresident_emp": 474.2,
+    "nonresident_share_pct": 27.67
+  },
+  {
+    "year": 1995,
+    "total_emp": 1822.5,
+    "resident_emp": 1276.9,
+    "nonresident_emp": 545.6,
+    "nonresident_share_pct": 29.94
+  },
+  {
+    "year": 1996,
+    "total_emp": 1925.3,
+    "resident_emp": 1316.9,
+    "nonresident_emp": 608.4,
+    "nonresident_share_pct": 31.6
+  },
+  {
+    "year": 1997,
+    "total_emp": 2045.6,
+    "resident_emp": 1360.2,
+    "nonresident_emp": 685.4,
+    "nonresident_share_pct": 33.51
+  },
+  {
+    "year": 1998,
+    "total_emp": 2022.1,
+    "resident_emp": 1332.4,
+    "nonresident_emp": 689.7,
+    "nonresident_share_pct": 34.11
+  },
+  {
+    "year": 1999,
+    "total_emp": 2062.0,
+    "resident_emp": 1374.1,
+    "nonresident_emp": 687.9,
+    "nonresident_share_pct": 33.36
+  },
+  {
+    "year": 2000,
+    "total_emp": 2170.6,
+    "resident_emp": 1432.5,
+    "nonresident_emp": 738.1,
+    "nonresident_share_pct": 34.0
+  },
+  {
+    "year": 2001,
+    "total_emp": 2170.5,
+    "resident_emp": 1433.8,
+    "nonresident_emp": 736.7,
+    "nonresident_share_pct": 33.94
+  },
+  {
+    "year": 2002,
+    "total_emp": 2147.6,
+    "resident_emp": 1453.2,
+    "nonresident_emp": 694.4,
+    "nonresident_share_pct": 32.33
+  },
+  {
+    "year": 2003,
+    "total_emp": 2134.8,
+    "resident_emp": 1468.2,
+    "nonresident_emp": 666.6,
+    "nonresident_share_pct": 31.23
+  },
+  {
+    "year": 2004,
+    "total_emp": 2206.2,
+    "resident_emp": 1518.1,
+    "nonresident_emp": 688.1,
+    "nonresident_share_pct": 31.19
+  },
+  {
+    "year": 2005,
+    "total_emp": 2319.5,
+    "resident_emp": 1581.6,
+    "nonresident_emp": 737.9,
+    "nonresident_share_pct": 31.81
+  },
+  {
+    "year": 2006,
+    "total_emp": 2495.4,
+    "resident_emp": 1672.4,
+    "nonresident_emp": 823.0,
+    "nonresident_share_pct": 32.98
+  },
+  {
+    "year": 2007,
+    "total_emp": 2730.4,
+    "resident_emp": 1762.8,
+    "nonresident_emp": 967.6,
+    "nonresident_share_pct": 35.44
+  },
+  {
+    "year": 2008,
+    "total_emp": 2952.1,
+    "resident_emp": 1827.6,
+    "nonresident_emp": 1124.5,
+    "nonresident_share_pct": 38.09
+  },
+  {
+    "year": 2009,
+    "total_emp": 2989.8,
+    "resident_emp": 1869.4,
+    "nonresident_emp": 1120.4,
+    "nonresident_share_pct": 37.47
+  },
+  {
+    "year": 2010,
+    "total_emp": 3105.6,
+    "resident_emp": 1962.9,
+    "nonresident_emp": 1142.7,
+    "nonresident_share_pct": 36.79
+  },
+  {
+    "year": 2011,
+    "total_emp": 3228.2,
+    "resident_emp": 1999.0,
+    "nonresident_emp": 1229.2,
+    "nonresident_share_pct": 38.08
+  },
+  {
+    "year": 2012,
+    "total_emp": 3357.4,
+    "resident_emp": 2040.6,
+    "nonresident_emp": 1316.8,
+    "nonresident_share_pct": 39.22
+  },
+  {
+    "year": 2013,
+    "total_emp": 3493.5,
+    "resident_emp": 2056.2,
+    "nonresident_emp": 1437.3,
+    "nonresident_share_pct": 41.14
+  },
+  {
+    "year": 2014,
+    "total_emp": 3623.7,
+    "resident_emp": 2103.5,
+    "nonresident_emp": 1520.2,
+    "nonresident_share_pct": 41.95
+  },
+  {
+    "year": 2015,
+    "total_emp": 3656.0,
+    "resident_emp": 2147.9,
+    "nonresident_emp": 1508.1,
+    "nonresident_share_pct": 41.25
+  },
+  {
+    "year": 2016,
+    "total_emp": 3673.1,
+    "resident_emp": 2165.3,
+    "nonresident_emp": 1507.8,
+    "nonresident_share_pct": 41.05
+  },
+  {
+    "year": 2017,
+    "total_emp": 3669.4,
+    "resident_emp": 2175.2,
+    "nonresident_emp": 1494.2,
+    "nonresident_share_pct": 40.72
+  },
+  {
+    "year": 2018,
+    "total_emp": 3714.8,
+    "resident_emp": 2203.7,
+    "nonresident_emp": 1511.1,
+    "nonresident_share_pct": 40.68
+  },
+  {
+    "year": 2019,
+    "total_emp": 3784.3,
+    "resident_emp": 2230.4,
+    "nonresident_emp": 1553.9,
+    "nonresident_share_pct": 41.06
+  },
+  {
+    "year": 2020,
+    "total_emp": 3603.3,
+    "resident_emp": 2222.7,
+    "nonresident_emp": 1380.6,
+    "nonresident_share_pct": 38.31
+  },
+  {
+    "year": 2021,
+    "total_emp": 3629.6,
+    "resident_emp": 2286.5,
+    "nonresident_emp": 1343.1,
+    "nonresident_share_pct": 37.0
+  },
+  {
+    "year": 2022,
+    "total_emp": 3889.8,
+    "resident_emp": 2350.5,
+    "nonresident_emp": 1539.3,
+    "nonresident_share_pct": 39.57
+  },
+  {
+    "year": 2023,
+    "total_emp": 3986.3,
+    "resident_emp": 2352.4,
+    "nonresident_emp": 1633.9,
+    "nonresident_share_pct": 40.99
+  },
+  {
+    "year": 2024,
+    "total_emp": 4046.1,
+    "resident_emp": 2365.5,
+    "nonresident_emp": 1680.6,
+    "nonresident_share_pct": 41.54
+  },
+  {
+    "year": 2025,
+    "total_emp": 4116.9,
+    "resident_emp": 2376.5,
+    "nonresident_emp": 1740.4,
+    "nonresident_share_pct": 42.27
+  }
+]

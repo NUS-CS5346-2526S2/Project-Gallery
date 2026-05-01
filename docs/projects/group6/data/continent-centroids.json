@@ -1,0 +1,8 @@
+{
+  "Africa": [20, 5],
+  "Europe": [15, 54],
+  "Asia": [90, 35],
+  "North America": [-100, 45],
+  "South America": [-60, -15],
+  "Oceania": [135, -25]
+}

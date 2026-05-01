@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>From Sleep to Scores — Group 4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Figtree:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --bg:        #060b18;
+  --surface0:  #0b1228;
+  --surface1:  #101a38;
+  --border:    rgba(255,255,255,.08);
+  --border2:   rgba(255,255,255,.14);
+  --text:      #e4ecff;
+  --muted:     #7a90bf;
+  --dim:       rgba(228,236,255,.45);
+  --accent:    #22d3ee;
+  --accent-bg: rgba(34,211,238,.10);
+  --accent-bd: rgba(34,211,238,.25);
+  --c-sleep:   #a78bfa;
+  --c-habits:  #60a5fa;
+  --c-day:     #f87171;
+  --c-other:   #34d399;
+  --radius:    14px;
+  --shadow:    0 8px 32px rgba(0,0,0,.45);
+  --f-d: 'Syne', sans-serif;
+  --f-b: 'Figtree', sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{font-family:var(--f-b);background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 15% -5%, rgba(34,211,238,.07) 0%,transparent 60%),
+    radial-gradient(ellipse 700px 400px at 92% 8%, rgba(167,139,250,.08) 0%,transparent 55%),
+    radial-gradient(ellipse 600px 400px at 50% 95%, rgba(96,165,250,.06) 0%,transparent 55%);
+}
+/* ─── LAYOUT ─── */
+.wrap{position:relative;z-index:1;max-width:1280px;margin:0 auto;padding:28px 20px 56px;}
+/* ─── HEADER ─── */
+.hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:4px;flex-wrap:wrap;}
+.hdr-left{flex:1 1 420px;}
+.eyebrow{font-family:var(--f-d);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.hdr-title{font-family:var(--f-d);font-size:clamp(22px,3vw,32px);font-weight:800;line-height:1.15;letter-spacing:-.3px;margin-bottom:8px;}
+.hdr-sub{color:var(--muted);font-size:13px;max-width:56ch;line-height:1.55;}
+.hdr-actions{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap;padding-top:4px;}
+.status-bar{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);margin-top:10px;padding:8px 12px;background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:10px;width:fit-content;}
+.dot-ok{width:7px;height:7px;border-radius:99px;background:var(--c-other);box-shadow:0 0 0 3px rgba(52,211,153,.2);flex-shrink:0;}
+.dot-warn{width:7px;height:7px;border-radius:99px;background:#f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.2);flex-shrink:0;}
+/* ─── MODE TOGGLE ─── */
+.mode-toggle{
+  display:flex;align-items:center;gap:3px;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border2);
+  border-radius:12px;padding:3px;
+}
+.mode-btn{
+  font-family:var(--f-d);font-size:12px;font-weight:700;letter-spacing:.03em;
+  cursor:pointer;user-select:none;
+  padding:8px 14px;border-radius:9px;
+  border:1px solid transparent;
+  color:var(--muted);background:transparent;
+  transition:all .18s ease;
+  display:flex;align-items:center;gap:6px;
+  white-space:nowrap;
+}
+.mode-btn:hover{color:var(--text);}
+.mode-btn.active{background:var(--surface0);border-color:var(--border2);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.4);}
+.mode-btn.active.student{color:#fbbf24;}
+.mode-btn.active.educator{color:var(--accent);}
+.mode-btn.active.global{color:#34d399;}
+/* ─── BUTTONS ─── */
+.btn{font-family:var(--f-b);font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border2);background:rgba(255,255,255,.06);color:var(--text);padding:9px 14px;border-radius:10px;letter-spacing:.1px;transition:background .15s,border-color .15s,transform .06s;user-select:none;white-space:nowrap;}
+.btn:hover{background:rgba(255,255,255,.10);border-color:rgba(255,255,255,.20);}
+.btn:active{transform:translateY(1px);}
+.btn.accent{background:var(--accent-bg);border-color:var(--accent-bd);color:var(--accent);}
+.btn.accent:hover{background:rgba(34,211,238,.16);}
+.btn-file{position:relative;overflow:hidden;}
+.btn-file input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0;}
+.pill-n{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border:1px solid var(--border);border-radius:10px;font-size:13px;font-weight:600;background:rgba(255,255,255,.03);color:var(--dim);white-space:nowrap;}
+.pill-n strong{color:var(--text);}
+/* ─── TABS ─── */
+.tabs{display:flex;gap:6px;margin:20px 0 16px;border-bottom:1px solid var(--border);padding-bottom:0;}
+.tab{font-family:var(--f-d);font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;user-select:none;padding:10px 16px;border-radius:10px 10px 0 0;color:var(--muted);border:1px solid transparent;border-bottom:none;transition:color .15s,background .15s,border-color .15s;margin-bottom:-1px;}
+.tab:hover{color:var(--text);background:rgba(255,255,255,.04);}
+.tab.active{color:var(--accent);background:var(--surface0);border-color:var(--border);border-bottom-color:var(--surface0);}
+/* ─── PAGES ─── */
+.page{display:none;flex-direction:column;gap:14px;}
+.page.active{display:flex;}
+/* ─── CONTROLS ─── */
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;background:var(--surface0);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;}
+.field{display:flex;flex-direction:column;gap:5px;min-width:150px;flex:1 1 150px;}
+.field label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+select{width:100%;font-family:var(--f-b);font-size:13px;font-weight:600;background:#0d1530;color:var(--text);border:1px solid var(--border2);border-radius:10px;padding:9px 30px 9px 12px;outline:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a90bf' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;}
+select:hover{border-color:rgba(255,255,255,.22);}
+select:focus{border-color:var(--accent-bd);box-shadow:0 0 0 3px rgba(34,211,238,.12);}
+select option,select optgroup{background:#0d1530;color:var(--text);}
+.sample-note{font-size:11px;color:var(--muted);padding:4px 0;white-space:nowrap;align-self:flex-end;}
+/* ─── GROUP CHIPS ─── */
+.grp-legend{display:flex;flex-wrap:wrap;gap:6px;align-items:center;flex:2 1 320px;}
+.g-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.03);cursor:pointer;transition:background .15s,border-color .15s,opacity .15s;user-select:none;font-size:12px;font-weight:600;}
+.g-chip:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15);}
+.g-chip input{display:none;}
+.g-dot{width:8px;height:8px;border-radius:99px;flex-shrink:0;}
+.g-chip.off{opacity:.35;}
+/* ─── GRID ─── */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:860px){.grid2{grid-template-columns:1fr;}.hdr{flex-direction:column;}}
+/* ─── CARDS ─── */
+.card{background:var(--surface0);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);}
+.card-title{font-family:var(--f-d);font-size:13px;font-weight:700;letter-spacing:.02em;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.card-sub{font-family:var(--f-b);font-size:11px;font-weight:500;color:var(--muted);padding:3px 8px;background:rgba(255,255,255,.05);border-radius:6px;border:1px solid var(--border);}
+.chart-wrap{width:100%;height:380px;background:rgba(0,0,0,.18);border-radius:10px;border:1px solid var(--border);overflow:hidden;}
+.chart-wrap.tall{height:540px;}
+.chart-wrap svg{width:100%;height:100%;display:block;}
+.axis path,.axis line{stroke:rgba(255,255,255,.14);}
+.axis text{fill:rgba(228,236,255,.7);font-family:'Figtree',sans-serif;font-size:11px;}
+.gridline line{stroke:rgba(255,255,255,.07);}
+.gridline path{stroke:none;}
+text.hv{fill:#fde047;font-weight:800;font-size:11px;paint-order:stroke fill;stroke:rgba(0,0,0,.7);stroke-width:2.5px;}
+.foot-note{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.55;}
+/* ─── CHART TYPE TOGGLE ─── */
+.chart-toggle{display:flex;gap:4px;margin-bottom:10px;}
+.ct-btn{font-family:var(--f-b);font-size:11px;font-weight:600;cursor:pointer;padding:5px 10px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--muted);transition:all .15s;}
+.ct-btn:hover{color:var(--text);background:rgba(255,255,255,.05);}
+.ct-btn.active{background:rgba(34,211,238,.12);border-color:var(--accent-bd);color:var(--accent);}
+/* ─── INFO BADGE ─── */
+.info-badge{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:99px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);font-size:10px;font-weight:800;font-family:var(--f-d);color:var(--muted);cursor:help;}
+
+/* ════════════════════════════════════════
+   STUDENT VIEW
+════════════════════════════════════════ */
+.student-hero{
+  background:linear-gradient(135deg,rgba(251,191,36,.08) 0%,rgba(34,211,238,.06) 100%);
+  border:1px solid rgba(251,191,36,.18);
+  border-radius:var(--radius);
+  padding:20px 24px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+}
+.student-hero-icon{font-size:36px;line-height:1;flex-shrink:0;}
+.student-hero-text h2{font-family:var(--f-d);font-size:18px;font-weight:800;color:#fde68a;margin-bottom:4px;}
+.student-hero-text p{color:var(--muted);font-size:13px;max-width:60ch;}
+
+/* Insight cards grid */
+.insight-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+.insight-card{
+  background:var(--surface0);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px;cursor:pointer;transition:border-color .18s,background .18s,transform .1s;
+  position:relative;overflow:hidden;
+}
+.insight-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .18s;border-radius:inherit;}
+.insight-card:hover{transform:translateY(-2px);}
+.insight-card.selected{border-color:rgba(255,255,255,.22);}
+.insight-rank{font-family:var(--f-d);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;}
+.insight-name{font-family:var(--f-d);font-size:15px;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px;}
+.insight-cat{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:5px;background:rgba(255,255,255,.06);}
+.insight-desc{font-size:12px;color:var(--muted);line-height:1.55;margin-bottom:12px;}
+.insight-meter{display:flex;align-items:center;gap:8px;}
+.meter-bar{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;}
+.meter-fill{height:100%;border-radius:99px;transition:width .4s ease;}
+.meter-label{font-family:var(--f-d);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;}
+.strength-strong{color:#34d399;}
+.strength-mod{color:#fbbf24;}
+.strength-mild{color:var(--muted);}
+
+/* Student bottom chart */
+.student-chart-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.student-chart-desc{font-size:12px;color:var(--muted);line-height:1.5;max-width:65ch;}
+
+/* ─── TOOLTIP ─── */
+#tt{position:fixed;pointer-events:none;z-index:9999;background:rgba(6,11,24,.96);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:11px 14px;box-shadow:0 16px 40px rgba(0,0,0,.55);color:var(--text);max-width:300px;font-size:12px;line-height:1.5;opacity:0;transform:translateY(5px);transition:opacity .12s,transform .12s;}
+#tt.show{opacity:1;transform:translateY(0);}
+#tt .tth{font-weight:700;margin-bottom:5px;font-size:13px;}
+#tt .ttm{color:var(--muted);}
+#tt .ttv{font-weight:700;font-family:'Syne',sans-serif;font-size:14px;color:var(--accent);}
+
+/* ─── DIVERGING BAR LEGEND ─── */
+.div-legend{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+.div-swatch{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+.div-swatch span{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- ── HEADER ── -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="eyebrow">Group 4 · Sleep &amp; Academic Outcomes</div>
+    <h1 class="hdr-title">From Sleep to Scores:<br>What Matters Most?</h1>
+    <p class="hdr-sub">Explore how sleep behaviour, daily habits, and daytime functioning relate to academic outcomes.</p>
+    <div id="statusBar" class="status-bar">
+      <span class="dot-warn"></span>
+      <span id="statusMsg">Dataset not loaded — click <strong>Load CSV</strong> or place the CSV in the same folder.</span>
+    </div>
+  </div>
+  <div class="hdr-actions">
+    <!-- Mode toggle -->
+    <div class="mode-toggle">
+      <button class="mode-btn student active" data-mode="student">🎓 Student</button>
+      <button class="mode-btn educator" data-mode="educator">📊 Educator</button>
+    </div>
+    <div class="pill-n">N: <strong id="nCount">—</strong></div>
+    <button class="btn btn-file accent">⬆ Load CSV<input type="file" id="fileInput" accept=".csv,text/csv"/></button>
+    <button class="btn" id="resetBtn">↺ Reset</button>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     STUDENT PAGE
+════════════════════════════════════════ -->
+<section id="page-student" class="page active">
+
+  <!-- Hero banner -->
+  <div class="student-hero">
+    <div class="student-hero-icon">🌙</div>
+    <div class="student-hero-text">
+      <h2>What's most linked to your academic outcomes?</h2>
+      <p>Below are the top sleep &amp; lifestyle factors most associated with the outcome you care about. Click a card to explore how the full distribution shifts — no statistics degree required.</p>
+    </div>
+  </div>
+
+  <!-- Controls: just outcome + year -->
+  <div class="controls">
+    <div class="field">
+      <label>I care about…</label>
+      <select id="st-outcome"></select>
+    </div>
+    <div class="field">
+      <label>Year of Study</label>
+      <select id="st-year"></select>
+    </div>
+    <div class="sample-note" id="st-sample">—</div>
+  </div>
+
+  <!-- Top insight cards -->
+  <div>
+    <div class="card-title" style="margin-bottom:10px">
+      Top Factors to Watch
+      <span class="card-sub" id="st-cards-sub">ranked by strength of association</span>
+    </div>
+    <div class="insight-grid" id="st-cards"></div>
+  </div>
+
+  <!-- Diverging bar for selected factor -->
+  <div class="card" id="st-detail-card" style="display:none">
+    <div class="student-chart-header">
+      <div>
+        <div class="card-title" style="margin-bottom:4px" id="st-detail-title">Distribution by factor</div>
+        <div class="student-chart-desc" id="st-detail-desc"></div>
+      </div>
+    </div>
+    <div id="st-div-legend" class="div-legend"></div>
+    <div class="chart-wrap" id="st-div-chart" style="height:320px"></div>
+    <p class="foot-note">Each bar shows the % of students in that factor group falling into each outcome category. Green = better outcome, red = worse.</p>
+  </div>
+
+</section>
+
+<!-- ════════════════════════════════════════
+     EDUCATOR PAGE (tabbed)
+════════════════════════════════════════ -->
+<section id="page-educator" class="page">
+  <nav class="tabs">
+    <div class="tab active" data-tab="overview">Data Overview</div>
+    <div class="tab" data-tab="assoc">Association Ranking</div>
+  </nav>
+
+  <!-- ── OVERVIEW TAB ── -->
+  <section id="ed-page-overview" class="page active">
+    <div class="controls">
+      <div class="field"><label>Outcome</label><select id="ov-outcome"></select></div>
+      <div class="field"><label>Gender</label><select id="ov-gender"></select></div>
+      <div class="field"><label>Year of Study</label><select id="ov-year"></select></div>
+      <div class="field" style="min-width:200px;flex:1.5 1 200px"><label>Overview Factor</label><select id="ov-factor"></select></div>
+      <div class="sample-note" id="ov-sample">—</div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <div class="card-title">Outcome Distribution <span class="card-sub" id="ov-bar1-sub"></span></div>
+        <div class="chart-wrap" id="ov-bar1"></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Factor Distribution <span class="card-sub" id="ov-bar2-sub"></span></div>
+        <div class="chart-wrap" id="ov-bar2"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <span id="ov-chart3-title">Outcome × Factor</span>
+        <span class="card-sub" id="ov-chart3-sub"></span>
+        <!-- Chart type toggle -->
+        <div class="chart-toggle" style="margin-left:auto">
+          <button class="ct-btn active" data-chart="diverging">Diverging Bars</button>
+          <button class="ct-btn" data-chart="heatmap">Heatmap</button>
+        </div>
+      </div>
+      <div id="ov-div-legend" class="div-legend"></div>
+      <div class="chart-wrap tall" id="ov-chart3"></div>
+      <p class="foot-note" id="ov-chart3-foot">
+        Each bar shows the % of students in that factor group per outcome category. Green = better outcome, red = worse. The center anchor is the middle response category.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── ASSOCIATION TAB ── -->
+  <section id="ed-page-assoc" class="page">
+    <div class="controls">
+      <div class="field"><label>Outcome</label><select id="as-outcome"></select></div>
+      <div class="field"><label>Gender</label><select id="as-gender"></select></div>
+      <div class="field"><label>Year of Study</label><select id="as-year"></select></div>
+      <div class="field" style="min-width:340px;flex:2.5 1 340px">
+        <label>Group Filter</label>
+        <div class="grp-legend" id="grp-legend"></div>
+      </div>
+      <div class="sample-note" id="as-sample">—</div>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        Spearman ρ Correlation Ranking
+        <span class="card-sub" id="as-sub"></span>
+        <span class="info-badge" id="rho-info">i</span>
+      </div>
+      <div class="chart-wrap tall" id="as-chart"></div>
+      <p class="foot-note">
+        Bars colored by category:
+        <span style="color:var(--c-sleep)">● Sleep &amp; Insomnia</span> &nbsp;
+        <span style="color:var(--c-habits)">● Habits</span> &nbsp;
+        <span style="color:var(--c-day)">● Daytime Function</span> &nbsp;
+        <span style="color:var(--c-other)">● Others</span><br>
+        Positive ρ → worse factor values align with worse outcome values (by ordinal coding).
+      </p>
+    </div>
+  </section>
+</section><!-- /page-educator -->
+
+</div><!-- /wrap -->
+<div id="tt"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════
+   CONFIG
+══════════════════════════════════════════════════════ */
+const C = {
+  year:   "1. What is your year of study?",
+  gender: "2. What is your gender?",
+  q3: "3. How often do you have difficulty falling asleep at night? ",
+  q4: "4. On average, how many hours of sleep do you get on a typical day?",
+  q5: "5. How often do you wake up during the night and have trouble falling back asleep?",
+  q6: "6. How would you rate the overall quality of your sleep?",
+  q7: "7. How often do you experience difficulty concentrating during lectures or studying due to lack of sleep?",
+  q8: "8. How often do you feel fatigued during the day, affecting your ability to study or attend classes?",
+  q9: "9. How often do you miss or skip classes due to sleep-related issues (e.g., insomnia, feeling tired)?",
+  q10:"10. How would you describe the impact of insufficient sleep on your ability to complete assignments and meet deadlines?",
+  q11:"11. How often do you use electronic devices (e.g., phone, computer) before going to sleep?",
+  q12:"12. How often do you consume caffeine (coffee, energy drinks) to stay awake or alert?",
+  q13:"13. How often do you engage in physical activity or exercise?",
+  q14:"14. How would you describe your stress levels related to academic workload?",
+  q15:"15. How would you rate your overall academic performance (GPA or grades) in the past semester?"
+};
+
+const GROUPS = [
+  {id:"sleep", name:"Sleep & Insomnia",   color:"var(--c-sleep)", hex:"#a78bfa"},
+  {id:"habits",name:"Habits",             color:"var(--c-habits)",hex:"#60a5fa"},
+  {id:"day",   name:"Daytime Function",   color:"var(--c-day)",   hex:"#f87171"},
+  {id:"other", name:"Others",             color:"var(--c-other)", hex:"#34d399"},
+];
+const GRP = Object.fromEntries(GROUPS.map(g=>[g.id,g]));
+
+const FACTORS = [
+  {key:"sleepQ",col:C.q6, label:"Sleep quality",           group:"sleep",
+   order:["Very good","Good","Average","Poor","Very poor"],
+   insight:"Poor sleep quality has one of the strongest links to academic difficulties across all measures."},
+  {key:"sleepH",col:C.q4, label:"Sleep duration (hours)",  group:"sleep",
+   order:["More than 8 hours","7-8 hours","6-7 hours","4-5 hours","Less than 4 hours"],
+   insight:"Students sleeping fewer hours show a clear trend toward worse academic outcomes."},
+  {key:"fallAs",col:C.q3, label:"Difficulty falling asleep",group:"sleep",
+   order:["Never","Rarely (1-2 times a week)","Sometimes (3-4 times a week)","Often (5-6 times a week)","Every night"],
+   insight:"Frequent trouble falling asleep is linked to lower grades and more missed classes."},
+  {key:"awaken",col:C.q5, label:"Night awakenings",         group:"sleep",
+   order:["Never","Rarely (1-2 times a week)","Sometimes (3-4 times a week)","Often (5-6 times a week)","Every night"],
+   insight:"Waking up during the night disrupts sleep quality and connects to academic struggles."},
+  {key:"exerc", col:C.q13,label:"Exercise frequency",       group:"habits",
+   order:["Every day","Often (5-6 times a week)","Sometimes (3-4 times a week)","Rarely (1-2 times a week)","Never"],
+   insight:"Students who exercise more regularly tend to report better academic outcomes."},
+  {key:"caff",  col:C.q12,label:"Caffeine use",             group:"habits",
+   order:["Never","Rarely (1-2 times a week)","Sometimes (3-4 times a week)","Often (5-6 times a week)","Every day"],
+   insight:"Heavy caffeine use often signals students compensating for poor sleep — linked to worse outcomes."},
+  {key:"device",col:C.q11,label:"Device use before bed",    group:"habits",
+   order:["Never","Rarely (1-2 times a week)","Sometimes (3-4 times a week)","Often (5-6 times a week)","Every night"],
+   insight:"Nightly screen use before bed is linked to more class skipping and lower performance."},
+  {key:"concen",col:C.q7, label:"Concentration difficulty", group:"day",
+   order:["Never","Rarely","Sometimes","Often","Always"],
+   insight:"Struggling to concentrate in lectures is closely tied to worse grades and assignment outcomes."},
+  {key:"fatigu",col:C.q8, label:"Daytime fatigue",          group:"day",
+   order:["Never","Rarely","Sometimes","Often","Always"],
+   insight:"Feeling fatigued during the day is one of the most visible signs of sleep's academic impact."},
+  {key:"stress",col:C.q14,label:"Academic stress",          group:"other",
+   order:["No stress","Low stress","High stress","Extremely high stress"],
+   insight:"High academic stress and poor sleep reinforce each other, creating a difficult cycle."},
+];
+const FMAP = Object.fromEntries(FACTORS.map(f=>[f.key,f]));
+
+const OUTCOMES = [
+  {key:"skip",col:C.q9, label:"Class skipped due to sleep",
+   order:["Never","Rarely (1-2 times a month)","Sometimes (1-2 times a week)","Often (3-4 times a week)","Always"]},
+  {key:"dead",col:C.q10,label:"Assignment & deadline impact",
+   order:["No impact","Minor impact","Moderate impact","Major impact","Severe impact"]},
+  {key:"perf",col:C.q15,label:"Academic performance",
+   order:["Excellent","Good","Average","Below Average","Poor"]},
+];
+const OMAP = Object.fromEntries(OUTCOMES.map(o=>[o.key,o]));
+
+// ── REGIONAL BENCHMARK DATA (compiled from peer-reviewed studies 2015-2024) ──
+const REGION_COLORS = {
+  "Asia":         "#34d399",
+  "Europe":       "#60a5fa",
+  "North America":"#f87171",
+  "Latin America":"#f59e0b",
+  "Africa":       "#e879f9",
+  "Oceania":      "#67e8f9",
+};
+function regionColor(r){ return REGION_COLORS[r] || "#94a3b8"; }
+
+const REGIONAL = [
+  {country:"Bangladesh",region:"Asia",subregion:"South Asia",lat:23.68,lon:90.35,insomnia_pct:48.5,avg_sleep_hrs:6.5,academic_pressure:"High",academic_pressure_score:4,pct_sleep_affects_academics:72,n_students:996,year:2024,is_primary:true,
+   source:"Primary dataset — Daffodil International University, Dhaka. Insomnia % estimated from sleep quality + sleep onset items. Abdullah & Rahman 2024, Mendeley."},
+  {country:"China",region:"Asia",subregion:"East Asia",lat:35.86,lon:104.19,insomnia_pct:26.4,avg_sleep_hrs:6.4,academic_pressure:"Extreme",academic_pressure_score:5,pct_sleep_affects_academics:68,n_students:6514,year:2023,is_primary:false,
+   source:"Jiang et al. 2026 (SAGE) — 26.42% ISI prevalence. Guo et al. 2023 PMC — mean sleep 6.4h, 75.6% sleep-deprived."},
+  {country:"Japan",region:"Asia",subregion:"East Asia",lat:36.20,lon:138.25,insomnia_pct:52.0,avg_sleep_hrs:6.3,academic_pressure:"Extreme",academic_pressure_score:5,pct_sleep_affects_academics:65,n_students:3000,year:2021,is_primary:false,
+   source:"Cheung et al. 2021 PMC (avg 6.3h actigraphy). Sleep deprivation ~52-75% in student samples. UVic/PNAS 2025 (6h 18min avg)."},
+  {country:"South Korea",region:"Asia",subregion:"East Asia",lat:35.90,lon:127.86,insomnia_pct:47.0,avg_sleep_hrs:6.5,academic_pressure:"Extreme",academic_pressure_score:5,pct_sleep_affects_academics:63,n_students:1500,year:2022,is_primary:false,
+   source:"Regional estimate — Sleep Cycle data (~6.5h). Insomnia ~47% from multi-study East Asia context."},
+  {country:"Norway",region:"Europe",subregion:"Northern Europe",lat:60.47,lon:8.47,insomnia_pct:30.5,avg_sleep_hrs:7.2,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:55,n_students:50054,year:2019,is_primary:false,
+   source:"Sivertsen et al. 2021 PMC — SHoT national survey, 50,054 students. Insomnia OR=1.31 for failed exams."},
+  {country:"Netherlands",region:"Europe",subregion:"Western Europe",lat:52.13,lon:5.29,insomnia_pct:12.1,avg_sleep_hrs:7.5,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:45,n_students:800,year:2020,is_primary:false,
+   source:"Cited in Frontiers Psychiatry 2024. Avg sleep ~7.5h from OECD time-use data."},
+  {country:"Poland",region:"Europe",subregion:"Eastern Europe",lat:51.92,lon:19.14,insomnia_pct:45.0,avg_sleep_hrs:7.0,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:58,n_students:800,year:2022,is_primary:false,
+   source:"SLEEP Advances 2025 Europe meta 52.8% pooled. Poland cited in Frontiers (nursing students)."},
+  {country:"USA",region:"North America",subregion:"North America",lat:37.09,lon:-95.71,insomnia_pct:27.0,avg_sleep_hrs:7.0,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:52,n_students:634,year:2023,is_primary:false,
+   source:"CMU Sleep study — Creswell et al. 2023 PNAS, 634 first-year students across 3 universities."},
+  {country:"Nigeria",region:"Africa",subregion:"West Africa",lat:9.08,lon:8.68,insomnia_pct:32.5,avg_sleep_hrs:6.8,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:50,n_students:500,year:2021,is_primary:false,
+   source:"Cited in Frontiers Psychiatry 2024 — 32.5% at Nigerian universities."},
+  {country:"Ethiopia",region:"Africa",subregion:"East Africa",lat:9.15,lon:40.49,insomnia_pct:61.6,avg_sleep_hrs:6.2,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:52,n_students:422,year:2015,is_primary:false,
+   source:"Haile et al. 2017, BioMed Research International — Debre Berhan University. 61.6% insomnia (PSQI>5)."},
+  {country:"Saudi Arabia",region:"Asia",subregion:"Middle East",lat:23.89,lon:45.08,insomnia_pct:57.0,avg_sleep_hrs:6.5,academic_pressure:"High",academic_pressure_score:4,pct_sleep_affects_academics:70,n_students:1000,year:2022,is_primary:false,
+   source:"AlHadiani et al. 2022 Nat Sci Sleep — 49.6-57%. Medical students up to 79.3%."},
+  {country:"Malaysia",region:"Asia",subregion:"Southeast Asia",lat:4.21,lon:108.08,insomnia_pct:69.0,avg_sleep_hrs:6.3,academic_pressure:"High",academic_pressure_score:4,pct_sleep_affects_academics:65,n_students:600,year:2021,is_primary:false,
+   source:"Naito et al. 2021 — cited in Guo et al. 2023 PMC. 69% sleep deprivation prevalence."},
+  {country:"Pakistan",region:"Asia",subregion:"South Asia",lat:30.37,lon:69.34,insomnia_pct:40.8,avg_sleep_hrs:6.5,academic_pressure:"High",academic_pressure_score:4,pct_sleep_affects_academics:62,n_students:500,year:2020,is_primary:false,
+   source:"Luqman et al. 2020 — 57% sleep deprivation. Frontiers 2024 cites 40.8% insomnia."},
+  {country:"Brazil",region:"Latin America",subregion:"South America",lat:-14.24,lon:-51.93,insomnia_pct:44.1,avg_sleep_hrs:7.0,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:55,n_students:1000,year:2023,is_primary:false,
+   source:"SLEEP Advances 2025 meta-analysis — South America 44.1% (95% CI 42.1-46.2%)."},
+  {country:"India",region:"Asia",subregion:"South Asia",lat:20.59,lon:78.96,insomnia_pct:45.0,avg_sleep_hrs:6.6,academic_pressure:"High",academic_pressure_score:4,pct_sleep_affects_academics:65,n_students:1000,year:2022,is_primary:false,
+   source:"Regional estimate — India among top-10 highest insomnia burden globally (PMC 2025)."},
+  {country:"Jordan",region:"Asia",subregion:"Middle East",lat:30.59,lon:36.24,insomnia_pct:60.6,avg_sleep_hrs:6.3,academic_pressure:"High",academic_pressure_score:4,pct_sleep_affects_academics:68,n_students:400,year:2020,is_primary:false,
+   source:"ARF et al. cited in SLEEP Advances 2025 and Frontiers 2024 — 60.6% insomnia."},
+  {country:"Australia",region:"Oceania",subregion:"Oceania",lat:-25.27,lon:133.77,insomnia_pct:35.0,avg_sleep_hrs:7.4,academic_pressure:"Moderate",academic_pressure_score:3,pct_sleep_affects_academics:50,n_students:900,year:2022,is_primary:false,
+   source:"Estimated ~35% from adult 19.2% (Wiley 2025) adjusted for students. Avg sleep ~7.4h."},
+];
+
+// Color scales for diverging bar (good→bad: green→red)
+// 5-category outcomes
+const DIV_COLORS_5 = ["#16a34a","#86efac","#d1d5db","#fca5a5","#dc2626"];
+// 4-category outcomes (no neutral)
+const DIV_COLORS_4 = ["#16a34a","#86efac","#fca5a5","#dc2626"];
+
+function divColors(n){ return n===4 ? DIV_COLORS_4 : DIV_COLORS_5; }
+
+/* ══════════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════════ */
+let RAW = null;
+let currentMode = "student";
+let currentEdTab = "overview";
+let currentChart3 = "diverging"; // or "heatmap"
+let selectedInsightKey = null;
+
+const ST = {
+  st:{ outcome:"perf", year:"All" },
+  ov:{ outcome:"skip", gender:"All", year:"All", factor:"sleepQ" },
+  as:{ outcome:"skip", gender:"All", year:"All", groups:new Set(GROUPS.map(g=>g.id)) }
+};
+
+/* ══════════════════════════════════════════════════════
+   DOM & TOOLTIP
+══════════════════════════════════════════════════════ */
+const $=id=>document.getElementById(id);
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
+const tt=$("tt");
+function showTT(x,y,html){
+  tt.innerHTML=html;
+  const b=tt.getBoundingClientRect(), p=14;
+  let nx=x+14,ny=y+14;
+  if(nx+b.width+p>window.innerWidth) nx=x-b.width-14;
+  if(ny+b.height+p>window.innerHeight) ny=y-b.height-14;
+  tt.style.left=nx+"px"; tt.style.top=ny+"px"; tt.classList.add("show");
+}
+function hideTT(){tt.classList.remove("show");}
+
+function buildSelect(el,opts,val){
+  el.innerHTML="";
+  opts.forEach(o=>{const opt=document.createElement("option");opt.value=o.v;opt.textContent=o.l;if(o.v===val)opt.selected=true;el.appendChild(opt);});
+}
+function buildGroupedSelect(el,sel){
+  el.innerHTML="";
+  const order=["sleep","habits","day","other"];
+  order.forEach(gid=>{
+    const og=document.createElement("optgroup");og.label=GRP[gid].name;
+    FACTORS.filter(f=>f.group===gid).forEach(f=>{
+      const o=document.createElement("option");o.value=f.key;o.textContent=f.label;if(f.key===sel)o.selected=true;og.appendChild(o);
+    });
+    el.appendChild(og);
+  });
+}
+
+/* ══════════════════════════════════════════════════════
+   LOADING
+══════════════════════════════════════════════════════ */
+async function tryAutoLoad(){
+  const names=[
+    "../data/Student Insomnia and Educational Outcomes Dataset_version-2.csv",
+    "../data/Student_Insomnia_and_Educational_Outcomes_Dataset_version-2.csv",
+    "Student_Insomnia_and_Educational_Outcomes_Dataset_version2.csv",
+    "Student Insomnia and Educational Outcomes Dataset_version2.csv",
+    "Student_Insomnia_and_Educational_Outcomes_Dataset.csv"
+  ];
+  for(const n of names){try{const r=await fetch(n);if(!r.ok)continue;parseCsv(await r.text());return;}catch(_){}}
+}
+$("fileInput").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;parseCsv(await f.text());});
+
+function parseCsv(text){
+  const rows=d3.csvParse(text);
+  if(!rows?.length){setStatus("Could not parse CSV.",false);return;}
+  RAW=rows.map(r=>{const o={};for(const k in r)o[k.trim()]=(r[k]??"").trim();return o;});
+  const genders=[...new Set(RAW.map(d=>d[C.gender]).filter(Boolean))];
+  const years=[...new Set(RAW.map(d=>d[C.year]).filter(Boolean))];
+  const yord=["First year","Second year","Third year","Graduate student"];
+  years.sort((a,b)=>yord.indexOf(a)-yord.indexOf(b));
+  const gOpts=[{v:"All",l:"All genders"},...genders.map(g=>({v:g,l:g}))];
+  const yOpts=[{v:"All",l:"All years"},...years.map(y=>({v:y,l:y}))];
+  buildSelect($("ov-gender"),gOpts,ST.ov.gender);
+  buildSelect($("as-gender"),gOpts,ST.as.gender);
+  buildSelect($("ov-year"),yOpts,ST.ov.year);
+  buildSelect($("as-year"),yOpts,ST.as.year);
+  buildSelect($("st-year"),yOpts,ST.st.year);
+  $("nCount").textContent=RAW.length.toLocaleString();
+  setStatus(`${RAW.length.toLocaleString()} responses · ${Object.keys(rows[0]).length} columns`,true);
+  renderAll();
+}
+function setStatus(msg,ok){
+  $("statusBar").innerHTML=`<span class="${ok?"dot-ok":"dot-warn"}"></span><span>${esc(msg)}</span>`;
+}
+
+/* ══════════════════════════════════════════════════════
+   FILTERING & ENCODING
+══════════════════════════════════════════════════════ */
+function filtered(s){
+  let d=RAW||[];
+  if(s.gender&&s.gender!=="All") d=d.filter(r=>r[C.gender]===s.gender);
+  if(s.year&&s.year!=="All") d=d.filter(r=>r[C.year]===s.year);
+  return d;
+}
+function encOrd(order,val){const i=order.indexOf(val);return i>=0?i:null;}
+
+/* ══════════════════════════════════════════════════════
+   RENDER ALL
+══════════════════════════════════════════════════════ */
+const ro=new ResizeObserver(()=>{if(RAW)renderAll();});
+["ov-bar1","ov-bar2","ov-chart3","as-chart","st-div-chart"].forEach(id=>ro.observe($(id)));
+function renderAll(){renderStudent();renderOv();renderAs();}
+
+/* ══════════════════════════════════════════════════════
+   STUDENT VIEW
+══════════════════════════════════════════════════════ */
+function renderStudent(){
+  if(!RAW) return;
+  const data=filtered(ST.st);
+  $("st-sample").textContent=`N = ${data.length.toLocaleString()}`;
+
+  // Compute rho for all factors vs selected outcome
+  const out=OMAP[ST.st.outcome];
+  const results=FACTORS.map(f=>{
+    const pairs=data.reduce((a,row)=>{
+      const x=encOrd(f.order,row[f.col]), y=encOrd(out.order,row[out.col]);
+      if(x!==null&&y!==null) a.push([x,y]);
+      return a;
+    },[]);
+    if(pairs.length<3) return null;
+    const rho=spearman(pairs.map(p=>p[0]),pairs.map(p=>p[1]));
+    return rho==null?null:{...f,rho,abs:Math.abs(rho),n:pairs.length};
+  }).filter(Boolean);
+  results.sort((a,b)=>d3.descending(a.abs,b.abs));
+
+  // Build insight cards
+  const container=$("st-cards");
+  container.innerHTML="";
+  results.slice(0,6).forEach((f,i)=>{
+    const g=GRP[f.group];
+    const strength=f.abs>=0.35?"Strong":f.abs>=0.18?"Moderate":"Mild";
+    const strengthCls=f.abs>=0.35?"strong":f.abs>=0.18?"mod":"mild";
+    const pct=Math.min(100,f.abs/0.6*100);
+    const isSelected=f.key===selectedInsightKey;
+    const card=document.createElement("div");
+    card.className="insight-card"+(isSelected?" selected":"");
+    card.style.borderColor=isSelected?g.hex:"";
+    card.innerHTML=`
+      <div class="insight-rank">#${i+1} Factor</div>
+      <div class="insight-name">
+        <span style="width:9px;height:9px;border-radius:99px;background:${g.hex};flex-shrink:0;box-shadow:0 0 0 3px ${g.hex}33"></span>
+        ${esc(f.label)}
+      </div>
+      <div style="margin-bottom:8px"><span class="insight-cat" style="color:${g.hex};border-color:${g.hex}33;background:${g.hex}15">${esc(g.name)}</span></div>
+      <div class="insight-desc">${esc(f.insight)}</div>
+      <div class="insight-meter">
+        <div class="meter-bar"><div class="meter-fill" style="width:${pct}%;background:${g.hex}"></div></div>
+        <span class="meter-label strength-${strengthCls}">${strength}</span>
+        <span style="font-size:10px;color:var(--muted);font-family:var(--f-d)">ρ=${f.rho.toFixed(3)}</span>
+      </div>
+    `;
+    card.addEventListener("click",()=>{
+      selectedInsightKey=f.key;
+      renderStudent(); // re-render cards + detail
+    });
+    container.appendChild(card);
+  });
+
+  // If a card is selected, show detail diverging bar
+  if(selectedInsightKey){
+    const fac=FMAP[selectedInsightKey];
+    if(fac){
+      $("st-detail-card").style.display="";
+      $("st-detail-title").textContent=`How "${fac.label}" affects "${out.label}"`;
+      $("st-detail-desc").textContent=fac.insight;
+      buildDivLegend($("st-div-legend"),out.order);
+      drawDivergingBar($("st-div-chart"),data,fac,out);
+    }
+  } else {
+    $("st-detail-card").style.display="none";
+  }
+}
+
+/* ══════════════════════════════════════════════════════
+   OVERVIEW (EDUCATOR)
+══════════════════════════════════════════════════════ */
+function renderOv(){
+  if(!RAW) return;
+  const data=filtered(ST.ov);
+  $("ov-sample").textContent=`N = ${data.length.toLocaleString()}`;
+  const out=OMAP[ST.ov.outcome], fac=FMAP[ST.ov.factor];
+  $("ov-bar1-sub").textContent=out.label;
+  $("ov-bar2-sub").textContent=fac.label;
+  $("ov-chart3-sub").textContent=`${out.label} × ${fac.label}`;
+  $("ov-chart3-title").textContent=currentChart3==="diverging"?"Diverging Distribution":"Outcome × Factor Heatmap";
+  $("ov-chart3-foot").textContent=currentChart3==="diverging"
+    ? "Each bar shows the % of students in that factor group per outcome category. Green = better outcome, red = worse. Center anchored at the middle response."
+    : "Heatmap shows counts (and % within each factor row). Darker cells = more students.";
+
+  drawBar($("ov-bar1"),countOrd(data,out.col,out.order),{color:"var(--accent)",title:out.label});
+  const gc=GRP[fac.group].hex;
+  drawBar($("ov-bar2"),countOrd(data,fac.col,fac.order),{color:`var(--c-${fac.group})`,title:fac.label});
+
+  if(currentChart3==="diverging"){
+    buildDivLegend($("ov-div-legend"),out.order);
+    drawDivergingBar($("ov-chart3"),data,fac,out);
+  } else {
+    $("ov-div-legend").innerHTML="";
+    drawHeat($("ov-chart3"),data,fac,out);
+  }
+}
+
+function countOrd(data,col,order){
+  const m=new Map(order.map(v=>[v,0]));
+  data.forEach(d=>{const v=d[col];if(m.has(v))m.set(v,m.get(v)+1);});
+  return order.map(k=>({k,v:m.get(k)||0}));
+}
+
+/* ══════════════════════════════════════════════════════
+   ASSOCIATION (EDUCATOR)
+══════════════════════════════════════════════════════ */
+function renderAs(){
+  if(!RAW) return;
+  const data=filtered(ST.as);
+  $("as-sample").textContent=`N = ${data.length.toLocaleString()}`;
+  $("as-sub").textContent=`Outcome: ${OMAP[ST.as.outcome].label}`;
+  const results=[];
+  FACTORS.forEach(f=>{
+    if(!ST.as.groups.has(f.group)) return;
+    const pairs=data.reduce((a,row)=>{
+      const x=encOrd(f.order,row[f.col]),y=encOrd(OMAP[ST.as.outcome].order,row[OMAP[ST.as.outcome].col]);
+      if(x!==null&&y!==null)a.push([x,y]);return a;
+    },[]);
+    if(pairs.length<3) return;
+    const rho=spearman(pairs.map(p=>p[0]),pairs.map(p=>p[1]));
+    if(rho==null) return;
+    results.push({key:f.key,label:f.label,group:f.group,color:`var(--c-${f.group})`,hex:GRP[f.group].hex,rho,n:pairs.length});
+  });
+  results.sort((a,b)=>d3.descending(Math.abs(a.rho),Math.abs(b.rho)));
+  drawRanking($("as-chart"),results);
+}
+
+/* ══════════════════════════════════════════════════════
+   DIVERGING STACKED BAR
+══════════════════════════════════════════════════════ */
+function buildDivLegend(el,outcomeOrder){
+  el.innerHTML="";
+  const cols=divColors(outcomeOrder.length);
+  outcomeOrder.forEach((label,i)=>{
+    const s=document.createElement("div");
+    s.className="div-swatch";
+    s.innerHTML=`<span style="background:${cols[i]}"></span>${esc(label)}`;
+    el.appendChild(s);
+  });
+}
+
+function drawDivergingBar(el,data,fac,out){
+  el.innerHTML="";
+  const W=el.clientWidth, H=el.clientHeight;
+  const m={top:12, right:20, bottom:36, left:200};
+  const iW=W-m.left-m.right, iH=H-m.top-m.bottom;
+
+  const rows=fac.order, cols=out.order;
+  const nCols=cols.length;
+  const colors=divColors(nCols);
+  const midIdx=Math.floor(nCols/2); // neutral/anchor index
+
+  // Count [factorLevel][outcomeLevel]
+  const counts={};
+  rows.forEach(r=>{counts[r]={};cols.forEach(c=>counts[r][c]=0);});
+  data.forEach(d=>{
+    const r=d[fac.col],c=d[out.col];
+    if(counts[r]&&counts[r][c]!==undefined) counts[r][c]++;
+  });
+  // Convert to %
+  const pcts={};
+  rows.forEach(r=>{
+    const tot=d3.sum(cols,c=>counts[r][c])||1;
+    pcts[r]={};
+    cols.forEach(c=>pcts[r][c]=counts[r][c]/tot);
+  });
+
+  // For each row, compute segment positions (diverging from 0)
+  // left side: cols[0..midIdx-1] stacked outward (negative x)
+  // mid: cols[midIdx] split 50/50 around 0
+  // right side: cols[midIdx+1..] stacked outward (positive x)
+  const segments=[];
+  rows.forEach(r=>{
+    let leftEnd=0;
+    // start from anchor going left
+    for(let i=midIdx-1;i>=0;i--){
+      const p=pcts[r][cols[i]];
+      segments.push({r,c:cols[i],i,x:-leftEnd-p,w:p,color:colors[i],count:counts[r][cols[i]],pct:pcts[r][cols[i]]});
+      leftEnd+=p;
+    }
+    // anchor (split around 0)
+    if(nCols%2===1){
+      const p=pcts[r][cols[midIdx]];
+      segments.push({r,c:cols[midIdx],i:midIdx,x:-p/2,w:p,color:colors[midIdx],count:counts[r][cols[midIdx]],pct:pcts[r][cols[midIdx]]});
+    }
+    // right side
+    let rightEnd=0;
+    if(nCols%2===1){
+      rightEnd=pcts[r][cols[midIdx]]/2;
+    }
+    for(let i=(nCols%2===1?midIdx+1:midIdx);i<nCols;i++){
+      const p=pcts[r][cols[i]];
+      segments.push({r,c:cols[i],i,x:rightEnd,w:p,color:colors[i],count:counts[r][cols[i]],pct:pcts[r][cols[i]]});
+      rightEnd+=p;
+    }
+  });
+
+  const svg=d3.select(el).append("svg").attr("viewBox",`0 0 ${W} ${H}`).attr("preserveAspectRatio","xMidYMid meet");
+  const g=svg.append("g").attr("transform",`translate(${m.left},${m.top})`);
+
+  const x=d3.scaleLinear().domain([-1,1]).range([0,iW]);
+  const y=d3.scaleBand().domain(rows).range([0,iH]).padding(.22);
+
+  // grid
+  g.append("g").attr("class","gridline").attr("transform",`translate(0,${iH})`)
+    .call(d3.axisBottom(x).ticks(5).tickSize(-iH).tickFormat(""))
+    .call(gg=>gg.select(".domain").remove())
+    .selectAll("line").attr("stroke","rgba(255,255,255,.07)");
+
+  // x axis
+  g.append("g").attr("class","axis").attr("transform",`translate(0,${iH})`)
+    .call(d3.axisBottom(x).ticks(5).tickFormat(d=>d3.format(".0%")(Math.abs(d))));
+
+  // zero line
+  g.append("line")
+    .attr("x1",x(0)).attr("x2",x(0)).attr("y1",0).attr("y2",iH)
+    .attr("stroke","rgba(255,255,255,.3)").attr("stroke-width",1.5).attr("stroke-dasharray","4,3");
+
+  // bars
+  const rects=g.selectAll("rect.seg").data(segments).join("rect")
+    .attr("class","seg")
+    .attr("y",d=>y(d.r)).attr("height",y.bandwidth())
+    .attr("x",d=>x(d.x)).attr("width",d=>Math.max(0,x(d.w)-x(0)))
+    .attr("fill",d=>d.color).attr("opacity",.9)
+    .attr("rx",2);
+
+  rects.on("mousemove",(e,d)=>{
+    showTT(e.clientX,e.clientY,`
+      <div class="tth">${esc(d.r)}</div>
+      <div style="display:flex;align-items:center;gap:6px;margin:5px 0">
+        <span style="width:10px;height:10px;border-radius:2px;background:${d.color};flex-shrink:0"></span>
+        <span>${esc(d.c)}</span>
+      </div>
+      <div><span class="ttv">${(d.pct*100).toFixed(1)}%</span> <span class="ttm">(${d.count.toLocaleString()} students)</span></div>
+    `);
+  }).on("mouseleave",hideTT);
+
+  // y axis (factor labels)
+  g.append("g").attr("class","axis").call(d3.axisLeft(y).tickSizeOuter(0))
+    .selectAll("text").attr("font-size",11).attr("fill","rgba(228,236,255,.85)");
+
+  // x axis label
+  svg.append("text").attr("x",m.left).attr("y",H-6)
+    .attr("fill","rgba(228,236,255,.4)").attr("font-size",10)
+    .text("← Better outcome    Worse outcome →");
+}
+
+/* ══════════════════════════════════════════════════════
+   HEATMAP
+══════════════════════════════════════════════════════ */
+function drawHeat(el,data,fac,out){
+  el.innerHTML="";
+  const W=el.clientWidth,H=el.clientHeight;
+  const m={top:56,right:24,bottom:20,left:230};
+  const iW=W-m.left-m.right,iH=H-m.top-m.bottom;
+  const rows=fac.order,cols=out.order;
+  const counts=new Map(),rowTot=new Map(rows.map(r=>[r,0]));
+  rows.forEach(r=>cols.forEach(c=>counts.set(r+"§"+c,0)));
+  data.forEach(d=>{
+    const r=d[fac.col],c=d[out.col],k=r+"§"+c;
+    if(!counts.has(k))return;
+    counts.set(k,counts.get(k)+1);
+    rowTot.set(r,(rowTot.get(r)||0)+1);
+  });
+  const maxV=Math.max(1,...counts.values());
+  const svg=d3.select(el).append("svg").attr("viewBox",`0 0 ${W} ${H}`).attr("preserveAspectRatio","xMidYMid meet");
+  const g=svg.append("g").attr("transform",`translate(${m.left},${m.top})`);
+  const x=d3.scaleBand().domain(cols).range([0,iW]).paddingInner(.08).paddingOuter(.02);
+  const y=d3.scaleBand().domain(rows).range([0,iH]).paddingInner(.08).paddingOuter(.02);
+  const color=d3.scaleSequential(d3.interpolateBlues).domain([0,maxV]);
+  g.append("g").attr("class","axis").call(d3.axisLeft(y).tickSizeOuter(0));
+  g.append("g").attr("class","axis").call(d3.axisTop(x).tickSizeOuter(0))
+    .call(gg=>gg.selectAll("text").attr("text-anchor","start").attr("transform","rotate(-22)").attr("dx","0.2em").attr("dy","-0.15em").attr("font-size",10));
+  const cells=[];
+  rows.forEach(r=>cols.forEach(c=>cells.push({r,c,v:counts.get(r+"§"+c)||0,tot:rowTot.get(r)||0})));
+  g.selectAll("rect.cell").data(cells).join("rect").attr("class","cell")
+    .attr("x",d=>x(d.c)).attr("y",d=>y(d.r)).attr("width",x.bandwidth()).attr("height",y.bandwidth())
+    .attr("rx",8).attr("fill",d=>color(d.v)).attr("opacity",.92).attr("stroke","rgba(255,255,255,.06)")
+    .on("mousemove",(e,d)=>{
+      const pct=d.tot?(100*d.v/d.tot).toFixed(1):"0.0";
+      showTT(e.clientX,e.clientY,`<div class="tth">${esc(d.r)} → ${esc(d.c)}</div><div><span class="ttv">${d.v}</span> <span class="ttm">students (${pct}% of row)</span></div>`);
+    }).on("mouseleave",hideTT);
+  if(x.bandwidth()>55&&y.bandwidth()>24){
+    g.selectAll("text.hv").data(cells).join("text").attr("class","hv")
+      .attr("x",d=>x(d.c)+x.bandwidth()/2).attr("y",d=>y(d.r)+y.bandwidth()/2+4)
+      .attr("text-anchor","middle").text(d=>d.v||"");
+  }
+  svg.append("text").attr("x",14).attr("y",18).attr("fill","rgba(228,236,255,.4)").attr("font-size",11).text(`${fac.label} (rows)`);
+  svg.append("text").attr("x",m.left).attr("y",18).attr("fill","rgba(228,236,255,.4)").attr("font-size",11).text(`${out.label} (columns)`);
+  const defs=svg.append("defs"),gr=defs.append("linearGradient").attr("id","hg").attr("x1","0%").attr("x2","100%");
+  d3.range(0,1.05,.1).forEach(t=>gr.append("stop").attr("offset",`${t*100}%`).attr("stop-color",d3.interpolateBlues(t)));
+  const legW=Math.min(200,iW),ly=H-12,lx=W-m.right-legW;
+  svg.append("rect").attr("x",lx).attr("y",ly).attr("width",legW).attr("height",8).attr("rx",4).attr("fill","url(#hg)").attr("opacity",.9);
+  svg.append("text").attr("x",lx).attr("y",ly-3).attr("fill","rgba(228,236,255,.4)").attr("font-size",10).text("Low");
+  svg.append("text").attr("x",lx+legW).attr("y",ly-3).attr("text-anchor","end").attr("fill","rgba(228,236,255,.4)").attr("font-size",10).text("High");
+}
+
+/* ══════════════════════════════════════════════════════
+   BAR CHART
+══════════════════════════════════════════════════════ */
+function drawBar(el,items,opts){
+  el.innerHTML="";
+  const W=el.clientWidth,H=el.clientHeight;
+  const m={top:20,right:16,bottom:130,left:52};
+  const iW=W-m.left-m.right,iH=H-m.top-m.bottom;
+  const svg=d3.select(el).append("svg").attr("viewBox",`0 0 ${W} ${H}`).attr("preserveAspectRatio","xMidYMid meet");
+  const g=svg.append("g").attr("transform",`translate(${m.left},${m.top})`);
+  const x=d3.scaleBand().domain(items.map(d=>d.k)).range([0,iW]).padding(.2);
+  const y=d3.scaleLinear().domain([0,d3.max(items,d=>d.v)||1]).nice().range([iH,0]);
+  g.append("g").attr("class","gridline").call(d3.axisLeft(y).ticks(5).tickSize(-iW).tickFormat(""))
+    .call(gg=>gg.select(".domain").remove()).selectAll("line").attr("stroke","rgba(255,255,255,.07)");
+  const bars=g.selectAll("rect").data(items).join("rect")
+    .attr("x",d=>x(d.k)).attr("y",d=>y(d.v)).attr("width",x.bandwidth()).attr("height",d=>iH-y(d.v))
+    .attr("rx",8).attr("fill",opts.color).attr("opacity",.85);
+  g.selectAll("text.bv").data(items).join("text").attr("class","bv")
+    .attr("x",d=>x(d.k)+x.bandwidth()/2).attr("y",d=>y(d.v)-5)
+    .attr("text-anchor","middle").attr("font-size",11).attr("font-weight",700)
+    .attr("fill","rgba(228,236,255,.7)").text(d=>d.v||"");
+  bars.on("mousemove",(e,d)=>{
+    const tot=d3.sum(items,x=>x.v)||1;
+    showTT(e.clientX,e.clientY,`<div class="tth">${esc(d.k)}</div><div class="ttm">${esc(opts.title)}</div><div style="margin-top:5px"><span class="ttv">${d.v}</span> <span class="ttm">students (${(100*d.v/tot).toFixed(1)}%)</span></div>`);
+  }).on("mouseleave",hideTT);
+  g.append("g").attr("class","axis").attr("transform",`translate(0,${iH})`).call(d3.axisBottom(x).tickSizeOuter(0))
+    .call(gg=>gg.selectAll("text").attr("text-anchor","end").attr("transform","rotate(-38)").attr("dx","-0.5em").attr("dy","0.5em").attr("font-size",11));
+  g.append("g").attr("class","axis").call(d3.axisLeft(y).ticks(5));
+  svg.append("text").attr("x",14).attr("y",14).attr("fill","rgba(228,236,255,.45)").attr("font-size",11).text("Students");
+}
+
+/* ══════════════════════════════════════════════════════
+   RANKING CHART
+══════════════════════════════════════════════════════ */
+function drawRanking(el,rows){
+  el.innerHTML="";
+  const W=el.clientWidth,H=el.clientHeight;
+  const m={top:20,right:20,bottom:44,left:220};
+  const iW=W-m.left-m.right,iH=H-m.top-m.bottom;
+  const svg=d3.select(el).append("svg").attr("viewBox",`0 0 ${W} ${H}`).attr("preserveAspectRatio","xMidYMid meet");
+  if(!rows.length){
+    svg.append("text").attr("x",W/2).attr("y",H/2).attr("text-anchor","middle")
+      .attr("fill","rgba(228,236,255,.4)").attr("font-size",13).text("No groups selected.");
+    return;
+  }
+  const g=svg.append("g").attr("transform",`translate(${m.left},${m.top})`);
+  const x=d3.scaleLinear().domain([-1,1]).range([0,iW]);
+  const y=d3.scaleBand().domain(rows.map(d=>d.label)).range([0,iH]).padding(.24);
+  g.append("g").attr("class","gridline").attr("transform",`translate(0,${iH})`)
+    .call(d3.axisBottom(x).ticks(6).tickSize(-iH).tickFormat(""))
+    .call(gg=>gg.select(".domain").remove()).selectAll("line").attr("stroke","rgba(255,255,255,.07)");
+  g.append("g").attr("class","axis").attr("transform",`translate(0,${iH})`).call(d3.axisBottom(x).ticks(6).tickFormat(d3.format(".1f")));
+  g.append("line").attr("x1",x(0)).attr("x2",x(0)).attr("y1",0).attr("y2",iH)
+    .attr("stroke","rgba(255,255,255,.25)").attr("stroke-width",1.5).attr("stroke-dasharray","4,3");
+  const bars=g.selectAll("rect.rb").data(rows).join("rect").attr("class","rb")
+    .attr("y",d=>y(d.label)).attr("height",y.bandwidth())
+    .attr("x",d=>x(Math.min(0,d.rho))).attr("width",d=>Math.abs(x(d.rho)-x(0)))
+    .attr("rx",8).attr("fill",d=>d.color).attr("opacity",.88);
+  g.selectAll("text.rl").data(rows).join("text").attr("class","rl")
+    .attr("y",d=>y(d.label)+y.bandwidth()/2+4)
+    .attr("x",d=>d.rho>=0?x(d.rho)+5:x(d.rho)-5)
+    .attr("text-anchor",d=>d.rho>=0?"start":"end")
+    .attr("font-size",10).attr("font-weight",700).attr("fill",d=>d.color)
+    .text(d=>d.rho.toFixed(3));
+  g.append("g").attr("class","axis").call(d3.axisLeft(y).tickSizeOuter(0))
+    .selectAll("text").attr("font-size",11).attr("fill","rgba(228,236,255,.85)");
+  bars.on("mousemove",(e,d)=>{
+    showTT(e.clientX,e.clientY,`
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+        <span style="width:10px;height:10px;border-radius:99px;background:${d.color};flex-shrink:0"></span>
+        <div><div class="tth" style="margin:0">${esc(d.label)}</div><div class="ttm" style="font-size:11px">${esc(GRP[d.group].name)}</div></div>
+      </div>
+      <div>ρ: <span class="ttv">${d.rho.toFixed(4)}</span> <span class="ttm">N = ${d.n.toLocaleString()}</span></div>
+      <div class="ttm" style="margin-top:4px;font-size:11px">${d.rho>0?"Worse factor → worse outcome":"Worse factor → better outcome (inverted)"}</div>
+    `);
+  }).on("mouseleave",hideTT);
+  svg.append("text").attr("x",m.left).attr("y",H-8).attr("fill","rgba(228,236,255,.4)").attr("font-size",11).text("Spearman ρ (rank correlation)");
+}
+
+/* ══════════════════════════════════════════════════════
+   SPEARMAN
+══════════════════════════════════════════════════════ */
+function spearman(xs,ys){
+  if(xs.length!==ys.length||xs.length<3)return null;
+  const rx=ranks(xs),ry=ranks(ys);
+  const mx=d3.mean(rx),my=d3.mean(ry);
+  let num=0,dx=0,dy=0;
+  for(let i=0;i<rx.length;i++){const a=rx[i]-mx,b=ry[i]-my;num+=a*b;dx+=a*a;dy+=b*b;}
+  const den=Math.sqrt(dx*dy);
+  return(!isFinite(den)||den===0)?null:num/den;
+}
+function ranks(arr){
+  const idx=arr.map((v,i)=>({v,i})).sort((a,b)=>a.v-b.v);
+  const r=new Array(arr.length);
+  let i=0;
+  while(i<idx.length){let j=i;while(j<idx.length&&idx[j].v===idx[i].v)j++;const avg=(i+1+j)/2;for(let k=i;k<j;k++)r[idx[k].i]=avg;i=j;}
+  return r;
+}
+
+/* ══════════════════════════════════════════════════════
+   UI WIRING
+══════════════════════════════════════════════════════ */
+// Mode toggle
+document.querySelectorAll(".mode-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const mode=btn.dataset.mode;
+    if(mode===currentMode) return;
+    currentMode=mode;
+    document.querySelectorAll(".mode-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    $("page-student").classList.toggle("active",mode==="student");
+    $("page-educator").classList.toggle("active",mode==="educator");
+    if(RAW) renderAll();
+  });
+});
+
+// Educator tabs
+document.querySelectorAll("#page-educator .tab").forEach(t=>{
+  t.addEventListener("click",()=>{
+    currentEdTab=t.dataset.tab;
+    document.querySelectorAll("#page-educator .tab").forEach(x=>x.classList.remove("active"));
+    t.classList.add("active");
+    $("ed-page-overview").classList.toggle("active",currentEdTab==="overview");
+    $("ed-page-assoc").classList.toggle("active",currentEdTab==="assoc");
+    if(RAW) renderAll();
+  });
+});
+
+// Chart type toggle
+document.querySelectorAll(".ct-btn").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    currentChart3=btn.dataset.chart;
+    document.querySelectorAll(".ct-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    if(RAW) renderOv();
+  });
+});
+
+// Populate static outcome selects
+OUTCOMES.forEach(o=>{
+  ["ov-outcome","as-outcome","st-outcome"].forEach(id=>{
+    const opt=document.createElement("option");opt.value=o.key;opt.textContent=o.label;$(id).appendChild(opt);
+  });
+});
+// Set student default to academic performance
+$("st-outcome").value="perf"; ST.st.outcome="perf";
+
+buildGroupedSelect($("ov-factor"),ST.ov.factor);
+buildSelect($("ov-gender"),[{v:"All",l:"All genders"}],"All");
+buildSelect($("as-gender"),[{v:"All",l:"All genders"}],"All");
+buildSelect($("ov-year"),[{v:"All",l:"All years"}],"All");
+buildSelect($("as-year"),[{v:"All",l:"All years"}],"All");
+buildSelect($("st-year"),[{v:"All",l:"All years"}],"All");
+
+// Group chips
+function buildGroupChips(){
+  const el=$("grp-legend");el.innerHTML="";
+  GROUPS.forEach(g=>{
+    const chip=document.createElement("label");
+    chip.className="g-chip"+(ST.as.groups.has(g.id)?"":" off");
+    chip.innerHTML=`<span class="g-dot" style="background:var(--c-${g.id})"></span><input type="checkbox" ${ST.as.groups.has(g.id)?"checked":""}/>${esc(g.name)}`;
+    const cb=chip.querySelector("input");
+    cb.addEventListener("change",()=>{ST.as.groups[cb.checked?"add":"delete"](g.id);chip.classList.toggle("off",!cb.checked);renderAs();});
+    el.appendChild(chip);
+  });
+}
+buildGroupChips();
+
+// Event listeners
+$("st-outcome").addEventListener("change",e=>{ST.st.outcome=e.target.value;selectedInsightKey=null;renderStudent();});
+$("st-year").addEventListener("change",e=>{ST.st.year=e.target.value;selectedInsightKey=null;renderStudent();});
+$("ov-outcome").addEventListener("change",e=>{ST.ov.outcome=e.target.value;renderOv();});
+$("ov-gender").addEventListener("change",e=>{ST.ov.gender=e.target.value;renderOv();});
+$("ov-year").addEventListener("change",e=>{ST.ov.year=e.target.value;renderOv();});
+$("ov-factor").addEventListener("change",e=>{ST.ov.factor=e.target.value;renderOv();});
+$("as-outcome").addEventListener("change",e=>{ST.as.outcome=e.target.value;renderAs();});
+$("as-gender").addEventListener("change",e=>{ST.as.gender=e.target.value;renderAs();});
+$("as-year").addEventListener("change",e=>{ST.as.year=e.target.value;renderAs();});
+
+// Rho info tooltip
+$("rho-info").addEventListener("mousemove",e=>{
+  showTT(e.clientX,e.clientY,`
+    <div class="tth">Spearman ρ (rho)</div>
+    <div class="ttm" style="margin-top:5px">Measures how consistently two ordinal variables move together using ranks. Robust to skewed distributions.</div>
+    <div style="margin-top:8px;line-height:1.7">
+      <div><span style="color:var(--accent);font-weight:700">ρ = +1</span>  perfect increasing relationship</div>
+      <div><span style="color:var(--c-day);font-weight:700">ρ = −1</span>  perfect decreasing relationship</div>
+      <div><span style="font-weight:700">ρ ≈ 0</span>  no monotonic association</div>
+    </div>
+    <div class="ttm" style="margin-top:8px;font-size:11px">Outcomes are coded so higher = worse; factors coded in "worse direction" so positive ρ is intuitive.</div>
+  `);
+}).addEventListener("mouseleave",hideTT);
+
+// Reset
+$("resetBtn").addEventListener("click",()=>{
+  ST.ov={outcome:"skip",gender:"All",year:"All",factor:"sleepQ"};
+  ST.as={outcome:"skip",gender:"All",year:"All",groups:new Set(GROUPS.map(g=>g.id))};
+  ST.st={outcome:"perf",year:"All"};
+  selectedInsightKey=null;
+  if(RAW){
+    ["ov-gender","ov-year","as-gender","as-year"].forEach(id=>{
+      const opts=[...($(id).options)].map(o=>({v:o.value,l:o.textContent}));
+      buildSelect($(id),opts,"All");
+    });
+    buildGroupedSelect($("ov-factor"),ST.ov.factor);
+    OUTCOMES.forEach((o,i)=>{
+      $("ov-outcome").options[i].selected=(o.key===ST.ov.outcome);
+      $("as-outcome").options[i].selected=(o.key===ST.as.outcome);
+      $("st-outcome").options[i].selected=(o.key===ST.st.outcome);
+    });
+    buildGroupChips();
+    renderAll();
+  }
+});
+
+
+tryAutoLoad();
+
+
+</script>
+</body>
+</html>

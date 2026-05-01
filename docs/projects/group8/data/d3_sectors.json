@@ -1,0 +1,154 @@
+[
+  {
+    "sector_key": "manufacturing",
+    "label": "Manufacturing",
+    "level": 1,
+    "parent": null,
+    "ssic_2020_code": "C10-32",
+    "colour": "#e45756"
+  },
+  {
+    "sector_key": "mfg_food_bev",
+    "label": "Mfg Food Bev",
+    "level": 2,
+    "parent": "manufacturing",
+    "ssic_2020_code": "C10-12",
+    "colour": "#888888"
+  },
+  {
+    "sector_key": "mfg_paper_rubber",
+    "label": "Mfg Paper Rubber",
+    "level": 2,
+    "parent": "manufacturing",
+    "ssic_2020_code": "C17, 18, 22",
+    "colour": "#888888"
+  },
+  {
+    "sector_key": "mfg_petrochem",
+    "label": "Mfg Petrochem",
+    "level": 2,
+    "parent": "manufacturing",
+    "ssic_2020_code": "C19-21",
+    "colour": "#888888"
+  },
+  {
+    "sector_key": "mfg_metal_machinery",
+    "label": "Mfg Metal Machinery",
+    "level": 2,
+    "parent": "manufacturing",
+    "ssic_2020_code": "C25,28",
+    "colour": "#888888"
+  },
+  {
+    "sector_key": "mfg_electronics",
+    "label": "Mfg Electronics",
+    "level": 2,
+    "parent": "manufacturing",
+    "ssic_2020_code": "C26",
+    "colour": "#888888"
+  },
+  {
+    "sector_key": "mfg_transport_equip",
+    "label": "Mfg Transport Equip",
+    "level": 2,
+    "parent": "manufacturing",
+    "ssic_2020_code": "C29-30",
+    "colour": "#888888"
+  },
+  {
+    "sector_key": "mfg_other",
+    "label": "Mfg Other",
+    "level": 2,
+    "parent": "manufacturing",
+    "ssic_2020_code": null,
+    "colour": "#888888"
+  },
+  {
+    "sector_key": "construction",
+    "label": "Construction",
+    "level": 1,
+    "parent": null,
+    "ssic_2020_code": "F41-43",
+    "colour": "#f58518"
+  },
+  {
+    "sector_key": "services",
+    "label": "Services",
+    "level": 1,
+    "parent": null,
+    "ssic_2020_code": "G46-U99",
+    "colour": "#4c78a8"
+  },
+  {
+    "sector_key": "wholesale_retail",
+    "label": "Wholesale & Retail Trade",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "G46-47",
+    "colour": "#54a24b"
+  },
+  {
+    "sector_key": "transport_storage",
+    "label": "Transportation & Storage",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "H49-53",
+    "colour": "#72b7b2"
+  },
+  {
+    "sector_key": "accomm_food",
+    "label": "Accommodation & Food Services",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "I55-56",
+    "colour": "#b279a2"
+  },
+  {
+    "sector_key": "info_comms",
+    "label": "Information & Communications",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "J58-63",
+    "colour": "#eeca3b"
+  },
+  {
+    "sector_key": "real_estate",
+    "label": "Real Estate Services",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "L68",
+    "colour": "#9ecae9"
+  },
+  {
+    "sector_key": "professional",
+    "label": "Professional Services",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "M69-75",
+    "colour": "#d67195"
+  },
+  {
+    "sector_key": "admin_support",
+    "label": "Administrative & Support Services",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "N77-82",
+    "colour": "#b07aa1"
+  },
+  {
+    "sector_key": "community_social",
+    "label": "Community, Social & Personal Services",
+    "level": 2,
+    "parent": "services",
+    "ssic_2020_code": "O84-U99",
+    "colour": "#79706e"
+  },
+  {
+    "sector_key": "others",
+    "label": "Others (Agri, Mining, Utilities)",
+    "level": 1,
+    "parent": null,
+    "ssic_2020_code": "A, B, D, E",
+    "colour": "#9d9d9d"
+  }
+]

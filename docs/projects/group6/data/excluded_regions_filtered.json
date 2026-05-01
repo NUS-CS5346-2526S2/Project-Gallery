@@ -1,0 +1,68 @@
+[
+    {
+        "Region, development group, country or area of destination":"World",
+        "both_sexes_1990":153916063,
+        "both_sexes_1995":163176002,
+        "both_sexes_2000":174566152,
+        "both_sexes_2005":192788721,
+        "both_sexes_2010":221020392,
+        "both_sexes_2015":250042020,
+        "both_sexes_2020":275284032,
+        "both_sexes_2024":304021813
+    },
+    {
+        "Region, development group, country or area of destination":"High-income countries",
+        "both_sexes_1990":76960458,
+        "both_sexes_1995":90343963,
+        "both_sexes_2000":103962143,
+        "both_sexes_2005":121605675,
+        "both_sexes_2010":143669847,
+        "both_sexes_2015":165526009,
+        "both_sexes_2020":181860213,
+        "both_sexes_2024":199081732
+    },
+    {
+        "Region, development group, country or area of destination":"Upper-middle-income countries",
+        "both_sexes_1990":29709448,
+        "both_sexes_1995":29469488,
+        "both_sexes_2000":29596235,
+        "both_sexes_2005":30996867,
+        "both_sexes_2010":33657677,
+        "both_sexes_2015":36700080,
+        "both_sexes_2020":42171211,
+        "both_sexes_2024":47028685
+    },
+    {
+        "Region, development group, country or area of destination":"Lower-middle-income countries",
+        "both_sexes_1990":37398168,
+        "both_sexes_1995":34001389,
+        "both_sexes_2000":33041803,
+        "both_sexes_2005":31934231,
+        "both_sexes_2010":34223322,
+        "both_sexes_2015":36763723,
+        "both_sexes_2020":38126801,
+        "both_sexes_2024":42119081
+    },
+    {
+        "Region, development group, country or area of destination":"Low-income countries",
+        "both_sexes_1990":8730266,
+        "both_sexes_1995":8238108,
+        "both_sexes_2000":6838373,
+        "both_sexes_2005":7050629,
+        "both_sexes_2010":7985909,
+        "both_sexes_2015":9509682,
+        "both_sexes_2020":11661069,
+        "both_sexes_2024":14383617
+    },
+    {
+        "Region, development group, country or area of destination":"Uncategorized",
+        "both_sexes_1990":1117723,
+        "both_sexes_1995":1123054,
+        "both_sexes_2000":1127598,
+        "both_sexes_2005":1201319,
+        "both_sexes_2010":1483637,
+        "both_sexes_2015":1542526,
+        "both_sexes_2020":1464738,
+        "both_sexes_2024":1408698
+    }
+]

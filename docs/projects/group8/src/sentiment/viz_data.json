@@ -1,0 +1,1268 @@
+{
+  "perception": {
+    "byTopic": [
+      {
+        "topic": "General",
+        "anti": 29,
+        "pro": 22,
+        "neutral": 1350,
+        "total": 1401,
+        "antiPct": 2.1,
+        "proPct": 1.6
+      },
+      {
+        "topic": "Policy & Government",
+        "anti": 274,
+        "pro": 98,
+        "neutral": 499,
+        "total": 871,
+        "antiPct": 31.5,
+        "proPct": 11.3
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "anti": 178,
+        "pro": 212,
+        "neutral": 157,
+        "total": 547,
+        "antiPct": 32.5,
+        "proPct": 38.8
+      },
+      {
+        "topic": "Jobs & Employment",
+        "anti": 125,
+        "pro": 55,
+        "neutral": 334,
+        "total": 514,
+        "antiPct": 24.3,
+        "proPct": 10.7
+      },
+      {
+        "topic": "Identity & Culture",
+        "anti": 203,
+        "pro": 83,
+        "neutral": 157,
+        "total": 443,
+        "antiPct": 45.8,
+        "proPct": 18.7
+      },
+      {
+        "topic": "Economy & Wages",
+        "anti": 110,
+        "pro": 53,
+        "neutral": 123,
+        "total": 286,
+        "antiPct": 38.5,
+        "proPct": 18.5
+      },
+      {
+        "topic": "Education & Employment",
+        "anti": 1,
+        "pro": 0,
+        "neutral": 0,
+        "total": 1,
+        "antiPct": 100.0,
+        "proPct": 0.0
+      }
+    ],
+    "bySource": [
+      {
+        "source": "independent_sg",
+        "total": 296,
+        "anti": 92,
+        "pro": 63,
+        "neutral": 141
+      },
+      {
+        "source": "reddit",
+        "total": 3767,
+        "anti": 828,
+        "pro": 460,
+        "neutral": 2479
+      }
+    ],
+    "byTopicAndSource": [
+      {
+        "topic": "Economy & Wages",
+        "source": "independent_sg",
+        "total": 27,
+        "anti": 9,
+        "pro": 7,
+        "neutral": 11
+      },
+      {
+        "topic": "Economy & Wages",
+        "source": "reddit",
+        "total": 259,
+        "anti": 101,
+        "pro": 46,
+        "neutral": 112
+      },
+      {
+        "topic": "Education & Employment",
+        "source": "reddit",
+        "total": 1,
+        "anti": 1,
+        "pro": 0,
+        "neutral": 0
+      },
+      {
+        "topic": "General",
+        "source": "independent_sg",
+        "total": 68,
+        "anti": 1,
+        "pro": 3,
+        "neutral": 64
+      },
+      {
+        "topic": "General",
+        "source": "reddit",
+        "total": 1333,
+        "anti": 28,
+        "pro": 19,
+        "neutral": 1286
+      },
+      {
+        "topic": "Identity & Culture",
+        "source": "independent_sg",
+        "total": 33,
+        "anti": 20,
+        "pro": 7,
+        "neutral": 6
+      },
+      {
+        "topic": "Identity & Culture",
+        "source": "reddit",
+        "total": 410,
+        "anti": 183,
+        "pro": 76,
+        "neutral": 151
+      },
+      {
+        "topic": "Jobs & Employment",
+        "source": "independent_sg",
+        "total": 49,
+        "anti": 19,
+        "pro": 4,
+        "neutral": 26
+      },
+      {
+        "topic": "Jobs & Employment",
+        "source": "reddit",
+        "total": 465,
+        "anti": 106,
+        "pro": 51,
+        "neutral": 308
+      },
+      {
+        "topic": "Policy & Government",
+        "source": "independent_sg",
+        "total": 73,
+        "anti": 26,
+        "pro": 20,
+        "neutral": 27
+      },
+      {
+        "topic": "Policy & Government",
+        "source": "reddit",
+        "total": 798,
+        "anti": 248,
+        "pro": 78,
+        "neutral": 472
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "source": "independent_sg",
+        "total": 46,
+        "anti": 17,
+        "pro": 22,
+        "neutral": 7
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "source": "reddit",
+        "total": 501,
+        "anti": 161,
+        "pro": 190,
+        "neutral": 150
+      }
+    ],
+    "byYear": [
+      {
+        "year": 2015,
+        "total": 23,
+        "anti": 4,
+        "pro": 3,
+        "neutral": 16,
+        "antiPct": 17.4,
+        "proPct": 13.0
+      },
+      {
+        "year": 2016,
+        "total": 51,
+        "anti": 11,
+        "pro": 8,
+        "neutral": 32,
+        "antiPct": 21.6,
+        "proPct": 15.7
+      },
+      {
+        "year": 2017,
+        "total": 46,
+        "anti": 7,
+        "pro": 5,
+        "neutral": 34,
+        "antiPct": 15.2,
+        "proPct": 10.9
+      },
+      {
+        "year": 2018,
+        "total": 65,
+        "anti": 11,
+        "pro": 7,
+        "neutral": 47,
+        "antiPct": 16.9,
+        "proPct": 10.8
+      },
+      {
+        "year": 2019,
+        "total": 141,
+        "anti": 45,
+        "pro": 15,
+        "neutral": 81,
+        "antiPct": 31.9,
+        "proPct": 10.6
+      },
+      {
+        "year": 2020,
+        "total": 439,
+        "anti": 97,
+        "pro": 82,
+        "neutral": 260,
+        "antiPct": 22.1,
+        "proPct": 18.7
+      },
+      {
+        "year": 2021,
+        "total": 411,
+        "anti": 105,
+        "pro": 75,
+        "neutral": 231,
+        "antiPct": 25.5,
+        "proPct": 18.2
+      },
+      {
+        "year": 2022,
+        "total": 327,
+        "anti": 62,
+        "pro": 57,
+        "neutral": 208,
+        "antiPct": 19.0,
+        "proPct": 17.4
+      },
+      {
+        "year": 2023,
+        "total": 447,
+        "anti": 84,
+        "pro": 58,
+        "neutral": 305,
+        "antiPct": 18.8,
+        "proPct": 13.0
+      },
+      {
+        "year": 2024,
+        "total": 710,
+        "anti": 156,
+        "pro": 82,
+        "neutral": 472,
+        "antiPct": 22.0,
+        "proPct": 11.5
+      },
+      {
+        "year": 2025,
+        "total": 1061,
+        "anti": 283,
+        "pro": 103,
+        "neutral": 675,
+        "antiPct": 26.7,
+        "proPct": 9.7
+      },
+      {
+        "year": 2026,
+        "total": 342,
+        "anti": 55,
+        "pro": 28,
+        "neutral": 259,
+        "antiPct": 16.1,
+        "proPct": 8.2
+      }
+    ],
+    "themes": {
+      "anti": [
+        {
+          "theme": "cultural tension",
+          "count": 84
+        },
+        {
+          "theme": "worker exploitation",
+          "count": 61
+        },
+        {
+          "theme": "job displacement",
+          "count": 59
+        },
+        {
+          "theme": "job competition",
+          "count": 33
+        },
+        {
+          "theme": "ceca criticism",
+          "count": 33
+        },
+        {
+          "theme": "ceca policy criticism",
+          "count": 29
+        },
+        {
+          "theme": "wage competition",
+          "count": 22
+        },
+        {
+          "theme": "cultural tensions",
+          "count": 20
+        },
+        {
+          "theme": "foreign worker criticism",
+          "count": 20
+        },
+        {
+          "theme": "worker safety",
+          "count": 17
+        },
+        {
+          "theme": "cultural integration",
+          "count": 15
+        },
+        {
+          "theme": "foreign talent criticism",
+          "count": 15
+        }
+      ],
+      "pro": [
+        {
+          "theme": "cultural integration",
+          "count": 39
+        },
+        {
+          "theme": "community support",
+          "count": 30
+        },
+        {
+          "theme": "worker rights",
+          "count": 22
+        },
+        {
+          "theme": "economic growth",
+          "count": 19
+        },
+        {
+          "theme": "foreign talent",
+          "count": 18
+        },
+        {
+          "theme": "community engagement",
+          "count": 16
+        },
+        {
+          "theme": "empathy",
+          "count": 15
+        },
+        {
+          "theme": "empathy for workers",
+          "count": 13
+        },
+        {
+          "theme": "foreign worker contributions",
+          "count": 13
+        },
+        {
+          "theme": "support for foreign workers",
+          "count": 12
+        },
+        {
+          "theme": "migrant worker support",
+          "count": 12
+        },
+        {
+          "theme": "economic contribution",
+          "count": 10
+        }
+      ]
+    },
+    "topicByYear": [
+      {
+        "year": 2015,
+        "Identity & Culture": 0,
+        "Worker Welfare & Rights": 3,
+        "Policy & Government": 11,
+        "Economy & Wages": 1,
+        "Jobs & Employment": 4,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2016,
+        "Identity & Culture": 9,
+        "Worker Welfare & Rights": 3,
+        "Policy & Government": 12,
+        "Economy & Wages": 1,
+        "Jobs & Employment": 11,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2017,
+        "Identity & Culture": 2,
+        "Worker Welfare & Rights": 9,
+        "Policy & Government": 8,
+        "Economy & Wages": 1,
+        "Jobs & Employment": 3,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2018,
+        "Identity & Culture": 7,
+        "Worker Welfare & Rights": 3,
+        "Policy & Government": 11,
+        "Economy & Wages": 4,
+        "Jobs & Employment": 9,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2019,
+        "Identity & Culture": 13,
+        "Worker Welfare & Rights": 20,
+        "Policy & Government": 43,
+        "Economy & Wages": 5,
+        "Jobs & Employment": 24,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2020,
+        "Identity & Culture": 42,
+        "Worker Welfare & Rights": 80,
+        "Policy & Government": 102,
+        "Economy & Wages": 37,
+        "Jobs & Employment": 38,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2021,
+        "Identity & Culture": 45,
+        "Worker Welfare & Rights": 71,
+        "Policy & Government": 115,
+        "Economy & Wages": 42,
+        "Jobs & Employment": 32,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2022,
+        "Identity & Culture": 38,
+        "Worker Welfare & Rights": 39,
+        "Policy & Government": 76,
+        "Economy & Wages": 31,
+        "Jobs & Employment": 40,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2023,
+        "Identity & Culture": 46,
+        "Worker Welfare & Rights": 84,
+        "Policy & Government": 64,
+        "Economy & Wages": 27,
+        "Jobs & Employment": 65,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2024,
+        "Identity & Culture": 85,
+        "Worker Welfare & Rights": 86,
+        "Policy & Government": 141,
+        "Economy & Wages": 60,
+        "Jobs & Employment": 103,
+        "Education & Employment": 0
+      },
+      {
+        "year": 2025,
+        "Identity & Culture": 124,
+        "Worker Welfare & Rights": 109,
+        "Policy & Government": 229,
+        "Economy & Wages": 63,
+        "Jobs & Employment": 133,
+        "Education & Employment": 1
+      },
+      {
+        "year": 2026,
+        "Identity & Culture": 32,
+        "Worker Welfare & Rights": 40,
+        "Policy & Government": 59,
+        "Economy & Wages": 14,
+        "Jobs & Employment": 52,
+        "Education & Employment": 0
+      }
+    ],
+    "samplePosts": [
+      {
+        "topic": "Economy & Wages",
+        "stance": "anti",
+        "text": "SGD600 is so much higher than what they earn back in their home country. Many people chose to conveniently ignore the additional costs that come with employing a helper, in addition to supporting our ...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "anti",
+        "text": "Shit pay , shit hours , shit benefits. Of course very minimal SGreans. I remember being offered 1800$/Mth for a 5.5days week , what a joke. (7yrs ago)",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "anti",
+        "text": "Lots of Things will be expensive as fuck. Anything that is Labour intensive. Eating out. Grab/Taxi. Renovation. And u can forget about foreign domestic workers. U gotta cook and do ur own dishes and l...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "neutral",
+        "text": "Stop expecting $4 hawker food. Y'all want to \"preserve\" the culture but refuse to support it. And for the hawkers, I rather you charge more than do shrinkflation. Worth and more ex i will pay. You shr...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "neutral",
+        "text": "Illegal, but many companies/worker does that usually by slightly inflate the salary in order to get Spass. 3-4k basic is high for FnB, average if they included \"OT\"",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "neutral",
+        "text": "My reason? I'm working in the best place there's to work in this field in Asia. My friends reasons? Taxes, Singapore low taxes annoyed people to save good money",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "pro",
+        "text": "To us 600 may be little. To the Domestic Workers, the pay is ok comparing to other people in their own town areas. Why not question the other countries with manual labour getting even lesser than 600 ...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "pro",
+        "text": "Not Bangladesh but an Indian friend recounted to me that he once got a ride from a taxi driver back home, who worked as a construction worker in SG He gave a pretty glowing review of his time here, it...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Economy & Wages",
+        "stance": "pro",
+        "text": "Bangladesh i not sure.... but many piony maid who work in sg save up in their homeland can buy land, build a few houses that are bigger than your 5rm HDB box... live a luxury life there after.",
+        "source": "reddit"
+      },
+      {
+        "topic": "Education & Employment",
+        "stance": "anti",
+        "text": "CECA MOE scholar blames NUS/NTU for bad education and jobs in SG",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "anti",
+        "text": "Is it just my imagination or is bus frequency getting worse? I live in the Punggol area and have experienced 20 to 25 minutes waiting time for certain feeder buses. Will it ever get better? Am guessin...",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "anti",
+        "text": "Local here, but given the amount of restrictions we have, I honestly kept thinking what is there for an expat to remain, when plenty have already left. Honestly, from where I see, it's not a lot of be...",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "anti",
+        "text": "They have seriously lost touch on the ground. Daily commute filled with people, rising cost with salary that is unable to keep up, infrastructures that are unable to withstand the rising population. (...",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "neutral",
+        "text": "Probably some self righteous auntie/uncle spoilt his public transport experience before.",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "neutral",
+        "text": "I’m seeing a lot of people comment that he must have had been previously traumatised by someone with a similar profile to me. My partner made the same comment. I guess there are a lot of terrible peop...",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "neutral",
+        "text": "Maybe someone else has given him a hard time about it in the past. Never encountered this before.",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "pro",
+        "text": "I think life in Singapore is not as tough as many people complain about. The first complaint that we hear all the time is about the stress or lack of work life balance. Many have said this is the pric...",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "pro",
+        "text": "STTA has to bite the bullet and recruit foreign talent for Olympic success",
+        "source": "reddit"
+      },
+      {
+        "topic": "General",
+        "stance": "pro",
+        "text": "CECA Anitha Tamilmaran contributed to designing void deck for CNY!",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "anti",
+        "text": "My guess is poor guy maybe got treated badly and told to give up seats for locals before. Too many people think they don't deserve to seat smh",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "anti",
+        "text": "Majority of us are not fluent in English and cant present well in front of the international audience. It’s quite bad to the point that even my FT boss prefers to ask my Korean/japanese colleagues do ...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "anti",
+        "text": "Cease to exist. Many of us Singaporeans would choose to leave.",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "neutral",
+        "text": "Shots were fired when Malaysian comedian Ronny Chieng said online that Singaporeans are “Karens” with “main character syndrome”. Taking it up a notch, he remarked: “They are just a country of small to...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "neutral",
+        "text": "Most Chinese Singaporeans can’t speak proper English and Chinese 半斤八两 kind",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "neutral",
+        "text": "Linguistic transmission is often overlooked. I have personally seen Bangladesh construction workers (and yes, I am sure that these were not local workers) using Hokkien vulgarities among themselves wh...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "pro",
+        "text": "I took the MRT this evening, and when I got onto a connecting train, I made eye contact with a foreign worker, who immediately jumped up and offered me his seat. I am a young-looking 48F, no injuries ...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "pro",
+        "text": "I live in a building full of foreign workers. Most of them would insist I enter the lift first even though they might be there earlier than me. Sometimes I feel like they feel secondary to us :/",
+        "source": "reddit"
+      },
+      {
+        "topic": "Identity & Culture",
+        "stance": "pro",
+        "text": "Our counterparts from Bangladesh filled up the vacancies in jobs that Singaporeans shunned. Over the years our Bangladeshi counterparts have become an integral part of our society. Ideally, I wished f...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "anti",
+        "text": "Ask a local retiree to come in a few hours a week - that counts as a quota Hire local students",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "anti",
+        "text": "I was wondering this as well. Some of these restaurants like those malatang chains have all China waitstaff and cookstaff but not sure they even have a corporate presence or backend in SG... They can ...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "anti",
+        "text": "Because its damn hard to get promoted as there are more foreigners than Singaporeans and as a result they will promote their peers than singaporeans",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "neutral",
+        "text": "By having a large enough pool of Singaporeans in the corporate office… performing roles such as - HR - Finance - Communication / Marketing You will find that most of such roles at MNCs to be filled wi...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "neutral",
+        "text": "Probably because don't see job listing for it anywhere and have no idea about the job? How's career progression? Benefits? Etc",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "neutral",
+        "text": "Most singaporeans dont really know what happens or how to get into the maritime industry, even though it's massive. The industry has no glamor, very little information online, and no media covering wh...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "pro",
+        "text": "If you get a decent job in a decent company, getting an EP shouldn’t be a problem. It is not as difficult if you have the right experience",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "pro",
+        "text": "If you have the right experience EP will come more easily to you, but it’s definitely tough atm and you should expect to put work into it. I’d definitely start leveraging any connections you have now ...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Jobs & Employment",
+        "stance": "pro",
+        "text": "Been here for 7 years. Self sponsored my own EP as a tech consultant. Eventually got PR. People tell you its hard, but as an American tech worker it didn't feel so. I get each person is different thou...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "anti",
+        "text": "Lol OP ! Woke people talk abt DWs foreign workers but forget abt our NS men who get paid only $700 which is must lower than foreign workers. And also NS men are two years behind new citizens PRs who d...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "anti",
+        "text": "A lot of ghost workers who on paper are seen as full time staff since the company contributes to their cpf. Those people also know what to answer in case some inspection happens so there’s that",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "anti",
+        "text": "Best thing of having an online police to weed out worms ...go file complaint to MOM.",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "neutral",
+        "text": "Hi everyone, i have a few friends from Malaysia working in different sectors. As far as I know there are 4 different passes in Singapore (Might be more) namely: -Work permit -Spass -Epass -dependant p...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "neutral",
+        "text": "A 3k/month pay will not get you a employment pass. If I am not wrong, EP requires $6k/month?? Income. 3k/month is more like an S-pass.",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "neutral",
+        "text": "Not too well versed in this area, but from my limited understanding, i think there is a limited number of non-local workers companies can hire based on their industry? In that case, how do those resta...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "pro",
+        "text": "We would need to consider the cost of accommodation, transportation and meals on top of their base salary, since most if not all domestic workers in Singapore live with their employers. I am not in fa...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "pro",
+        "text": "if you have 10 good years experience then you should be fine landing an EP role. Check the COMPASS criteria on the MOM website and you will see it’s mostly structured to prevent people from bringing i...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Policy & Government",
+        "stance": "pro",
+        "text": "You know you can look for a job while on DP, right? In any case, your wife can move here first while you look for a job in your home country. The govt wants companies to hire senior roles for EP, that...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "anti",
+        "text": "My job revolves around yard projects so am regularly in talks with many expats as well as foreign workers like this. During some of the chats with them, they do say they were told by their agents (who...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "anti",
+        "text": "It’s illegal but either way your friends probably won’t dare to speak up",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "anti",
+        "text": "This is absolutely not legal - most famous case is that of Twelve Cupcakes. Your friends are being taken advantage of and should report it, though whether they do or not (for fear of reprisal or unemp...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "neutral",
+        "text": "It's not legal and they can get full restitution of their contracted pay, but good luck finding another job in the industry.",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "neutral",
+        "text": "The short answer is they will only be employed for that amount by the company. Don't expect to get paid more or even have a job if they snitch on employer.",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "neutral",
+        "text": "They can report this to MOM. But it really depends on the company and what key projects it is involved in. Bear in mind that it might not be that the company approved such practise but that the HR peo...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "pro",
+        "text": "In the US, where I live, it would be illegal to hire a helper for $600/month. Most Americans would also consider it offensive and exploitative. I absolutely believe everyone should be treated with res...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "pro",
+        "text": "Although it's $600 a month, the employer is expected to provide food and shelter so it's not a like-for-like comparison with a minimum wage or LQS. Personally, I would like to see more live-out arrang...",
+        "source": "reddit"
+      },
+      {
+        "topic": "Worker Welfare & Rights",
+        "stance": "pro",
+        "text": "my helper is drawing around 6-700 for the past 20 years. This allowed her to build a house in her hometown, provide single handedly for her daughter and her immediate family. Could she have earned mor...",
+        "source": "reddit"
+      }
+    ]
+  },
+  "reality": {
+    "employmentChange": {
+      "data": [
+        {
+          "year": 2015,
+          "resident": 0.8,
+          "nonResident": 31.6,
+          "total": 32.4
+        },
+        {
+          "year": 2016,
+          "resident": 11.5,
+          "nonResident": 5.6,
+          "total": 17.1
+        },
+        {
+          "year": 2017,
+          "resident": 21.3,
+          "nonResident": -24.9,
+          "total": -3.6
+        },
+        {
+          "year": 2018,
+          "resident": 27.5,
+          "nonResident": 17.9,
+          "total": 45.4
+        },
+        {
+          "year": 2019,
+          "resident": 28.0,
+          "nonResident": 41.5,
+          "total": 69.5
+        },
+        {
+          "year": 2020,
+          "resident": 15.0,
+          "nonResident": -195.9,
+          "total": -180.9
+        },
+        {
+          "year": 2021,
+          "resident": 57.3,
+          "nonResident": -31.0,
+          "total": 26.3
+        },
+        {
+          "year": 2022,
+          "resident": 36.6,
+          "nonResident": 223.8,
+          "total": 260.4
+        },
+        {
+          "year": 2023,
+          "resident": -4.6,
+          "nonResident": 101.3,
+          "total": 96.7
+        },
+        {
+          "year": 2024,
+          "resident": 8.8,
+          "nonResident": 51.0,
+          "total": 59.8
+        },
+        {
+          "year": 2025,
+          "resident": 11.5,
+          "nonResident": 59.2,
+          "total": 70.7
+        }
+      ],
+      "_source": "employment_change/annual_by_industry_and_res_status.csv"
+    },
+    "unemployment": {
+      "data": [
+        {
+          "year": 2015,
+          "rate": 2.8
+        },
+        {
+          "year": 2016,
+          "rate": 3.0
+        },
+        {
+          "year": 2017,
+          "rate": 3.1
+        },
+        {
+          "year": 2018,
+          "rate": 2.9
+        },
+        {
+          "year": 2019,
+          "rate": 3.2
+        },
+        {
+          "year": 2020,
+          "rate": 4.1
+        },
+        {
+          "year": 2021,
+          "rate": 3.6
+        },
+        {
+          "year": 2022,
+          "rate": 2.9
+        },
+        {
+          "year": 2023,
+          "rate": 2.7
+        },
+        {
+          "year": 2024,
+          "rate": 2.7
+        },
+        {
+          "year": 2025,
+          "rate": 2.8
+        }
+      ],
+      "_source": "unemployment/resident_rate_annual.csv"
+    },
+    "unemploymentByAge": {
+      "data": [
+        {
+          "year": 2015,
+          "15_29": 5.1,
+          "30_39": 1.9,
+          "40_49": 2.4,
+          "50_over": 2.4
+        },
+        {
+          "year": 2016,
+          "15_29": 5.0,
+          "30_39": 2.3,
+          "40_49": 2.4,
+          "50_over": 2.7
+        },
+        {
+          "year": 2017,
+          "15_29": 5.5,
+          "30_39": 2.3,
+          "40_49": 2.6,
+          "50_over": 2.8
+        },
+        {
+          "year": 2018,
+          "15_29": 5.2,
+          "30_39": 2.2,
+          "40_49": 2.3,
+          "50_over": 2.6
+        },
+        {
+          "year": 2019,
+          "15_29": 5.9,
+          "30_39": 2.2,
+          "40_49": 2.5,
+          "50_over": 2.9
+        },
+        {
+          "year": 2020,
+          "15_29": 7.5,
+          "30_39": 2.9,
+          "40_49": 3.5,
+          "50_over": 3.8
+        },
+        {
+          "year": 2021,
+          "15_29": 5.7,
+          "30_39": 2.6,
+          "40_49": 3.1,
+          "50_over": 3.4
+        },
+        {
+          "year": 2022,
+          "15_29": 4.7,
+          "30_39": 2.3,
+          "40_49": 2.6,
+          "50_over": 2.8
+        },
+        {
+          "year": 2023,
+          "15_29": 5.3,
+          "30_39": 2.2,
+          "40_49": 2.3,
+          "50_over": 2.4
+        },
+        {
+          "year": 2024,
+          "15_29": 5.4,
+          "30_39": 2.2,
+          "40_49": 2.1,
+          "50_over": 2.5
+        },
+        {
+          "year": 2025,
+          "15_29": 5.5,
+          "30_39": 2.4,
+          "40_49": 2.3,
+          "50_over": 2.5
+        }
+      ],
+      "_source": "unemployment/resident_rate_by_age_annual.csv"
+    },
+    "jobVacancyRate": {
+      "data": [
+        {
+          "year": 2015,
+          "rate": 2.8
+        },
+        {
+          "year": 2016,
+          "rate": 2.3
+        },
+        {
+          "year": 2017,
+          "rate": 2.4
+        },
+        {
+          "year": 2018,
+          "rate": 2.7
+        },
+        {
+          "year": 2019,
+          "rate": 2.5
+        },
+        {
+          "year": 2020,
+          "rate": 2.3
+        },
+        {
+          "year": 2021,
+          "rate": 4.7
+        },
+        {
+          "year": 2022,
+          "rate": 5.1
+        },
+        {
+          "year": 2023,
+          "rate": 3.7
+        },
+        {
+          "year": 2024,
+          "rate": 3.1
+        },
+        {
+          "year": 2025,
+          "rate": 3.0
+        }
+      ],
+      "_source": "job_vacancies/vacancy_rate_total_yearly.csv"
+    },
+    "vacancyToUnemployed": {
+      "data": [
+        {
+          "year": 2015,
+          "ratio": 1.24
+        },
+        {
+          "year": 2016,
+          "ratio": 0.91
+        },
+        {
+          "year": 2017,
+          "ratio": 0.87
+        },
+        {
+          "year": 2018,
+          "ratio": 1.08
+        },
+        {
+          "year": 2019,
+          "ratio": 0.91
+        },
+        {
+          "year": 2020,
+          "ratio": 0.66
+        },
+        {
+          "year": 2021,
+          "ratio": 1.68
+        },
+        {
+          "year": 2022,
+          "ratio": 2.32
+        },
+        {
+          "year": 2023,
+          "ratio": 1.88
+        },
+        {
+          "year": 2024,
+          "ratio": 1.57
+        },
+        {
+          "year": 2025,
+          "ratio": 1.53
+        }
+      ],
+      "_source": "job_vacancies/vacancy_to_unemployed_yearly.csv"
+    },
+    "foreignWorkforce": {
+      "data": [
+        {
+          "year": 2017,
+          "total": 1368000,
+          "_source": "foreign_workforce/total_annual.csv"
+        },
+        {
+          "year": 2018,
+          "total": 1386000,
+          "_source": "foreign_workforce/total_annual.csv"
+        },
+        {
+          "year": 2019,
+          "total": 1427500,
+          "_source": "foreign_workforce/total_annual.csv"
+        },
+        {
+          "year": 2020,
+          "total": 1231500,
+          "_source": "foreign_workforce/foreign-workforce-numbers.xlsx"
+        },
+        {
+          "year": 2021,
+          "total": 1200400,
+          "_source": "foreign_workforce/foreign-workforce-numbers.xlsx"
+        },
+        {
+          "year": 2022,
+          "total": 1424200,
+          "_source": "foreign_workforce/foreign-workforce-numbers.xlsx"
+        },
+        {
+          "year": 2023,
+          "total": 1525500,
+          "_source": "foreign_workforce/foreign-workforce-numbers.xlsx"
+        },
+        {
+          "year": 2024,
+          "total": 1576500,
+          "_source": "foreign_workforce/foreign-workforce-numbers.xlsx"
+        },
+        {
+          "year": 2025,
+          "total": 1635700,
+          "_source": "foreign_workforce/foreign-workforce-numbers.xlsx"
+        }
+      ],
+      "_source": "foreign_workforce/total_annual.csv + foreign_workforce/foreign-workforce-numbers.xlsx"
+    },
+    "foreignWorkforceByType": {
+      "data": [
+        {
+          "year": 2017,
+          "employment_pass": 187700,
+          "s_pass": 184400,
+          "work_permit": 965200,
+          "other_work_passes": 30700,
+          "total": 1368000
+        },
+        {
+          "year": 2018,
+          "employment_pass": 185800,
+          "s_pass": 195500,
+          "work_permit": 972600,
+          "other_work_passes": 32100,
+          "total": 1386000
+        },
+        {
+          "year": 2019,
+          "employment_pass": 193700,
+          "s_pass": 200000,
+          "work_permit": 999000,
+          "other_work_passes": 34700,
+          "total": 1427400
+        },
+        {
+          "year": 2020,
+          "employment_pass": 177100,
+          "s_pass": 174000,
+          "work_permit": 848200,
+          "other_work_passes": 32200,
+          "total": 1231500
+        },
+        {
+          "year": 2021,
+          "employment_pass": 161700,
+          "s_pass": 161800,
+          "work_permit": 849700,
+          "other_work_passes": 27200,
+          "total": 1200400
+        },
+        {
+          "year": 2022,
+          "employment_pass": 187300,
+          "s_pass": 177900,
+          "work_permit": 1033500,
+          "other_work_passes": 25400,
+          "total": 1424100
+        }
+      ],
+      "_source": "foreign_workforce/by_pass_type.csv"
+    }
+  },
+  "meta": {
+    "totalPosts": 4063,
+    "sources": [
+      "independent_sg",
+      "reddit"
+    ],
+    "topics": [
+      "General",
+      "Policy & Government",
+      "Worker Welfare & Rights",
+      "Jobs & Employment",
+      "Identity & Culture",
+      "Economy & Wages",
+      "Education & Employment"
+    ],
+    "dataRange": "2015-2025",
+    "classifier": "GPT-4o-mini"
+  }
+}

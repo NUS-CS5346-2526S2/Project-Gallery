@@ -1,0 +1,55 @@
+sector_key,level,parent_sector_key,ssic_2020_code,total_emp_xlsx_name,resident_emp_json_name,gdp_json_name,emp_by_sector_json_name,emp_change_csv_name,notes
+total,0,,,"Total","All Industries (Employed Residents)","GDP At Current Market Prices",,,"Economy-wide aggregate"
+total_excl_mdw,0,,,"Total (excl MDW)",,,,,"Total excluding migrant domestic workers"
+manufacturing,1,,C10-32,"Manufacturing","Manufacturing","Manufacturing","Manufacturing","manufacturing","Broad manufacturing sector"
+mfg_food_bev,2,manufacturing,C10-12,"Food, Beverages & Tobacco",,,,,
+mfg_paper_rubber,2,manufacturing,"C17, 18, 22","Paper / Rubber / Plastic Products & Printing",,,,,
+mfg_petrochem,2,manufacturing,C19-21,"Petroleum, Chemical & Pharmaceutical Products",,,,,
+mfg_metal_machinery,2,manufacturing,"C25,28","Fabricated Metal Products, Machinery & Equipment",,,,,
+mfg_electronics,2,manufacturing,C26,"Electronic, Computer & Optical Products",,,,,
+mfg_transport_equip,2,manufacturing,C29-30,"Transport Equipment",,,,,
+mfg_other,2,manufacturing,,"Other Manufacturing Industries",,,,,
+construction,1,,F41-43,"Construction","Construction","Construction","Construction","construction","Broad construction sector"
+services,1,,G46-U99,"Services","Services","Services Producing Industries","Services","services","Broad services sector; GDP name differs"
+services_excl_mdw,1,,,"Services (excl MDW)",,,,,"Services excluding migrant domestic workers"
+wholesale_retail,2,services,G46-47,"Wholesale & Retail Trade","Wholesale & Retail Trade","Wholesale & Retail Trade","Wholesale And Retail Trade",,"Note: GDP has sub-breakdown too"
+wholesale,3,wholesale_retail,G46,"Wholesale Trade",,"Wholesale Trade",,,
+retail,3,wholesale_retail,G47,"Retail Trade",,"Retail Trade",,,
+transport_storage,2,services,H49-53,"Transportation & Storage","Transportation & Storage","Transportation & Storage","Transportation And Storage",,
+transport_land,3,transport_storage,"H49, 5221","Land Transport & Supporting Services",,,,,"SSIC codes span sections"
+transport_water,3,transport_storage,"H50, 5222, 5225","Water Transport & Supporting Services",,,,,
+transport_air,3,transport_storage,"H51, 5223","Air Transport & Supporting Services",,,,,
+transport_other,3,transport_storage,"H521, 5224, 5229, 53","Other Transportation & Storage",,,,,
+accomm_food,2,services,I55-56,"Accommodation & Food Services","Accommodation & Food Services","Accommodation & Food Services","Accommodation And Food Services",,
+accomm,3,accomm_food,I55,"Accommodation",,"Accommodation",,,
+food_bev_services,3,accomm_food,I56,"Food & Beverage Services",,"Food & Beverage Services",,,
+info_comms,2,services,J58-63,"Information & Communications","Information & Communications","Information & Communications","Information And Communications",,
+info_comms_telecom,3,info_comms,J58-61,"Telecomunications, Broadcasting & Publishing",,,,,"Note: typo 'Telecomunications' is in the source data"
+info_comms_it,3,info_comms,J62-63,"IT & Other Information Services",,,,,"IT and other information services"
+finance_insurance,2,services,K64-66,"Financial & Insurance Services","Financial & Insurance Services","Finance & Insurance","Financial And Insurance Services",,"GDP name differs: 'Finance & Insurance'"
+finance_services,3,finance_insurance,"K64 & 66 (excl. 662)","Financial Services",,,,,"Excl insurance brokers"
+insurance_services,3,finance_insurance,"K65 & 662","Insurance Services",,,,,"Includes insurance brokers"
+real_estate,2,services,L68,"Real Estate Services","Real Estate Services","Real Estate","Real Estate Services",,"GDP groups real estate with prof/admin services"
+professional,2,services,M69-75,"Professional Services","Professional Services","Professional Services","Professional Services",,
+prof_legal_acct,3,professional,M69-70,"Legal, Accounting & Management Services",,,,,
+prof_arch_eng,3,professional,M71,"Architectural & Engineering Services",,,,,
+prof_other,3,professional,M72-75,"Other Professional Services",,,,,
+admin_support,2,services,N77-82,"Administrative & Support Services","Administrative & Support Services","Administrative & Support Services","Administrative And Support Services",,
+admin_security,3,admin_support,N80,"Security & Investigation",,,,,
+admin_cleaning,3,admin_support,N81,"Cleaning & Landscaping",,,,,
+admin_other,3,admin_support,,"Other Adminstrative & Support Services",,,,,
+community_social,2,services,O84-U99,"Community, Social & Personal Services","","Other Services Industries","Community, Social And Personal Services",,"Resident JSON splits into sub-sectors; GDP is 'Other Services'"
+public_admin_edu,3,community_social,"O84, P85","Public Administration & Education","Public Administration & Education",,,,
+public_admin,4,public_admin_edu,O84,"Public Administration",,"Public Administration & Defence",,,
+education,4,public_admin_edu,O85,"Education",,"Education",,,
+health_social,3,community_social,Q86-88,"Health & Social Services","Health & Social Services","Health & Social Services",,,"Also in GDP"
+arts_entertainment,3,community_social,R90-93,"Arts, Entertainment & Recreation","Arts, Entertainment & Recreation","Arts, Entertainment & Recreation",,,"Also in GDP"
+community_other,3,community_social,"S, T, U","Other Community, Social & Personal Services","Other Community, Social & Personal Services","Other Services - Others",,,
+others,1,,"A, B, D, E","Others","Others",,"Others",,"Agriculture, Mining, Utilities; GDP has 'Utilities' + 'Other Goods Industries'"
+gdp_goods_producing,1,,,,"","Goods Producing Industries",,,"GDP-only aggregate: Mfg + Construction + Utilities + Other Goods"
+gdp_utilities,2,gdp_goods_producing,,,,Utilities,,,"GDP-only sub-sector under Goods Producing"
+gdp_other_goods,2,gdp_goods_producing,,,,Other Goods Industries,,,"GDP-only: Agriculture, Fishing, Quarrying"
+gdp_re_prof_admin,2,services,,,,Real Estate&#44; Professional Services And Administrative & Support Services,,,"GDP groups these 3 together at one level"
+gdp_ownership_dwellings,1,,,,,"Ownership Of Dwellings",,,"GDP imputed rent component — not employment-related"
+gdp_gva,0,,,,,"Gross Value Added At Basic Prices",,,"GDP sub-total before taxes"
+gdp_taxes,0,,,,,"Add: Taxes On Products",,,"GDP component — not industry-specific"

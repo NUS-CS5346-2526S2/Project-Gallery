@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sleep Signals | Data &amp; Method</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("sleep-signals-theme");
+      if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
+    } catch (error) {}
+  </script>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="brand-lockup" href="index.html">
+        <span class="brand-mark">SS</span>
+        <span class="brand-text">
+          <small>CS5346 Information Visualisation</small>
+          <strong>Sleep Signals</strong>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Overview</a>
+        <a class="nav-link" href="student.html">Student</a>
+        <a class="nav-link" href="educator.html">Educator</a>
+        <a class="nav-link" href="context.html">Global Context</a>
+        <a class="nav-link active" href="method.html">Data &amp; Method</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero fade-up">
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="hero-copy">
+          <span class="eyebrow">Data &amp; method</span>
+          <h1>Sample profile, question wording, and caveats in one place.</h1>
+        </div>
+        <aside class="hero-card" id="methodStats">
+          <div class="loading-state">Loading dataset profile…</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Respondent profile</span>
+          <h2>Who answered this survey?</h2>
+        </div>
+        <p>
+          The sample has known imbalances — worth keeping in view when reading the charts.
+        </p>
+      </div>
+      <div class="data-grid">
+        <article class="surface-card">
+          <span class="section-kicker">Year of study</span>
+          <h3 class="panel-title">Respondent split</h3>
+          <div class="bar-list" id="yearProfile"></div>
+        </article>
+        <article class="surface-card">
+          <span class="section-kicker">Gender</span>
+          <h3 class="panel-title">Respondent split</h3>
+          <div class="bar-list" id="genderProfile"></div>
+        </article>
+        <article class="surface-card">
+          <span class="section-kicker">Academic performance</span>
+          <h3 class="panel-title">Outcome skew</h3>
+          <div class="bar-list" id="performanceProfile"></div>
+        </article>
+        <article class="surface-card">
+          <span class="section-kicker">Assignment impact</span>
+          <h3 class="panel-title">Outcome skew</h3>
+          <div class="bar-list" id="deadlineProfile"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Data sources</span>
+          <h2>Where the data comes from</h2>
+        </div>
+      </div>
+      <div class="data-grid">
+        <article class="surface-card" id="dataSourceGrid">
+          <div class="loading-state">Loading data sources…</div>
+        </article>
+        <article class="surface-card">
+          <span class="section-kicker">Benchmark coverage</span>
+          <h3 class="panel-title">Country records by region</h3>
+          <div class="bar-list" id="benchmarkRegionProfile"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="split-notes">
+        <article class="note-card">
+          <span class="section-kicker">Analysis logic</span>
+          <h3>How associations are measured</h3>
+          <p>
+            The shortlist uses Spearman rank correlation because the featured variables are ordinal. The chart views then show row-normalized distributions so users can still see how categories are distributed inside each factor level.
+          </p>
+        </article>
+        <article class="note-card">
+          <span class="section-kicker">Caveats</span>
+          <h3>What still needs caution</h3>
+          <p>
+            Reverse causality is plausible, especially for academic stress, concentration difficulty, and sleep disruption. The question on night awakenings may also be interpreted differently by different respondents.
+          </p>
+        </article>
+        <article class="note-card">
+          <span class="section-kicker">Benchmark layer</span>
+          <h3>How the cross-country context should be read</h3>
+          <p>
+            The benchmark page compares country-level student-sleep records drawn from different studies. It adds context and scope,
+            but it is not a fully harmonized pooled dataset and should stay descriptive.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Glossary</span>
+          <h2>Survey questions behind each label</h2>
+        </div>
+        <p>
+          Each card shows the exact survey wording behind the label used in the charts.
+        </p>
+      </div>
+      <div class="glossary-grid" id="glossaryGrid">
+        <div class="loading-state">Loading glossary…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    The archived exploratory prototype remains in <a href="prototype/index_v2.html">prototype/</a> for comparison against this new page flow.
+  </footer>
+
+  <script src="assets/vendor/d3.v7.min.js" defer></script>
+  <script src="data/local-survey-bundle.js" defer></script>
+  <script src="data/global-sleep-benchmarks.js" defer></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/charts.js" defer></script>
+  <script src="assets/theme.js" defer></script>
+  <script src="assets/method.js" defer></script>
+</body>
+</html>

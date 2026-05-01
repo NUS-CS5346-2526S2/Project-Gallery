@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sleep Signals | Global Context</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("sleep-signals-theme");
+      if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
+    } catch (error) {}
+  </script>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="brand-lockup" href="index.html">
+        <span class="brand-mark">SS</span>
+        <span class="brand-text">
+          <small>CS5346 Information Visualisation</small>
+          <strong>Sleep Signals</strong>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Overview</a>
+        <a class="nav-link" href="student.html">Student</a>
+        <a class="nav-link" href="educator.html">Educator</a>
+        <a class="nav-link active" href="context.html">Global Context</a>
+        <a class="nav-link" href="method.html">Data &amp; Method</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero fade-up">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Expanded scope</span>
+          <h1>Compare the local survey to reported student-sleep patterns in other countries.</h1>
+          <p>
+            How does Bangladesh compare? Select a metric to explore student sleep patterns across countries.
+          </p>
+        </div>
+        <aside class="hero-card" id="contextStats">
+          <div class="loading-state">Loading benchmark summary…</div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="controls-panel">
+        <div class="controls-grid">
+          <div class="field">
+            <label for="contextMetric">Y-axis metric</label>
+            <select id="contextMetric"></select>
+          </div>
+          <div class="field">
+            <label>How to interact</label>
+            <div class="sample-pill">Hover any visible mark, then click a country or ranking row to pin its detail card</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="viz-layout">
+        <aside class="note-card" id="contextDetail">
+          <div class="loading-state">Loading selected country…</div>
+        </aside>
+        <article class="chart-card">
+          <span class="section-kicker">Cross-country comparison</span>
+          <h3 id="contextChartTitle">Average sleep hours vs insomnia prevalence</h3>
+          <p id="contextChartCopy">
+            Countries with less average sleep and higher reported burden move toward the upper-left of the plot.
+          </p>
+          <div class="chart-toolbar" id="contextViewModes" aria-label="Context chart view modes"></div>
+          <div class="legend" id="contextLegend"></div>
+          <div class="chart-shell" id="contextChart"></div>
+          <p class="footnote" id="contextFootnote">
+            These benchmark values come from different studies and should be treated as comparative context rather than a strictly harmonized pooled dataset.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="data-grid">
+        <article class="surface-card">
+          <span class="section-kicker">Country leaderboard</span>
+          <h3 class="panel-title" id="contextRankingTitle">Highest insomnia prevalence</h3>
+          <div class="context-ranking-grid" id="contextRanking"></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    The benchmark layer complements the local survey. For exact wording, skew notes, and ordinal-method details, open <a href="method.html">Data &amp; Method</a>.
+  </footer>
+
+  <script src="assets/vendor/d3.v7.min.js" defer></script>
+  <script src="data/global-sleep-benchmarks.js" defer></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/charts.js" defer></script>
+  <script src="assets/theme.js" defer></script>
+  <script src="assets/context.js" defer></script>
+</body>
+</html>

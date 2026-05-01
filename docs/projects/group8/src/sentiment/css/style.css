@@ -1,0 +1,196 @@
+/* === RESET & BASE === */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1a1a2e;
+    background: #fff;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+/* === HERO (Exposition) === */
+#hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f1923;
+    color: #e8ecf1;
+    text-align: center;
+    padding: 60px 0;
+}
+.overline {
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #5a7a9a;
+    margin-bottom: 24px;
+}
+#hero h1 {
+    font-size: 2.6rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 24px;
+    letter-spacing: -0.5px;
+}
+#hero .subtitle {
+    font-size: 1.05rem;
+    color: #8fa8c4;
+    max-width: 520px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+}
+#hero .subtitle strong { color: #64d8cb; }
+.scroll-cue {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4a6a8a;
+    animation: pulse 2s ease infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+
+/* === SECTIONS === */
+.section { padding: 80px 0; }
+.section-alt { background: #f7f8fa; }
+
+/* === NARRATIVE TEXT (Lecture 3: context before data) === */
+.narrative-text { margin-bottom: 32px; }
+.narrative-text h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #1a1a2e;
+}
+.narrative-text p {
+    font-size: 0.95rem;
+    color: #555;
+    max-width: 640px;
+    line-height: 1.8;
+}
+.narrative-text.center { text-align: center; }
+.narrative-text.center p { margin: 0 auto; }
+
+/* Inline stance indicators (Lecture 2: color for categorical) */
+.inline-anti { color: #c62828; font-weight: 600; }
+.inline-pro { color: #1565c0; font-weight: 600; }
+.inline-neutral { color: #777; font-weight: 600; }
+
+/* === CHART INSIGHT (Lecture 3: annotate the takeaway) === */
+.chart-insight {
+    font-size: 0.85rem;
+    color: #777;
+    font-style: italic;
+    margin-top: 16px;
+    padding-left: 16px;
+    border-left: 3px solid #ddd;
+}
+
+/* === CHARTS === */
+.chart-container { width: 100%; overflow-x: auto; }
+.chart-container svg { width: 100%; display: block; }
+
+/* === FILTERS (Lecture 10: purposeful interaction) === */
+#filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+.filter-label { font-size: 0.8rem; color: #999; }
+.button-group { display: flex; gap: 4px; flex-wrap: wrap; }
+.filter-btn {
+    padding: 4px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    background: #fff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.filter-btn:hover { border-color: #1a1a2e; color: #1a1a2e; }
+.filter-btn.active { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+
+/* === WORD CLOUD PAIR (Lecture 2: spatial grouping via Gestalt) === */
+.cloud-pair {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    min-height: 320px;
+}
+.cloud-side { padding: 12px 0; }
+.cloud-side h3 {
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.cloud-anti h3 { color: #c62828; }
+.cloud-pro h3 { color: #1565c0; }
+.cloud-divider { background: #e0e0e0; }
+.cloud-side svg { width: 100%; height: 280px; }
+
+/* === D3 STYLES (Lecture 2: consistent encoding) === */
+.axis text { font-size: 0.75rem; fill: #888; }
+.axis path, .axis line { stroke: #e0e0e0; }
+.grid line { stroke: #f0f0f0; }
+.grid .domain { display: none; }
+
+/* === TOOLTIP === */
+.tooltip {
+    position: fixed;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    pointer-events: none;
+    z-index: 100;
+    max-width: 300px;
+    font-size: 0.82rem;
+    transition: opacity 0.15s;
+}
+.tooltip.hidden { opacity: 0; pointer-events: none; }
+.tooltip-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.tooltip-topic { font-weight: 700; font-size: 0.9rem; }
+.tooltip-stance { padding: 2px 8px; border-radius: 3px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; }
+.tooltip-stance.anti { background: #fde0dc; color: #c62828; }
+.tooltip-stance.neutral { background: #f0f0f0; color: #777; }
+.tooltip-stance.pro { background: #dceefb; color: #1565c0; }
+.tooltip-count { font-size: 0.78rem; color: #888; margin-bottom: 4px; }
+.tooltip-quote { font-size: 0.75rem; color: #999; font-style: italic; border-top: 1px solid #f0f0f0; padding-top: 6px; }
+
+/* === CAVEAT === */
+.caveat {
+    font-size: 0.78rem;
+    color: #999;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 24px;
+    margin-top: 32px;
+    line-height: 1.7;
+}
+
+/* === FOOTER === */
+footer {
+    background: #0f1923;
+    color: #5a7a9a;
+    text-align: center;
+    padding: 24px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 640px) {
+    #hero h1 { font-size: 1.6rem; }
+    .cloud-pair { grid-template-columns: 1fr; }
+    .cloud-divider { height: 1px; width: 100%; }
+    .section { padding: 48px 0; }
+}

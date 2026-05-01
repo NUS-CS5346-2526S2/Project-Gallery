@@ -1,0 +1,13 @@
+sector_key,level,total_employment_thousands,resident_employment_thousands,nonresident_employment_thousands,nonresident_share_pct_2025,gdp_current_million_sgd,gdp_per_worker_thousand_sgd,earliest_year,nonresident_share_pct_earliest,share_change_pp
+construction,1,566.8,103.6,463.19999999999993,81.72,29985.5,52.9,2009,69.91,11.81
+manufacturing,1,494.4,210.2,284.2,57.48,137611.7,278.34,2009,43.11,14.37
+others,1,26.5,19.5,7.0,26.42,,,2009,3.7,22.72
+services,1,3029.2,2043.2,985.9999999999998,32.55,535527.2,176.79,2009,30.51,2.04
+accomm_food,2,271.0,145.8,125.2,46.2,13274.3,48.98,2009,34.26,11.94
+admin_support,2,255.5,127.8,127.7,49.98,18449.9,72.21,2009,43.14,6.84
+finance_insurance,2,241.3,235.3,6.0,2.49,104176.0,431.73,2009,14.99,-12.5
+info_comms,2,174.5,129.4,45.1,25.85,47050.1,269.63,2009,0.11,25.74
+professional,2,285.7,192.6,93.1,32.59,41806.5,146.33,2009,36.17,-3.58
+real_estate,2,78.5,58.8,19.700000000000003,25.1,22208.6,282.91,2009,42.75,-17.65
+transport_storage,2,269.8,209.0,60.80000000000001,22.54,60117.1,222.82,2009,9.91,12.63
+wholesale_retail,2,450.8,336.7,114.10000000000002,25.31,155482.7,344.9,2009,35.85,-10.54

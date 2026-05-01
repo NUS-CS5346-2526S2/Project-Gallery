@@ -1,0 +1,3569 @@
+[
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 1990,
+    "reasons": [
+      "Soviet–Afghan War (1979–89) drove 2–3 million Afghans into Iran as refugees",
+      "Shared Dari-Persian language and Shia ties made Iran the natural first refuge",
+      "Iran had the world's second-largest refugee population at ~3 million by 1990"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 1995,
+    "reasons": [
+      "Post-war drop: ~1.3M Afghans returned as Soviet threat ended and mujahideen takeover looked possible",
+      "Afghan civil war (1992–96) between mujahideen factions kept a large residual refugee population in Iran",
+      "Iran's repatriation push reduced numbers but voluntary return was partial"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 2000,
+    "reasons": [
+      "Taliban rule (1996–2001) made return unsafe; Afghan population in Iran stabilised around 2.2M",
+      "Many stayed as undocumented labour migrants in Iranian construction and agriculture",
+      "Iran signed the Comprehensive Solutions Framework with UNHCR to manage the Afghan presence"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 2005,
+    "reasons": [
+      "US-led invasion (2001) initially triggered repatriation hopes, modestly increasing return",
+      "Renewed instability in 2003–05 reversed returns; numbers edged back up to 2.4M",
+      "Iran's construction boom absorbed Afghan labour despite government deportation drives"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 2010,
+    "reasons": [
+      "Continued security deterioration in Afghanistan sustained refugee stock in Iran at ~2.6M",
+      "Iran implemented repeated mass deportations (100K+/year) but new arrivals offset them",
+      "Wage differential kept undocumented Afghan workers in Iranian agriculture and construction"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 2015,
+    "reasons": [
+      "Numbers stabilised around 2.6M — a near-steady state of arrivals balancing deportations",
+      "Taliban insurgency outside Kabul kept voluntary repatriation from becoming large-scale",
+      "Iran and Afghanistan signed a new labour migration agreement in 2014"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 2020,
+    "reasons": [
+      "Slight increase as security worsened in Afghanistan's provinces, pushing more families to Iran",
+      "COVID-19 disrupted deportations; Afghan workers stranded in Iran boosted the count",
+      "Remittances from Iran became critical for Afghan households during economic collapse"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Iran",
+    "originKey": "afghanistan",
+    "destinationKey": "iran",
+    "year": 2024,
+    "reasons": [
+      "Taliban takeover (Aug 2021) triggered the largest new Afghan exodus since the 1990s — Iran absorbed 1M+ more",
+      "Afghan population in Iran surged past 3.7M — the world's largest refugee population",
+      "Iran's own economic crisis under sanctions created tensions; mass arrests of undocumented Afghans followed"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 1990,
+    "reasons": [
+      "Soviet–Afghan War refugees: Pakistan hosted 3.5M Afghans — the world's largest refugee population",
+      "UNHCR camps in Peshawar and Balochistan became semi-permanent cities",
+      "Pashtun tribal connections across the Durand Line blurred refugee and community movement"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 1995,
+    "reasons": [
+      "Post-Soviet departure (1989) sparked partial repatriation — numbers halved to ~1.3M",
+      "Afghan civil war (1992–96) prevented full return; those who went back often returned to Pakistan",
+      "Pakistan pushed for repatriation; many Afghans moved to cities to avoid camp closures"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 2000,
+    "reasons": [
+      "Numbers rose again to ~2M as Taliban rule (1996–2001) made repatriation unsafe",
+      "Refugee camps in NWFP and Balochistan re-swelled as Taliban persecution hit minorities",
+      "UNHCR–Pakistan Comprehensive Repatriation Programme was under-resourced and slow"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 2005,
+    "reasons": [
+      "US invasion (2001) and Karzai government gave renewed hope; ~1.2M Afghans voluntarily returned",
+      "UNHCR's tripartite agreement facilitated the largest Afghan return operation in history",
+      "Many returnees came back to Pakistan within months as land disputes and insecurity reappeared"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 2010,
+    "reasons": [
+      "Afghan Taliban resurgence (2006–10) reversed repatriation — numbers rebounded to ~2M",
+      "Pakistan's own Swat and FATA military operations displaced Pakistanis, adding pressure",
+      "Pakistan demanded Afghan repatriation; UNHCR acknowledged 'voluntary return' conditions were not met"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 2015,
+    "reasons": [
+      "Pakistan intensified pressure after Peshawar school attack (Dec 2014) blaming Afghan refugees",
+      "Operation Zarb-e-Azb (2014) in FATA targeted militants but also disrupted refugee communities",
+      "Pakistan–Afghanistan tensions led to accelerated but often forced returns"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 2020,
+    "reasons": [
+      "Pakistan's continued repatriation campaigns and documented harassment reduced numbers slightly",
+      "COVID-19 border closures temporarily froze movement but did not fundamentally change the stock",
+      "Afghanistan's economic collapse under COVID added push while Pakistan's reception worsened"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Afghanistan",
+    "destination": "Pakistan",
+    "originKey": "afghanistan",
+    "destinationKey": "pakistan",
+    "year": 2024,
+    "reasons": [
+      "Taliban takeover (Aug 2021) sent a new wave of ~600K Afghans to Pakistan within weeks",
+      "Pakistan's Nov 2023 mass deportation order expelled 1.7M undocumented Afghans in months",
+      "Largest forced return of Afghan refugees in history — but continuing insecurity meant many re-crossed"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 1990,
+    "reasons": [
+      "Albania was Europe's most isolated communist state; almost zero emigration before 1990",
+      "Albanian migration to Greece was literally zero until the regime collapsed"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 1995,
+    "reasons": [
+      "Communist regime fell 1991: 300K+ Albanians reached Greece and Italy in months",
+      "Greece–Albania wage gap was 20:1; Albanians filled Greek agriculture, construction and domestic work",
+      "Greece had no legal framework for Albanian workers; ~200K were undocumented"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 2000,
+    "reasons": [
+      "400K — Albania's 1997 pyramid scheme collapse triggered another wave",
+      "Greek construction boom (Olympics 2004 preparations) created massive demand for Albanian labour",
+      "Greece issued 'green cards' regularising 370K Albanian workers in 1998"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 2005,
+    "reasons": [
+      "Numbers stabilised as the corridor matured; Albanians became most integrated immigrant group in Greece",
+      "Greece–Albania bilateral agreement formalised seasonal and permanent worker rights"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 2010,
+    "reasons": [
+      "463K — peak of the corridor; second generation Albanian-Greeks were being born",
+      "Greek financial crisis (2010) reduced construction employment; some Albanians returned"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 2015,
+    "reasons": [
+      "436K — Greek austerity reduced wages and job availability; circular Albanians reduced stays",
+      "Many Albanians had by now obtained Greek citizenship through naturalisation"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 2020,
+    "reasons": [
+      "447K — stabilised; Albania's EU accession process (candidate since 2014) began attracting direct EU migration",
+      "New wave of young Albanians heading to Germany and UK rather than Greece"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Albania",
+    "destination": "Greece",
+    "originKey": "albania",
+    "destinationKey": "greece",
+    "year": 2024,
+    "reasons": [
+      "474K — modest recovery as Greece's economy improved; Albanian community well-integrated",
+      "Albania's Schengen visa liberalisation (2010) had long normalised movement"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 1990,
+    "reasons": [
+      "Bangladesh–Saudi labour corridor established in the 1970s; construction workers dominant",
+      "Remittances from Saudi Arabia were Bangladesh's largest source of foreign exchange",
+      "BMET (Bureau of Manpower) managed formal recruitment under bilateral labour agreement"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 1995,
+    "reasons": [
+      "Grew to 335K as Saudi construction continued",
+      "Gulf War (1990–91) caused brief disruption but most Bangladeshi workers stayed"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 2000,
+    "reasons": [
+      "Slow growth to 352K — Saudi recession in late 1990s limited recruitment",
+      "Bangladesh government pushed to diversify Gulf destinations after Saudi slowdown"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 2005,
+    "reasons": [
+      "482K — Saudi oil boom restarted mega-construction; recruitment accelerated sharply",
+      "Bangladesh remittances crossed $5B/year for first time, mostly from Gulf"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 2010,
+    "reasons": [
+      "Nearly doubled to 994K — Saudi construction for Mecca expansion and infrastructure drove demand",
+      "Bangladesh–Saudi bilateral labour agreement renewed with increased worker quotas",
+      "Bangladeshi workers concentrated in domestic work, construction and cleaning"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 2015,
+    "reasons": [
+      "2.08M — huge jump driven by Saudi Vision 2030 preparation phase",
+      "King Abdullah Economic City and other megaprojects drew Bangladeshi workers by the hundreds of thousands",
+      "Bangladesh–Saudi remittances exceeded $3.5B/year — critical to Bangladesh's balance of payments"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 2020,
+    "reasons": [
+      "Slight dip — COVID-19 caused ~100K returns; Saudisation (Nitaqat) targeted some sectors",
+      "Rapid recovery as Saudi Arabia maintained construction schedules",
+      "Remittances proved resilient even during COVID — Gulf workers prioritised sending money home"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Bangladesh",
+    "destination": "Saudi Arabia",
+    "originKey": "bangladesh",
+    "destinationKey": "saudi arabia",
+    "year": 2024,
+    "reasons": [
+      "2.36M — Bangladesh's largest diaspora; Saudi Arabia remains the primary Gulf destination",
+      "Bangladesh–Saudi new MOU (2022) expanded quotas amid competition from Ethiopia and Philippines",
+      "Remittances of ~$4B/year sustain millions of Bangladeshi families"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 1990,
+    "reasons": [
+      "Spanish language and colonial ties; small Colombian professional community in Spain"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 1995,
+    "reasons": [
+      "44K — slow growth; Colombia's violence (FARC, paramilitaries) pushed educated class to seek emigration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 2000,
+    "reasons": [
+      "130K — Colombia's economic crisis (1999) triggered mass emigration; Spain became top destination",
+      "Spanish immigration law (2000) gave Latin Americans preferential access; Colombian applications surged",
+      "Plan Colombia and US intervention increased instability; educated Colombians chose Spain over US"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 2005,
+    "reasons": [
+      "280K — Spain's construction boom created huge demand; Colombians filled service sector roles",
+      "Spain–Colombia bilateral Social Security agreement (2007) gave legal workers pension rights",
+      "Colombian women dominant in care and domestic work; men in construction and hospitality"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 2010,
+    "reasons": [
+      "376K — peak of Colombian community before Spain's crisis hit",
+      "Spain's 2008 crisis: 25% unemployment hit Colombian workers hard; return migration began",
+      "Spain's 'voluntary return' programme (2008) paid Colombian workers to leave — 14K accepted"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 2015,
+    "reasons": [
+      "344K — Spain's prolonged recession reduced the community",
+      "Some Colombians moved from Spain to Germany and UK as Spain remained in crisis",
+      "Colombian community bore disproportionate impact of Spain's construction collapse"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 2020,
+    "reasons": [
+      "513K — Colombia's peace agreement (2016) and relative stability reduced conflict emigration but economic emigration continued",
+      "Remittances from Spain remained critical to Colombian household incomes",
+      "Spain's economic recovery post-2015 drew Colombians back from Germany"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Colombia",
+    "destination": "Spain*",
+    "originKey": "colombia",
+    "destinationKey": "spain",
+    "year": 2024,
+    "reasons": [
+      "792K — Colombia–Spain now one of the largest Latin America–Europe corridors",
+      "Spain's bilateral agreement gave Colombian nationals access to Spanish nationality after 2 years (vs 10 for others)",
+      "Colombians well-integrated; second generation emerging in Spanish cities"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 1990,
+    "reasons": [
+      "Eritrean independence war against Ethiopia; Sudan was the primary refuge for Eritrean fighters and civilians",
+      "Sudan hosted 400K+ Eritreans in camps since the 1970s; Shagarab and Wad Sharife were the main camps"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 1995,
+    "reasons": [
+      "288K — independence (1993) ironically increased movement as demobilised fighters settled in Sudan",
+      "Some Eritreans returned after independence but many had established lives in Sudan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 2000,
+    "reasons": [
+      "435K — Ethiopia–Eritrea War (1998–2000) re-displaced 350K; Sudan received new flows",
+      "Sudan remained the default refuge for Eritreans expelled from Ethiopia and caught in the conflict"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 2005,
+    "reasons": [
+      "197K — post-war repatriation reduced the count; Eritrea–Sudan normalisation allowed returns",
+      "Tripartite repatriation agreement (Eritrea, Sudan, UNHCR) managed voluntary return"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 2010,
+    "reasons": [
+      "142K — continued decline; Eritrean political refugees (post-2001 crackdown) chose Europe over Sudan",
+      "Eritrea's 'shoot to kill' border policy from 2004 made crossing dangerous but people still tried"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 2015,
+    "reasons": [
+      "160K — Eritreans were now primarily transit migrants: Sudan→Libya→Mediterranean→Europe",
+      "Eritrea became one of the world's top refugee-producing nations per capita (indefinite national service)",
+      "Eritrean refugee route to Europe was one of the deadliest crossing the Central Mediterranean"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 2020,
+    "reasons": [
+      "221K — Tigray War (2020) spilled over; Eritrean forces in Tigray created new displacement into Sudan",
+      "Eritrean refugees in Ethiopian Tigray camps were attacked; some fled to Sudan",
+      "Sudan hosted ~120K registered Eritreans; total including unregistered likely higher"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Eritrea",
+    "destination": "Sudan",
+    "originKey": "eritrea",
+    "destinationKey": "sudan",
+    "year": 2024,
+    "reasons": [
+      "384K — Sudan's civil war (Apr 2023) paradoxically drove Eritreans already in Sudan to flee back or deeper",
+      "RSF attacks on refugee camps in Sudan; Eritrean refugees facing double displacement",
+      "UNHCR described Sudan's refugee crisis (2023–24) as 'the world's largest displacement crisis'"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 1990,
+    "reasons": [
+      "Derg regime's forced villagisation and famine (1984–85) had displaced millions; Sudan was an early refuge",
+      "Tigray and Eritrean insurgencies pushed civilians across Sudan border in the late 1980s"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 1995,
+    "reasons": [
+      "496K — fall of Derg (1991) and Tigray People's Liberation Front victory enabled mass return",
+      "UNHCR repatriation programmes brought hundreds of thousands of Ethiopian refugees home from Sudan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 2000,
+    "reasons": [
+      "123K — dramatic decline as Ethiopia–Sudan normalised and most refugees were repatriated",
+      "Ethiopia–Eritrea War (1998–2000) caused internal displacement but not primarily toward Sudan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 2005,
+    "reasons": [
+      "108K — further reduction; post-war Ethiopia stabilised under EPRDF",
+      "Residual community represented long-settled Ethiopians, not recent refugees"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 2010,
+    "reasons": [
+      "74K — continued slow decline",
+      "Sudan itself was instability source (Darfur crisis 2003+); not preferred destination for new Ethiopians"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 2015,
+    "reasons": [
+      "51K — near-complete normalisation of the corridor",
+      "Some Ethiopians used Sudan as transit toward Libya and Europe rather than as final destination"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 2020,
+    "reasons": [
+      "70K — modest increase: Tigray War (Nov 2020) began displacing Tigrayans toward Sudan",
+      "Ethiopian military and Eritrean forces in Tigray; ~60K Tigrayans fled to Sudan in first months of conflict"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ethiopia",
+    "destination": "Sudan",
+    "originKey": "ethiopia",
+    "destinationKey": "sudan",
+    "year": 2024,
+    "reasons": [
+      "122K — Tigray War displaced 2M+ internally; Sudan received continuing inflows",
+      "Sudan's own civil war (Apr 2023) created reverse flow: Ethiopians now leaving Sudan as it became dangerous",
+      "Bizarre reversal: Sudan was simultaneously receiving Ethiopians and generating its own 8M displaced"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 1990,
+    "reasons": [
+      "Saudi oil infrastructure and government mega-projects relied on Indian labour since the 1970s",
+      "Large Muslim Indian community found cultural and religious ease in Saudi Arabia",
+      "Remittances from Saudi Arabia were India's largest single-country source in the early 1990s"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 1995,
+    "reasons": [
+      "Modest growth; Saudi construction continued post Gulf War reconstruction",
+      "Gulf War (1990–91) had disrupted the corridor briefly; recovery was complete by 1994"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 2000,
+    "reasons": [
+      "Slow growth to 970K — Saudi recession in late 1990s slowed recruitment",
+      "Indian blue-collar workers dominated; IT professionals preferred UAE"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 2005,
+    "reasons": [
+      "Oil price rise (2003–) funded new Saudi megaprojects — KAEC, King Abdullah Economic City",
+      "Indian construction and services recruitment accelerated sharply in the early 2000s"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 2010,
+    "reasons": [
+      "Reached 1.52M as Saudi Arabia's infrastructure spending peaked",
+      "Saudi 'Saudisation' (Nitaqat, 2011) tried to replace foreign workers but created new demand for compliance managers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 2015,
+    "reasons": [
+      "1.92M — Vision 2030 announced; massive new infrastructure and entertainment projects began",
+      "Indian workers filled construction for NEOM, Red Sea Project, Qiddiya",
+      "Indian–Saudi remittance corridor exceeded $10B/year"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 2020,
+    "reasons": [
+      "COVID-19 and oil price collapse (2020) led to ~300K Indian workers returning from Saudi Arabia",
+      "Saudi Arabia's 'Saudisation' intensified; certain sectors mandated 100% Saudi employment",
+      "Numbers partially recovered as Vision 2030 projects continued post-pandemic"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "Saudi Arabia",
+    "originKey": "india",
+    "destinationKey": "saudi arabia",
+    "year": 2024,
+    "reasons": [
+      "Recovered to 1.95M as Vision 2030 mega-projects resumed at pace",
+      "NEOM 'The Line' and Red Sea resort projects required hundreds of thousands of South Asian workers",
+      "Saudi Arabia remained top-3 source of remittances for India despite Saudisation pressures"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 1990,
+    "reasons": [
+      "UAE's post-oil-boom construction phase drew Indian workers; Gulf became India's largest remittance source",
+      "Kerala diaspora to UAE was already multigenerational by 1990; family networks well established",
+      "UAE–India remittance corridor was ~$2B/year by 1990 — critical to Kerala's household incomes"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 1995,
+    "reasons": [
+      "UAE construction boom continued; number grew to 657K",
+      "Post-Gulf War reconstruction (Kuwait, 1991) redirected some Indian workers to UAE",
+      "Dubai's free-trade zone expansion (Jebel Ali) created new white-collar Indian migration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 2000,
+    "reasons": [
+      "Reached 888K — Dubai's emergence as a global financial and tourism hub created professional roles",
+      "Indian IT and banking professionals supplemented the traditional blue-collar corridor",
+      "UAE introduced kafala sponsorship system formally; Indian workers became tied to employers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 2005,
+    "reasons": [
+      "Number crossed 1.26M — Dubai property boom (2003–08) drew millions of South Asian workers",
+      "Burj Khalifa and Palm Jumeirah constructions required tens of thousands of Indian labourers",
+      "Remittances to India from UAE exceeded $5B/year by 2005"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 2010,
+    "reasons": [
+      "Reached 2.17M — despite 2008 financial crisis, UAE construction recovered faster than expected",
+      "Dubai became home to the largest Indian expatriate community outside India",
+      "India–UAE agreed a bilateral labour protection framework after worker abuse reports"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 2015,
+    "reasons": [
+      "2.73M Indians in UAE — largest single nationality in the country (28% of total population)",
+      "Shift from blue-collar to mixed: Indian doctors, engineers, teachers and bankers populated professional sectors",
+      "Abu Dhabi's Vision 2030 and Dubai Expo 2020 preparations sustained demand"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 2020,
+    "reasons": [
+      "COVID-19 caused largest temporary reversal — ~500K Indian workers returned during 2020",
+      "Numbers recovered quickly as UAE opened early and needed workers for Expo 2020",
+      "Kafala abuses highlighted by pandemic; UAE introduced limited labour reforms in 2021"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United Arab Emirates",
+    "originKey": "india",
+    "destinationKey": "united arab emirates",
+    "year": 2024,
+    "reasons": [
+      "Reached 3.25M — post-pandemic recovery and UAE's strong economic performance drove new highs",
+      "UAE's Golden Visa programme attracted high-net-worth and skilled Indians to long-term residency",
+      "UAE–India remittances exceeded $18B/year — single largest bilateral remittance corridor globally"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 1990,
+    "reasons": [
+      "Post-1965 Immigration Act created Indian professional migration; engineers and doctors dominant",
+      "Indian students in US universities formed a reservoir that converted to H-1B workers",
+      "Silicon Valley Indian community was already shaping US tech sector by 1990"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 1995,
+    "reasons": [
+      "Reached 597K — US tech boom created huge H-1B demand; India supplied 40% of all H-1B workers",
+      "Indian IT outsourcing companies (Infosys, Wipro, TCS) sent employees to US client sites",
+      "1990 Immigration Act increased employment-based green cards, benefiting Indian professionals"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 2000,
+    "reasons": [
+      "Crossed 1.1M — dot-com boom accelerated Indian IT migration to Silicon Valley, Seattle, New York",
+      "Indian students became the largest international student group in the US",
+      "Dot-com bust (2000) briefly slowed H-1B issuance but Indian stock continued growing"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 2005,
+    "reasons": [
+      "1.42M — post-dot-com US tech recovery; offshoring boom ironically increased US-based Indian managers",
+      "Indian Americans became wealthiest ethnic group in the US (median income highest of any group)",
+      "Huge green card backlog for Indian nationals under employment-based categories"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 2010,
+    "reasons": [
+      "1.8M — US tech sector recovery; Indian engineers dominated Google, Microsoft, Intel",
+      "Indian graduate students in STEM fields were the pipeline for H-1B to green card conversion",
+      "Green card backlog for Indian-born reached 70+ year wait for some categories"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 2015,
+    "reasons": [
+      "2.38M — India became the top H-1B sending country; tech sector demand insatiable",
+      "Indian-origin CEOs led Microsoft, Google, Adobe, IBM — creating an aspirational migration model",
+      "Obama's H-4 work authorisation allowed Indian spouses to work, adding to the net community"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 2020,
+    "reasons": [
+      "2.74M — despite Trump-era H-1B restrictions (2017–21), existing residents stayed and families joined",
+      "COVID-19 disrupted H-1B processing but did not reverse the established population",
+      "Indian students shifted to Canada and UK amid US visa uncertainty, but existing residents remained"
+    ],
+    "source": null
+  },
+  {
+    "origin": "India",
+    "destination": "United States of America*",
+    "originKey": "india",
+    "destinationKey": "united states of america",
+    "year": 2024,
+    "reasons": [
+      "3.17M — India is now the largest source country of legal immigrants to the US",
+      "Indian-Americans dominate US tech leadership; diaspora network effects sustain the corridor",
+      "Green card backlog of 700K+ Indian nationals means decades-long waits; many shift to Canada"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 1990,
+    "reasons": [
+      "Shared Malay language and cultural ties create the world's most linguistically integrated labour corridor",
+      "Malaysian plantations (palm oil, rubber) depend structurally on Indonesian plantation workers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 1995,
+    "reasons": [
+      "615K — Malaysia's construction boom (Petronas Towers, KLIA) drew Indonesian construction workers",
+      "Malaysia–Indonesia wage gap of 3–4:1 made migration economically rational"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 2000,
+    "reasons": [
+      "864K — Malaysia's strong growth continued; Indonesian domestic workers and plantation workers dominant",
+      "ASEAN free movement protocols gave framework for managed migration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 2005,
+    "reasons": [
+      "1.13M — Malaysia explicitly recruited Indonesian workers to fill labour shortages",
+      "Indonesian workers faced documented abuse, especially domestic workers with no labour law protection",
+      "Indonesia–Malaysia bilateral MOU on domestic workers (2006) followed high-profile abuse cases"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 2010,
+    "reasons": [
+      "1.54M — Malaysian palm oil boom and construction sustained large-scale recruitment",
+      "Indonesian government periodically banned labour export to Malaysia after abuse scandals",
+      "Indonesia–Malaysia Joint Commission worked to regularise hundreds of thousands of undocumented workers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 2015,
+    "reasons": [
+      "1.61M — Malaysia remained the primary destination despite Indonesia's own rising wages",
+      "Shift toward semi-skilled: Indonesian workers now in manufacturing and electronics, not just plantations",
+      "Malaysia's regularisation programme ('6P') brought 300K undocumented Indonesians into the formal system"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 2020,
+    "reasons": [
+      "1.69M — COVID-19 disrupted movement but Malaysia's plantation sector retained workers",
+      "Migrant workers in Malaysian dormitories became COVID clusters; mass infections were documented",
+      "Indonesia temporarily halted worker deployment; Malaysia faced plantation labour shortages"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Indonesia",
+    "destination": "Malaysia",
+    "originKey": "indonesia",
+    "destinationKey": "malaysia",
+    "year": 2024,
+    "reasons": [
+      "1.76M — corridor fully restored post-COVID; Malaysia–Indonesia corridor is SE Asia's largest bilateral labour flow",
+      "Indonesian workers increasingly in manufacturing and services alongside traditional plantation work"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 1990,
+    "reasons": [
+      "Small Iraqi professional and merchant community in Amman",
+      "Jordan–Iraq trade ties supported small business migration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 1995,
+    "reasons": [
+      "Slow growth; UN sanctions on Iraq (1990–2003) impoverished middle class; some sought exit"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 2000,
+    "reasons": [
+      "38K — Iraq under sanctions; some professionals and Christians left for Jordan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 2005,
+    "reasons": [
+      "61K — post-invasion Iraq (2003): first wave of Iraqis reached Jordan",
+      "Sectarian civil war (2005–08) caused mass displacement; Jordan received up to 750K Iraqis at peak (2007)",
+      "Jordan hosted largest Iraqi diaspora outside Iraq; Amman became 'Baghdad on the Jordan'"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 2010,
+    "reasons": [
+      "537K — peak of Iraqi community in Jordan; post-surge violence continued displacing families",
+      "Iraqi professionals, doctors, engineers clustered in Amman; opened businesses and schools",
+      "UNHCR registered 50K+ Iraqis; many more were self-settled in middle-class Amman neighbourhoods"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 2015,
+    "reasons": [
+      "176K — dramatic decline as Iraq stabilised (2010–12) and many Iraqis returned or moved on",
+      "Families who had stabilised in Jordan sent children back to Iraq as security improved",
+      "ISIS rise (2013–) caused new displacement but toward Iraqi Kurdistan rather than Jordan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 2020,
+    "reasons": [
+      "215K — modest increase as ISIS aftermath and COVID disrupted Iraqi stability",
+      "Jordan–Iraq border reopened (2017) after years of closure; some circular movement resumed",
+      "Iraqi community in Jordan stabilised around a residual professional and merchant class"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Iraq",
+    "destination": "Jordan",
+    "originKey": "iraq",
+    "destinationKey": "jordan",
+    "year": 2024,
+    "reasons": [
+      "219K — stable; Iraq's ongoing political instability and protests sustain small continued flows",
+      "Iraqi businesspeople use Jordan as a financial base; Amman remains an Iraqi cultural hub",
+      "Jordan–Iraq economic ties (oil, trade) reinforce the migration corridor's durability"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 1990,
+    "reasons": [
+      "Soviet-era Russian ethnic population in Kazakhstan: ~38% of Kazakhstan was ethnically Russian",
+      "Russians in Kazakhstan were Soviet-era settlers and their descendants; deep roots in the region"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 1995,
+    "reasons": [
+      "2.51M — peak: post-Soviet dissolution triggered mass return migration of Russians from Kazakhstan",
+      "Russia offered simplified citizenship to Russians in near-abroad; 'compatriot' programmes promoted return",
+      "Kazakhstan's economic collapse (1990s) versus Russia's relative stability pushed ethnic Russians toward Russia"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 2000,
+    "reasons": [
+      "2.57M — continued repatriation; Kazakhstan's Russian population fell from 38% to 30%",
+      "Russia absorbed the largest share of Soviet-era demographic 'correction'"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 2005,
+    "reasons": [
+      "2.57M → 2.57M — repatriation slowing; remaining Russians in Kazakhstan increasingly integrated",
+      "Kazakhstan's own oil boom (2000s) made staying more attractive than moving to Russia"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 2010,
+    "reasons": [
+      "2.48M — slow decline; Kazakhstan's oil revenues raised local wages, reducing Russian emigration",
+      "Kazakhstan–Russia Eurasian Economic Union (2015) simplified movement but did not reverse trends"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 2015,
+    "reasons": [
+      "2.03M — continued decline; Kazakhstan's Russian community now largely settled descendants not migrants",
+      "Kazakhstan's higher wages than Russia (in some sectors) even caused some Russians to migrate to Kazakhstan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 2020,
+    "reasons": [
+      "1.64M — demographic decline of original Russian settler generation; births/deaths reducing stock",
+      "Russia's 2022 invasion of Ukraine caused a reversal: tens of thousands of Russians fled to Kazakhstan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Kazakhstan",
+    "destination": "Russian Federation",
+    "originKey": "kazakhstan",
+    "destinationKey": "russian federation",
+    "year": 2024,
+    "reasons": [
+      "1.32M — continued demographic decline of Soviet-era Russian community",
+      "New dynamic: Russians fleeing mobilisation (2022) and IT workers fleeing sanctions moved TO Kazakhstan from Russia"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 1990,
+    "reasons": [
+      "Mexico–US wage gap of ~10:1 is the world's most powerful bilateral migration driver",
+      "Mexico's rural agricultural sector provides unlimited low-wage workers for US farms and construction",
+      "1986 IRCA amnesty legalised 2.7M Mexicans, creating family networks that accelerated further migration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 1995,
+    "reasons": [
+      "Number jumped to 7M — NAFTA (1994) displaced Mexican subsistence farmers, accelerating northward movement",
+      "Mexican peso crisis (1994) caused economic collapse; emigration surged as safety valve",
+      "US labour demand during Clinton-era boom pulled Mexicans into construction, meat-packing and services"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 2000,
+    "reasons": [
+      "Stock reached 9.2M — peak decade of Mexican migration driven by US construction and service boom",
+      "Fox–Bush immigration reform talks (2001) raised hopes of legalisation for 4M undocumented Mexicans",
+      "9/11 derailed reform; border militarisation increased crossing fees and deaths but not migration levels"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 2005,
+    "reasons": [
+      "Reached 11.2M — US housing bubble (2002–06) created enormous demand for Mexican construction labour",
+      "Remittances became Mexico's 2nd largest foreign exchange source (~$25B/year)",
+      "Bush's Secure Border Initiative (2006) increased enforcement without reducing flows"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 2010,
+    "reasons": [
+      "Stock peaked at 11.9M in 2010 — then began falling for the first time in decades",
+      "2008 Financial Crisis devastated US construction sector — main employer of undocumented Mexicans",
+      "Net migration briefly turned negative: more Mexicans left the US than arrived (2009–2012)"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 2015,
+    "reasons": [
+      "Stabilised near peak — Mexican-born population started slow decline as US-born Mexican Americans grew",
+      "Obama's DACA (2012) protected 800K Mexican young people brought as children",
+      "Mexican migrants shifted from construction to services as sector recovered unevenly"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 2020,
+    "reasons": [
+      "Slight decline to 11.2M as US-born children of Mexican immigrants were no longer counted as migrants",
+      "Trump-era enforcement (2017–21) deterred some new arrivals but did not remove the existing population",
+      "COVID-19 halted temporary worker programmes (H-2A, H-2B) but residents stayed"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Mexico",
+    "destination": "United States of America*",
+    "originKey": "mexico",
+    "destinationKey": "united states of america",
+    "year": 2024,
+    "reasons": [
+      "Essentially stable at 11.3M — the corridor is mature and self-sustaining through family networks",
+      "Biden's border policies and continued Title 42 expulsions reduced new flows while the stock held",
+      "Mexican immigrants now anchor US agriculture, construction, hospitality and healthcare sectors"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 1990,
+    "reasons": [
+      "France–Morocco migration dates to 1960s industrial recruitment; 30-year-old diaspora well established",
+      "Remittances from France were Morocco's largest foreign exchange source",
+      "Moroccan community concentrated in industrial cities — Paris suburbs, Lyon, Marseille"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 1995,
+    "reasons": [
+      "685K — family reunification continued to grow the established community",
+      "France tightened entry (Pasqua Laws, 1993) but family reunification remained a legal right"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 2000,
+    "reasons": [
+      "738K — continued family growth; second and third generation Franco-Moroccans growing",
+      "French debate over immigration and integration intensified; Moroccan community at centre of debate"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 2005,
+    "reasons": [
+      "841K — France's 2004 headscarf ban disproportionately affected Moroccan Muslim students",
+      "Bilateral management agreement (OFII, 2007) formalised Moroccan labour recruitment for France's labour shortages"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 2010,
+    "reasons": [
+      "891K — Arab Spring (2011) pushed educated Moroccans toward France amid political uncertainty",
+      "Moroccan students and skilled workers diversified the community beyond labour migration origins",
+      "France–Morocco joint migration management framework deepened"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 2015,
+    "reasons": [
+      "961K — slow steady growth through family and skilled migration routes",
+      "Paris attacks (2015) linked by French media to Moroccan networks; community faced increased scrutiny",
+      "France–Morocco readmission agreement tested by Moroccan government cooperation levels"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 2020,
+    "reasons": [
+      "1.03M — crossed 1 million mark; France's Moroccan-born population among Europe's largest",
+      "COVID-19 suspended flights; Moroccans in France unable to visit; remittances sent digitally instead",
+      "Morocco closed its borders in March 2020 for months; diaspora were cut off from families"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "France*",
+    "originKey": "morocco",
+    "destinationKey": "france",
+    "year": 2024,
+    "reasons": [
+      "1.07M — France–Morocco diplomatic tensions (2021–23 over Western Sahara) did not reduce migration",
+      "France's 2024 restrictive immigration law debated against backdrop of large Moroccan community",
+      "Moroccan diaspora in France send €3B+ annually — critical to Morocco's GDP"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 1990,
+    "reasons": [
+      "Gibraltar Strait crossing: 14km of water; Morocco–Spain is Europe's shortest African crossing",
+      "Spain's rapidly growing economy needed low-wage agricultural and construction workers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 1995,
+    "reasons": [
+      "167K — Spain's construction boom began; Moroccan workers filled agriculture in Almería and Huelva",
+      "Spain's 1991 and 1996 regularisation amnesties legalised large undocumented Moroccan populations"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 2000,
+    "reasons": [
+      "274K — Spain became Southern Europe's new immigration magnet; Moroccan corridor matured",
+      "Moroccan women entered domestic and care work as Spain's formal labour market expanded"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 2005,
+    "reasons": [
+      "547K — Spain's property bubble (2002–08) created enormous construction demand for Moroccan workers",
+      "Spain's 2005 regularisation legalised 700K workers including ~200K Moroccans",
+      "Spain overtook France as Moroccans' first choice in Europe during this decade"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 2010,
+    "reasons": [
+      "766K — numbers peaked before Spain's construction collapse",
+      "2008 financial crisis devastated Spain's construction sector; Moroccan workers lost jobs en masse",
+      "Some return migration but many stayed in Spain despite unemployment rather than return"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 2015,
+    "reasons": [
+      "736K — slight decline as austerity Spain offered fewer opportunities",
+      "Morocco–Spain readmission cooperation on irregular migration tightened",
+      "Some Moroccans who had settled in Spain moved to Germany and UK as Spain's economy stalled"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 2020,
+    "reasons": [
+      "914K — recovery as Spain's economy grew post-2015; Morocco became key focus of Frontex border operations",
+      "Canary Islands 'crisis' (2020): record 23K irregular arrivals from Morocco and Mauritania",
+      "Morocco used migration leverage in Western Sahara dispute; temporarily opened Ceuta border (2021)"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Morocco",
+    "destination": "Spain*",
+    "originKey": "morocco",
+    "destinationKey": "spain",
+    "year": 2024,
+    "reasons": [
+      "1.09M — corridor now rivals France–Morocco in scale; Moroccan-born largest non-EU group in Spain",
+      "Morocco–Spain bilateral MOU on seasonal agriculture workers formalised hundreds of thousands of 'circantes'",
+      "Continued high irregular crossings alongside legal circular migration — a dual-track corridor"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 1990,
+    "reasons": [
+      "Earlier waves of Rohingya expelled from Myanmar in 1978 (200K) and 1991–92 (250K)",
+      "Cox's Bazar district hosted returning and stranded Rohingya from earlier expulsion operations",
+      "Most 1991–92 arrivals were formally repatriated by 1994 under UNHCR pressure"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 1995,
+    "reasons": [
+      "Repatriation of 1991–92 wave largely complete but many 'returnees' came back to Bangladesh",
+      "Rohingya faced continued discrimination under Myanmar's 1982 Citizenship Law denying them nationality"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 2000,
+    "reasons": [
+      "Numbers fell as Bangladesh pushed undocumented Rohingya back and closed formal camps",
+      "Rohingya in Myanmar continued to face restrictions on movement, marriage, and education"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 2005,
+    "reasons": [
+      "Bangladesh continued 'push-back' operations; registered refugee numbers reduced artificially",
+      "Rohingya began irregular sea movements to Malaysia and Thailand as Bangladesh became unwelcoming"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 2010,
+    "reasons": [
+      "Rohingya violence in Myanmar (2012 Rakhine riots) began a new displacement cycle",
+      "Bangladesh maintained strict closed-border policy; official numbers understated the true population"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 2015,
+    "reasons": [
+      "Low official count masks ~500K unregistered Rohingya in Bangladesh living outside camps",
+      "2015 Bay of Bengal crisis: thousands of Rohingya abandoned at sea after Thailand cracked down on smugglers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 2020,
+    "reasons": [
+      "Rohingya Genocide (Aug–Dec 2017): 740K+ fled to Bangladesh in 3 months — fastest mass displacement since Rwanda",
+      "Cox's Bazar became world's largest refugee settlement (900K+ residents)",
+      "Myanmar rejected the UN genocide finding; Bangladesh–Myanmar repatriation talks collapsed repeatedly"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Myanmar",
+    "destination": "Bangladesh",
+    "originKey": "myanmar",
+    "destinationKey": "bangladesh",
+    "year": 2024,
+    "reasons": [
+      "Population grew to 1.25M as births within camps added to arrivals from continued Myanmar persecution",
+      "Myanmar military coup (Feb 2021) ended any prospect of safe Rohingya return",
+      "Dangerous sea crossings to Malaysia resumed as camp conditions deteriorated"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 1990,
+    "reasons": [
+      "1950 Treaty of Peace and Friendship gives Nepalis right to live and work in India without restriction",
+      "Nepali men dominated India's security guard and construction sectors; Gurkha tradition reinforced the corridor",
+      "India–Nepal corridor is Asia's largest open-border labour migration route"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 1995,
+    "reasons": [
+      "544K — Nepal's political transition (1990 democracy) created new mobility aspirations",
+      "Nepali domestic workers, guards and labourers embedded in Indian cities"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 2000,
+    "reasons": [
+      "628K — Maoist insurgency (1996–2006) displaced Nepalis internally and toward India",
+      "Remittances from India sustained Nepal's rural households during the conflict"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 2005,
+    "reasons": [
+      "710K — peak driven by Nepal's decade-long civil war; flight to India accelerated",
+      "India offered safe haven to many Nepalis fleeing Maoist and security force violence"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 2010,
+    "reasons": [
+      "794K — peak; Nepal's peace process (2006) and political settlement began reducing conflict-driven emigration",
+      "Gulf migration emerged as alternative to India for Nepali workers; Gulf offered higher wages"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 2015,
+    "reasons": [
+      "747K — slight decline as Gulf became preferred destination; Nepal earthquake (Apr 2015) temporarily reversed some Gulf migration",
+      "India remained the baseline destination but Gulf's share was growing rapidly"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 2020,
+    "reasons": [
+      "697K — Gulf migration continued drawing Nepalis away from India; COVID stranded Gulf workers in Nepal temporarily",
+      "Nepal's remittances from Gulf exceeded those from India, reflecting the shift"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Nepal",
+    "destination": "India",
+    "originKey": "nepal",
+    "destinationKey": "india",
+    "year": 2024,
+    "reasons": [
+      "663K — continued slow decline as Gulf and other destinations diversified Nepal's migration portfolio",
+      "India corridor now dominated by lower-skilled workers; skilled Nepalis increasingly chose Gulf, Australia, UK"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 1990,
+    "reasons": [
+      "Pakistan–Saudi labour corridor dates to 1970s oil boom; construction and services dominant",
+      "Saudi Arabia's religious significance drew Pakistani Muslim workers and pilgrims who stayed",
+      "Remittances from Saudi Arabia were Pakistan's lifeline during the 1990s economic difficulties"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 1995,
+    "reasons": [
+      "Grew to 585K; Saudi recovery post-Gulf War drove recruitment",
+      "Pakistan–Saudi relations complicated by Pakistan's refusal to join Gulf War coalition"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 2000,
+    "reasons": [
+      "Slow growth — Saudi oil revenues were lower in late 1990s; modest new recruitment"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 2005,
+    "reasons": [
+      "790K — oil price rise (2003–) funded new Saudi projects; Pakistani recruitment resumed",
+      "Pakistan remittances from Saudi Arabia exceeded $2B/year"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 2010,
+    "reasons": [
+      "1.2M — Saudi mega-projects and domestic construction drew large Pakistani cohorts",
+      "Pakistan prioritised Saudi labour market through GAMCA (Gulf Approved Medical Centres)",
+      "Saudi Arabia competed with UAE as Pakistan's top remittance source"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 2015,
+    "reasons": [
+      "1.82M — Saudi Vision 2030 launch and Haramain High Speed Railway drew workers",
+      "Pakistani workers in Mecca and Medina expansion projects numbered in the hundreds of thousands",
+      "Remittances exceeded $5B/year from Saudi Arabia alone"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 2020,
+    "reasons": [
+      "Slight decrease — COVID-19 caused ~150K returns; Nitaqat Saudisation displaced some workers",
+      "Pakistan–Saudi bilateral remittance agreement helped stabilise flows during pandemic",
+      "Saudi Arabia offered 'amnesty' allowing undocumented Pakistanis to regularise or leave without penalty"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Pakistan",
+    "destination": "Saudi Arabia",
+    "originKey": "pakistan",
+    "destinationKey": "saudi arabia",
+    "year": 2024,
+    "reasons": [
+      "1.94M — Pakistan's economic crisis (2022–23) intensified emigration pressure toward Saudi Arabia",
+      "Pakistan's 'Pakistan Remittance Initiative' actively promoted Gulf migration as economic relief valve",
+      "Saudi Arabia remains Pakistan's single largest source of remittances (~$6B/year)"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 1990,
+    "reasons": [
+      "Large German ethnic minority in Poland (Volksdeutsche) had migration rights; ~250K emigrated 1989–92",
+      "Solidarity-era Poland had deep economic ties with West Germany; labour migration followed"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 1995,
+    "reasons": [
+      "1.1M — post-1989 transition; economic migrants joined ethnic Germans; Germany offered seasonal worker programmes",
+      "Poland–Germany tensions over Oder–Neisse border were resolved (1990); migration became non-political"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 2000,
+    "reasons": [
+      "1.2M — Poland's 1990s economic transformation created aspiration but not yet free movement",
+      "Germany offered limited work permits to Poles in agriculture and construction before accession"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 2005,
+    "reasons": [
+      "1.3M — EU accession (May 2004) gave Poles right to live/work anywhere; Germany applied 7-year transition restriction",
+      "Despite the restriction, many Poles registered as self-employed to access German labour market"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 2010,
+    "reasons": [
+      "1.51M — transition restrictions lifted (2011); full free movement saw rapid increase",
+      "Polish workers concentrated in German construction, logistics, meat processing and care sectors",
+      "Poland–Germany remittances ~€3B/year; Polish workers were Germany's largest immigrant group by 2015"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 2015,
+    "reasons": [
+      "1.72M — peak inflow period; German wages 4× Polish wages drove mass movement",
+      "Poland's PiS government (2015) tried to discourage emigration but could not stop it",
+      "Polish community in Germany grew to 860K — largest Polish diaspora outside the US"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 2020,
+    "reasons": [
+      "1.8M — Poland's rising wages began slowing the flow; some return migration",
+      "Established Polish community maintained the corridor through family, business and seasonal patterns",
+      "COVID-19 disrupted seasonal agricultural Polish workers briefly"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "Germany",
+    "originKey": "poland",
+    "destinationKey": "germany",
+    "year": 2024,
+    "reasons": [
+      "1.88M — corridor stable; Poland's continued wage convergence with Germany slightly reduced new flows",
+      "Poland's 2022 Ukraine refugee absorption reduced Polish emigration pressure as domestic labour demand surged",
+      "Mature bilateral corridor with deep institutional, cultural and economic integration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 1990,
+    "reasons": [
+      "Small historical Polish community in UK — largely WWII-era refugees and Cold War émigrés",
+      "Community was small, established, and not growing significantly"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 1995,
+    "reasons": [
+      "Stable small community; no free movement rights"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 2000,
+    "reasons": [
+      "Pre-accession; very limited Polish legal migration to UK"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 2005,
+    "reasons": [
+      "EU accession (2004): UK was one of only 3 EU states to immediately grant Polish workers full rights",
+      "165K in 2005 — then 600K within 2 years; the largest and fastest labour migration in UK history",
+      "UK construction, hospitality and retail absorbed hundreds of thousands of Polish workers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 2010,
+    "reasons": [
+      "558K — Polish community became the UK's 2nd largest foreign-born group",
+      "Polish plumbers, electricians and builders became culturally iconic; 'Polish shops' opened across the UK",
+      "Remittances from Polish workers in UK to Poland exceeded £1B/year"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 2015,
+    "reasons": [
+      "728K — plateau as Poland's economy improved and UK wages rose more slowly",
+      "UK referendum on EU membership (2016) created uncertainty; many Poles applied for permanent residence",
+      "Post-Brexit xenophobia caused some Polish workers to leave"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 2020,
+    "reasons": [
+      "826K — EU Settlement Scheme gave Poles legal certainty; most stayed post-Brexit",
+      "Brexit (Jan 2020) ended free movement; EU Settlement Scheme gave settled status to existing residents",
+      "New Polish migration to UK after 2021 required formal visa; flows slowed significantly"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Poland",
+    "destination": "United Kingdom*",
+    "originKey": "poland",
+    "destinationKey": "united kingdom",
+    "year": 2024,
+    "reasons": [
+      "902K — established community grew through births and family routes despite end of free movement",
+      "Polish community fully settled; second generation Polish-British citizens growing",
+      "UK–Poland bilateral relationship shaped by military cooperation (Ukraine response) alongside migration legacy"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 1990,
+    "reasons": [
+      "Very small Romanian community in Italy; Romania was communist and closed until Dec 1989",
+      "First Romanians arrived in early 1990s through visa-free access Italy offered post-communism"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 1995,
+    "reasons": [
+      "Slow growth; Italy attracted Romanians through construction and agriculture demand",
+      "Romania–Italy linguistic affinity (both Romance languages) made Italy the natural destination"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 2000,
+    "reasons": [
+      "86K — growing rapidly; Italy's construction boom and 'badante' (elder care) demand drew Romanians",
+      "Italy offered regularisation amnesties (1998, 2002) that legalised large Romanian populations"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 2005,
+    "reasons": [
+      "387K — pre-accession wave; Italy applied for transitional restrictions but absorbed hundreds of thousands anyway",
+      "Romanian women dominated Italy's growing elder care (badante) sector — 250K+ as carers",
+      "Romanian men in construction; together they became Italy's largest immigrant group"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 2010,
+    "reasons": [
+      "775K — EU accession (2007) gave full rights; Italy lifted restrictions in 2012",
+      "Italy–Romania is the largest EU internal migration corridor",
+      "2007 murder of Giovanna Reggiani by a Romanian caused anti-Romanian sentiment; deportations temporarily increased"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 2015,
+    "reasons": [
+      "953K — peak of the corridor; Romania's continued wage gap sustained large flows",
+      "Romanian workers deeply embedded in Italy's care, construction and agriculture sectors",
+      "Remittances from Italy to Romania exceeded €1B/year — critical to Romania's household economy"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 2020,
+    "reasons": [
+      "947K — slight decline as Romania's own wages rose; some return migration",
+      "COVID-19 trapped many Romanian workers in Italy during lockdowns; care workers deemed essential",
+      "Romania's post-COVID labour shortages attracted some workers back"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Romania",
+    "destination": "Italy",
+    "originKey": "romania",
+    "destinationKey": "italy",
+    "year": 2024,
+    "reasons": [
+      "880K — Romania's rising wages and EU opportunities elsewhere began reducing the Italy corridor",
+      "Mature corridor; second-generation Romanian-Italians increasingly present",
+      "Romania–Italy bilateral labour market deeply integrated; seasonal agriculture still draws workers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 1990,
+    "reasons": [
+      "Post-1973 Hutu repression had already produced a Rwandan diaspora in Tanzania",
+      "Tanzania hosted ~300K Rwandan Tutsi refugees in camps like Benaco"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 1995,
+    "reasons": [
+      "Rwandan Genocide (Apr–Jul 1994): ~2 million fled in weeks — Tanzania received 500K+ in days",
+      "Benaco camp in Tanzania became the world's largest refugee camp overnight",
+      "UNHCR declared it the fastest mass displacement in history at the time"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 2000,
+    "reasons": [
+      "Dramatic fall to 49K — post-genocide RPF government stabilised Rwanda; mass repatriation occurred",
+      "Tanzania closed camps and conducted forced repatriation operations in 1996",
+      "Most Rwandan Tutsi refugees returned as genocide perpetrators fled to DRC instead"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 2005,
+    "reasons": [
+      "13K — almost complete repatriation; Rwanda's post-genocide reconstruction was internationally supported",
+      "Gacaca courts (community justice) addressed perpetrators; Rwanda seen as safe for Tutsi return"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 2010,
+    "reasons": [
+      "5K — near-complete normalisation; small residual community remained in Tanzania",
+      "Rwanda–Tanzania joint commission managed the last formal repatriation cases"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 2015,
+    "reasons": [
+      "~600 — essentially a historical corridor; ongoing community represented long-settled individuals",
+      "Rwandan migration patterns shifted toward Congo and East African Community countries"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 2020,
+    "reasons": [
+      "Below 600 — corridor effectively closed; Rwanda among Africa's fastest-growing economies"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Rwanda",
+    "destination": "United Republic of Tanzania",
+    "originKey": "rwanda",
+    "destinationKey": "united republic of tanzania",
+    "year": 2024,
+    "reasons": [
+      "Stable minimal residual — Rwandan genocide displacement fully resolved in demographic terms"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 1990,
+    "reasons": [
+      "Somali civil war (1991) was imminent; pre-war instability pushed some Somalis to Ethiopia",
+      "Ogaden Somali communities span the Ethiopia–Somalia border; movement was traditional"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 1995,
+    "reasons": [
+      "320K — decline as some Somalis returned to clans controlling areas of Somalia",
+      "Ethiopia–Somalia tensions over Ogaden made formal refugee recognition complicated"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 2000,
+    "reasons": [
+      "177K — continued decline; Somali warlord period (1991–2004) created unstable but some controlled territories",
+      "Ethiopia's own economic growth made it a viable alternative destination"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 2005,
+    "reasons": [
+      "38K — dramatic fall as Ethiopia's crackdown on Ogaden Somalis restricted movement",
+      "Ethiopia's invasion of Somalia (2006) to oust ICU created complex reverse displacement"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 2010,
+    "reasons": [
+      "87K — Somalia's famine (2011) drove 100K+ Somalis to Ethiopia's Dollo Ado camps",
+      "Dollo Ado complex became one of Africa's largest camp settlements",
+      "Ethiopia adopted encampment policy; Somali refugees were supposed to stay in designated camps"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 2015,
+    "reasons": [
+      "263K — Ethiopian growth made it a relatively attractive refugee destination vs Kenya (which was closing camps)",
+      "Al-Shabaab insurgency sustained displacement from southern Somalia",
+      "Ethiopia–Somalia diplomatic normalisation (Abiy era) began improving the bilateral relationship"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 2020,
+    "reasons": [
+      "204K — COVID-19 restrictions; some returns as Ethiopia itself became unstable (Tigray War)",
+      "Tigray War (2020) made Ethiopia itself a displacement source; Somali refugees faced insecurity"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Somalia",
+    "destination": "Ethiopia",
+    "originKey": "somalia",
+    "destinationKey": "ethiopia",
+    "year": 2024,
+    "reasons": [
+      "389K — Somalia's continued drought and Al-Shabaab activity drove new flows",
+      "2022 Somalia drought was among the worst in 40 years; 1M+ were newly displaced",
+      "Ethiopia–Somalia summit (2024) and competing territorial disputes created complex movement dynamics"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 1990,
+    "reasons": [
+      "South Sudan did not exist; Sudanese civil war refugees reached Uganda but in small numbers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 1995,
+    "reasons": [
+      "First Sudanese Civil War continuing; small flows of Sudanese into Uganda"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 2000,
+    "reasons": [
+      "Naivasha peace process under way; some return movements began"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 2005,
+    "reasons": [
+      "CPA (Comprehensive Peace Agreement, 2005) led to ceasefire and return of some refugees"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 2010,
+    "reasons": [
+      "South Sudan voted for independence (Jan 2011 referendum); optimism reduced displacement temporarily"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 2015,
+    "reasons": [
+      "South Sudan civil war erupted Dec 2013 — two years later 179K had reached Uganda",
+      "Uganda's progressive 'self-settlement' policy allowed refugees to farm, work and move freely",
+      "Uganda became Africa's largest refugee-hosting country partly because of South Sudanese arrivals"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 2020,
+    "reasons": [
+      "Continued civil war and periodic massacres drove the total to 875K — world's 3rd largest refugee group",
+      "Bidi Bidi settlement in Uganda grew to 270K — world's largest refugee settlement in 2017",
+      "South Sudan peace deal (2018) did not translate to safe conditions for return"
+    ],
+    "source": null
+  },
+  {
+    "origin": "South Sudan",
+    "destination": "Uganda",
+    "originKey": "south sudan",
+    "destinationKey": "uganda",
+    "year": 2024,
+    "reasons": [
+      "Numbers stabilised around 924K as the conflict reached a fragile equilibrium",
+      "South Sudan remained among the world's least developed countries; return was not viable for most",
+      "Uganda continued its model open-door policy, cited globally as best practice in refugee integration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 1990,
+    "reasons": [
+      "Sri Lankan Tamil refugees: ~100K Tamil civilians fled ethnic violence to Tamil Nadu by 1990",
+      "Tamil Nadu refugee camps hosted Sri Lankan Tamils who arrived during 1983 (Black July) and subsequent waves",
+      "Tamil cultural and linguistic ties between Sri Lankan Tamils and Indian Tamil Nadu"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 1995,
+    "reasons": [
+      "287K — gradual repatriation; some Sri Lankan Tamils returned as conflict ebbed in certain areas",
+      "India–Sri Lanka repatriation agreements reduced the formal refugee population"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 2000,
+    "reasons": [
+      "254K — continued slow decline; most remaining Sri Lankans were either settled or unwilling to return",
+      "LTTE–government conflict continued; new arrivals offset some repatriations"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 2005,
+    "reasons": [
+      "244K — peace process (Ceasefire Agreement 2002) encouraged some return; numbers fell slowly",
+      "UNHCR India managed voluntary repatriation; India maintained the camp population"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 2010,
+    "reasons": [
+      "268K — Sri Lankan Civil War ended (May 2009): final military offensive displaced 300K internally",
+      "Paradoxically, end of war did not immediately reduce camps; fear of Rajapaksa government kept Tamils in India",
+      "Tamil Nadu politicians maintained political pressure to keep Sri Lankan Tamils protected"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 2015,
+    "reasons": [
+      "249K — new Sirisena government (2015) improved Tamil rights; some voluntary repatriation resumed",
+      "India and Sri Lanka resumed formal repatriation discussions; UNHCR facilitated returns"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 2020,
+    "reasons": [
+      "248K — COVID halted repatriation; Sri Lanka's economic crisis (2022) ironically deterred return",
+      "Sri Lanka's 2022 collapse (fuel, medicine, food shortages) made return less attractive for settled Tamil community"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sri Lanka",
+    "destination": "India",
+    "originKey": "sri lanka",
+    "destinationKey": "india",
+    "year": 2024,
+    "reasons": [
+      "254K — stable; a generation of Sri Lankan Tamils has grown up in Tamil Nadu camps",
+      "Sri Lanka's post-Gotabaya normalisation created conditions for some return; most declined after decades in India",
+      "Sri Lankan Tamil skilled workers in Tamil Nadu increasingly integrated into local economy"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 1990,
+    "reasons": [
+      "Sudanese–Saudi religious and cultural ties; Saudi Arabia attracted Sudanese professionals",
+      "Sudanese doctors, engineers and academics filled Saudi Arabia's growing public sector"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 1995,
+    "reasons": [
+      "183K — Sudan's economic isolation (US sanctions, 1997) pushed professionals to Gulf",
+      "Sudan–Saudi bilateral agreement enabled skilled migration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 2000,
+    "reasons": [
+      "194K — slow growth; Darfur conflict (2003) began to create new push from Sudan"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 2005,
+    "reasons": [
+      "256K — Darfur genocide (2003–) created international isolation; middle class sought exit",
+      "Saudi Arabia was the primary destination for Sudanese professionals over direct Western emigration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 2010,
+    "reasons": [
+      "454K — Sudan's oil revenue split (South Sudan seceded 2011) caused economic crisis",
+      "Sudanese workers sent remittances home as Sudan's economy deteriorated",
+      "Saudi Arabia provided a safety valve for Sudan's educated unemployed"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 2015,
+    "reasons": [
+      "814K — Saudi Arabia's large Sudanese community became self-sustaining through network effects",
+      "Saudi Arabia and Sudan maintained strong bilateral ties; Gulf support for Khartoum regime",
+      "Remittances from Saudi Arabia were critical as Sudan's economy worsened post-secession"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 2020,
+    "reasons": [
+      "822K — Sudan's political transition (Bashir ousted 2019) created both hope and uncertainty",
+      "Some Sudanese professionals returned during transition optimism; most stayed in Saudi Arabia",
+      "Saudi Arabia's support for Sudan's Transitional Sovereignty Council reflected the migration corridor's political dimension"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Sudan",
+    "destination": "Saudi Arabia",
+    "originKey": "sudan",
+    "destinationKey": "saudi arabia",
+    "year": 2024,
+    "reasons": [
+      "896K — Sudan's civil war (Apr 2023) caused 8M+ displaced; Saudi Arabia became a refuge for wealthy Sudanese",
+      "RSF–SAF conflict in Khartoum; Sudan's middle class fled first to Saudi Arabia, Egypt and UAE",
+      "Sudan's total collapse made return impossible; community likely to grow rapidly in coming years"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 1990,
+    "reasons": [
+      "Small Syrian student and trade community in West Germany"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 1995,
+    "reasons": [
+      "Minimal change — no significant push or pull factors"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 2000,
+    "reasons": [
+      "Slow organic growth of Syrian professional and student diaspora"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 2005,
+    "reasons": [
+      "Iraq War refugees transiting Syria led some Syrians to seek German visas"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 2010,
+    "reasons": [
+      "Small pre-war Syrian diaspora; numbers essentially flat at ~41K"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 2015,
+    "reasons": [
+      "Syrian Civil War escalation and 2015 European refugee crisis: 250K+ Syrians applied for asylum in Germany",
+      "Chancellor Merkel's 'Wir schaffen das' (We can do it) speech kept Germany's borders open",
+      "Balkan Route: Greece→Macedonia→Serbia→Hungary→Austria→Germany became the primary corridor"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 2020,
+    "reasons": [
+      "Syrian community grew to 687K as family reunification and subsidiary protection grants continued",
+      "~200K Syrians had entered the German labour market by 2020",
+      "Germany's integration programmes (language courses, recognition of qualifications) gave Syrians pathways to stay"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Germany",
+    "originKey": "syrian arab republic",
+    "destinationKey": "germany",
+    "year": 2024,
+    "reasons": [
+      "Community reached 861K — Germany has the largest Syrian diaspora outside the Middle East",
+      "Syrian professionals increasingly employed in engineering, healthcare and logistics",
+      "Debate over Afghan and Syrian deportations intensified; most Syrians retained protection status"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 1990,
+    "reasons": [
+      "Historic Syrian labour migration to Jordan — small established community"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 1995,
+    "reasons": [
+      "Stable small flows; Jordan and Syria had open-border agreements"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 2000,
+    "reasons": [
+      "Minimal change"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 2005,
+    "reasons": [
+      "Iraq War (2003) sent 500K+ Iraqis to Jordan, some transiting from Syria; Syrian numbers grew modestly"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 2010,
+    "reasons": [
+      "Syrian Civil War (Mar 2011): Jordan received 100K+ Syrians in first year alone",
+      "Zaatari camp opened July 2012; became world's 4th largest city at its peak (160K residents)",
+      "Jordan adopted 'open door' then shifted to managed entry as numbers overwhelmed services"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 2015,
+    "reasons": [
+      "Syrian stock reached 1.2M — ~18% of Jordan's total population",
+      "Jordan received major international funding (Brussels Conference) linked to granting Syrians work permits",
+      "Zaatari and Azraq camps plus urban Syrians in Amman and Irbid strained Jordan's water and infrastructure"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 2020,
+    "reasons": [
+      "Numbers grew to 1.44M as Syrians integrated into Jordan's informal economy",
+      "Jordan Work Permit framework (2016) gave 160K+ Syrians legal employment — a model cited globally",
+      "COVID-19 hit Syrian workers hardest; many lost informal jobs and became more aid-dependent"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Jordan",
+    "originKey": "syrian arab republic",
+    "destinationKey": "jordan",
+    "year": 2024,
+    "reasons": [
+      "Syrian community in Jordan reached 1.59M — now a semi-permanent diaspora, not a transit population",
+      "A generation of Syrian children have grown up in Jordan; return is no longer realistic for most",
+      "Jordan–Syria normalisation talks (2023) raised hopes but insecurity prevented large-scale return"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 1990,
+    "reasons": [
+      "Small pre-existing Syrian migrant community in Turkey — primarily students and traders",
+      "Syria–Turkey relations were stable; limited migration driven by seasonal trade"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 1995,
+    "reasons": [
+      "Minimal change — small labour and student flows with no major push factors"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 2000,
+    "reasons": [
+      "Modest numbers — Turkey was not a significant destination for Syrians pre-conflict"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 2005,
+    "reasons": [
+      "Turkey's economic growth began attracting Syrian traders and seasonal workers to border regions",
+      "Turkey–Syria visa-free agreement (2009) would later accelerate movement"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 2010,
+    "reasons": [
+      "Syrian Civil War erupted March 2011 — first refugees crossed into Turkey by June 2011",
+      "Turkey adopted 'open door' policy; 46,000 Syrians had arrived by end of 2011"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 2015,
+    "reasons": [
+      "Civil war escalation drove 2.1M Syrians to Turkey by 2015 — world's largest refugee host",
+      "Turkey became the launchpad for the 2015 refugee wave to Greece and Europe",
+      "Turkey–EU Statement (March 2016) attempted to stem crossings; Turkey received €6B in aid"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 2020,
+    "reasons": [
+      "Syrian refugee stock grew to 3.83M as durable solutions remained elusive",
+      "Idlib offensive (2020) by Assad forces pushed hundreds of thousands more to the border",
+      "Turkey militarised the Idlib buffer zone and threatened to 'open the gates' to Europe"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Syrian Arab Republic",
+    "destination": "Türkiye",
+    "originKey": "syrian arab republic",
+    "destinationKey": "turkiye",
+    "year": 2024,
+    "reasons": [
+      "Slight decrease as Turkey's economic crisis fuelled anti-refugee sentiment and return pressure",
+      "2023 Turkish elections saw Syrian refugees become a central political issue",
+      "Turkey's voluntary return programme sent ~500K Syrians back; many others moved irregularly to Europe"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 1990,
+    "reasons": [
+      "Gastarbeiter (guest worker) programme (1961): Germany recruited Turkish workers for post-war industrial boom",
+      "Germany had 1M+ Turkish-born residents by 1990 — Europe's largest Turkish community",
+      "Family reunification had been the dominant driver since 1973 when recruitment was halted"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 1995,
+    "reasons": [
+      "1.43M — peak of family reunification wave as 1960s–70s workers brought spouses and children",
+      "1992–93 arson attacks on Turkish homes in Mölln and Solingen; anti-Turkish sentiment rose",
+      "Germany's restrictive citizenship law (jus soli reform not until 2000) kept Turks as 'foreigners' for generations"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 2000,
+    "reasons": [
+      "1.56M — numbers plateaued as 2nd and 3rd generation Turkish-Germans were born in Germany (counted separately)",
+      "Germany's 2000 citizenship reform allowed German-born Turks to naturalise; reduced 'foreign' count",
+      "Germany rejected Turkish EU membership bid repeatedly; Turkish community affected by political limbo"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 2005,
+    "reasons": [
+      "1.39M — naturalisation reduced the 'Turkish-born resident' count as 2nd-gen took German citizenship",
+      "New Turkish arrivals slowed as Germany's labour market remained tight",
+      "Turkish diaspora was now deeply rooted — mosques, associations, Turkish media all established"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 2010,
+    "reasons": [
+      "Stable around 1.35M Turkish-born residents (millions more German-born of Turkish origin)",
+      "Germany's revised immigration law (2005) created new pathways; some skilled Turkish migration resumed",
+      "Turkish entrepreneurs became a significant force in German SME sector"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 2015,
+    "reasons": [
+      "Stable ~1.3M — mature corridor; EU–Turkey accession negotiations were frozen",
+      "Turkey–EU refugee deal (2016) reshaped the political relationship around Syrian transit rather than Turkish migration",
+      "Failed coup (2016) in Turkey prompted some Turkish academics and journalists to seek protection in Germany"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 2020,
+    "reasons": [
+      "Slight increase — post-coup purges in Turkey sent professionals (academics, journalists, soldiers) to Germany",
+      "Germany granted asylum to thousands of Turkish coup-related cases",
+      "New economic Turkish migration to Germany resumed under skilled worker law (Fachkräfteeinwanderungsgesetz 2020)"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Türkiye",
+    "destination": "Germany",
+    "originKey": "turkiye",
+    "destinationKey": "germany",
+    "year": 2024,
+    "reasons": [
+      "1.5M — new skilled Turkish migration added to established community",
+      "Germany's Skilled Immigration Act (2020, expanded 2023) created direct pathways for Turkish engineers and healthcare workers",
+      "Turkish–German bilateral trade over €40B/year reinforced the migration corridor's economic logic"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 1990,
+    "reasons": [
+      "Ethnic German (Aussiedler) repatriation included some from Ukraine; small Ukrainian diaspora in Germany"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 1995,
+    "reasons": [
+      "Slow growth of Ukrainian labour and student migration to Germany"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 2000,
+    "reasons": [
+      "Germany became a preferred destination for Ukrainian IT workers and students"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 2005,
+    "reasons": [
+      "Continued slow organic growth; Ukrainian professionals drawn to German engineering sector"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 2010,
+    "reasons": [
+      "Steady increase; Ukraine–Germany bilateral labour agreement formalised some flows"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 2015,
+    "reasons": [
+      "Post-Maidan Ukraine (2014): association with EU raised emigration aspirations; numbers grew modestly",
+      "Donbas conflict (2014) pushed small number of conflict-affected Ukrainians to Germany"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 2020,
+    "reasons": [
+      "Continued organic growth; Germany's Ukrainian community ~270K, growing through labour and study routes"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Germany",
+    "originKey": "ukraine",
+    "destinationKey": "germany",
+    "year": 2024,
+    "reasons": [
+      "Russia's full-scale invasion (Feb 2022): ~1.2M additional Ukrainians arrived in Germany",
+      "Germany offered the most comprehensive integration support in the EU — housing, German courses, health cover",
+      "Germany's acute labour shortage created rapid labour market entry for Ukrainian professionals"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 1990,
+    "reasons": [
+      "Large ethnic Polish and Ukrainian communities with historical cross-border ties",
+      "Post-Soviet transition: Poles moved to Germany, Ukrainians moved to Poland for similar wage reasons"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 1995,
+    "reasons": [
+      "Decline driven by Polish out-migration to Western Europe reducing Ukrainian 'replacement' migration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 2000,
+    "reasons": [
+      "Continued slow decline as both countries transitioned away from Soviet-era population distributions"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 2005,
+    "reasons": [
+      "Poland joined EU (2004); Polish workers went west, creating vacancies filled by Ukrainians — but stock still falling",
+      "Many Ukrainians were circular migrants (seasonal), not captured in stock figures"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 2010,
+    "reasons": [
+      "Numbers fell as Poland's own emigration reduced its labour demand for Ukrainians",
+      "Visa liberalisation for Ukrainians entering Poland began making circular migration easier"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 2015,
+    "reasons": [
+      "Pre-war stock continued declining — but seasonal Ukrainian workers in Poland numbered ~1M annually (not in stock)",
+      "Donbas conflict (2014) began shifting some Ukrainians westward permanently"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 2020,
+    "reasons": [
+      "Poland became Ukraine's largest labour migration destination; ~1.5M Ukrainians worked seasonally",
+      "Residential stock remained low as most Ukrainian workers were circular, not permanent settlers"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Ukraine*",
+    "destination": "Poland",
+    "originKey": "ukraine",
+    "destinationKey": "poland",
+    "year": 2024,
+    "reasons": [
+      "Russia's full-scale invasion (Feb 2022) sent 1.6M Ukrainians to Poland within weeks",
+      "EU Temporary Protection Directive gave Ukrainians immediate right to work, healthcare and schooling",
+      "Poland absorbed the largest share of Ukrainian refugees of any EU country — ~1.1M permanent residents by 2024"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 1990,
+    "reasons": [
+      "Traditional two-way migration; Colombians fled FARC violence to Venezuela in the 1990s",
+      "Venezuela's oil wealth made it a labour destination for Colombians"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 1995,
+    "reasons": [
+      "Small net flow; Colombia remained the origin, Venezuela the destination"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 2000,
+    "reasons": [
+      "Colombia still sending migrants to Venezuela; few Venezuelans moved to Colombia"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 2005,
+    "reasons": [
+      "Chávez era: Venezuela's economy still functional; small Venezuelan upper-class emigration began"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 2010,
+    "reasons": [
+      "Venezuelan emigration remained small — mostly professionals leaving under Chávez's policies",
+      "Oil revenues kept living standards high enough to prevent mass movement"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 2015,
+    "reasons": [
+      "Maduro took power (2013); economic mismanagement began — first significant middle-class emigration",
+      "Oil price collapse (2014) triggered food shortages and medicine scarcity"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 2020,
+    "reasons": [
+      "Venezuela's economic collapse: hyperinflation of 1,000,000% (2018), food/medicine shortages, political repression",
+      "1.8M Venezuelans in Colombia by 2020 — the world's largest displacement outside Middle East and Africa",
+      "Colombia's Estatuto Temporal de Protección (2021) gave 1.8M Venezuelans 10-year legal status"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Venezuela (Bolivarian Republic of)",
+    "destination": "Colombia",
+    "originKey": "venezuela",
+    "destinationKey": "colombia",
+    "year": 2024,
+    "reasons": [
+      "2.9M Venezuelans in Colombia — the corridor grew even as some returned during COVID",
+      "Colombia became 'home' for most — schools, healthcare and informal work absorbed the diaspora",
+      "Many used Colombia as a transit point for the Darién Gap crossing toward the US"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 1990,
+    "reasons": [
+      "Vietnam War legacy: 'boat people' and Orderly Departure Programme (1979–1994) resettled 800K Vietnamese in the US",
+      "US military presence 1955–75 created profound bilateral connections; Vietnamese diaspora was war-born",
+      "Established community in California (Little Saigon, Orange County) acted as anchor for continued arrivals"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 1995,
+    "reasons": [
+      "646K — US–Vietnam normalisation (1995) opened legal channels; previously-separated families reunited",
+      "HO (Humanitarian Operation) programme resettled former South Vietnamese officials from re-education camps"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 2000,
+    "reasons": [
+      "981K — steady family reunification; Vietnamese Americans brought siblings, parents, spouses",
+      "Vietnamese professional migration grew as US tech sector expanded",
+      "US–Vietnam bilateral trade agreement (2001) deepened economic and personal ties"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 2005,
+    "reasons": [
+      "1.09M — maturation of diaspora; Vietnamese small business communities in Texas, California, Virginia",
+      "Vietnam's economic opening (Đổi Mới era) created new middle-class aspirations for US education"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 2010,
+    "reasons": [
+      "1.26M — Vietnam's own economic growth paradoxically sustained emigration as aspiration rose",
+      "Vietnamese students in US universities became the 6th largest international student group",
+      "US–Vietnam Enhanced Partnership deepened people-to-people ties"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 2015,
+    "reasons": [
+      "1.35M — steady growth through family and employment routes",
+      "Vietnamese IT and tech workers found pathways through H-1B; community diversifying from service sector"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 2020,
+    "reasons": [
+      "1.4M — COVID disrupted Vietnamese–American family travel but not the settled population",
+      "Vietnam–US trade relationship (Vietnam became top 6 US trading partner) created new business migration"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Viet Nam",
+    "destination": "United States of America*",
+    "originKey": "viet nam",
+    "destinationKey": "united states of america",
+    "year": 2024,
+    "reasons": [
+      "1.43M — mature, stable corridor; Vietnamese-American community 50 years after the war's end",
+      "Vietnamese-Americans prominent in US tech, medicine and politics; community fully rooted in US life"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 1990,
+    "reasons": [
+      "Small established flow; Zimbabwe was relatively stable under Mugabe's early rule",
+      "South African mines employed Zimbabwean workers under TEBA (The Employment Bureau of Africa)"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 1995,
+    "reasons": [
+      "Modest change; Zimbabwe still functioning economically"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 2000,
+    "reasons": [
+      "Farm invasions (2000) and economic crisis began; Zimbabwean professionals fled",
+      "Zimbabwe's hyperinflation began in 2001; formal economy started collapsing"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 2005,
+    "reasons": [
+      "Accelerated to 254K — Zimbabwe's economic collapse: unemployment at 80%, food shortages",
+      "South Africa's construction boom (2010 World Cup preparations) created demand for Zimbabwean labour",
+      "Cholera outbreak (2008) killed 4,000+ and pushed more to cross the Limpopo"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 2010,
+    "reasons": [
+      "545K — Zimbabwe's 2008 hyperinflation (500 billion % rate) had caused 3–4M to leave",
+      "South Africa became home to more Zimbabweans than any other country",
+      "2008 xenophobic violence killed 62 in South Africa but did not reverse flows"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 2015,
+    "reasons": [
+      "834K — Zimbabwe dollarised (2009) but economy remained dysfunctional",
+      "South Africa's ZEP (Zimbabwe Exemption Permit) gave hundreds of thousands legal status",
+      "Zimbabwean teachers, nurses and engineers filled South Africa's public service gaps"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 2020,
+    "reasons": [
+      "966K — despite Mnangagwa replacing Mugabe (2017), economy did not recover",
+      "ZEP extended repeatedly; ~180K Zimbabweans held legal status in South Africa",
+      "South Africa's own recession (2019–20) increased xenophobic tension toward Zimbabweans"
+    ],
+    "source": null
+  },
+  {
+    "origin": "Zimbabwe",
+    "destination": "South Africa",
+    "originKey": "zimbabwe",
+    "destinationKey": "south africa",
+    "year": 2024,
+    "reasons": [
+      "1.07M — ZEP expiry (2022–23) threatened legal status for 180K; courts temporarily blocked deportations",
+      "Zimbabwean community deeply embedded in South Africa's informal and formal economies",
+      "South Africa's load-shedding and economic struggles did not reverse the corridor's momentum"
+    ],
+    "source": null
+  }
+]

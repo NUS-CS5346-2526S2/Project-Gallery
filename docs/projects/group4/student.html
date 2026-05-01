@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sleep Signals | Student View</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("sleep-signals-theme");
+      if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
+    } catch (error) {}
+  </script>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="brand-lockup" href="index.html">
+        <span class="brand-mark">SS</span>
+        <span class="brand-text">
+          <small>CS5346 Information Visualisation</small>
+          <strong>Sleep Signals</strong>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Overview</a>
+        <a class="nav-link active" href="student.html">Student</a>
+        <a class="nav-link" href="educator.html">Educator</a>
+        <a class="nav-link" href="context.html">Global Context</a>
+        <a class="nav-link" href="method.html">Data &amp; Method</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+
+    <!-- 1. FILTERS — first thing visible on load -->
+    <section class="section fade-up">
+      <div class="controls-panel">
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Student view</span>
+            <h2>Filter the data.</h2>
+          </div>
+        </div>
+        <div class="controls-grid">
+          <div class="field">
+            <label for="studentOutcome">Outcome</label>
+            <select id="studentOutcome"></select>
+          </div>
+          <div class="field">
+            <label for="studentYear">Year of study</label>
+            <select id="studentYear"></select>
+          </div>
+          <div class="field">
+            <label for="studentGender">Gender</label>
+            <select id="studentGender"></select>
+          </div>
+          <div class="field">
+            <label>Sample</label>
+            <div class="sample-pill" id="studentSample">Filtered sample: —</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. FACTOR CARDS -->
+    <section class="section fade-up">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Ranked shortlist</span>
+          <h2>Top habits and signals to watch</h2>
+        </div>
+      </div>
+      <div class="insight-grid" id="studentCards">
+        <div class="loading-state">Loading ranked factors…</div>
+      </div>
+    </section>
+
+    <!-- 3. CHART -->
+    <section class="section fade-up">
+      <div class="viz-layout">
+        <aside class="note-card" id="studentSummary">
+          <div class="loading-state">Loading explanation…</div>
+        </aside>
+        <article class="chart-card">
+          <span class="section-kicker">Outcome comparison</span>
+          <h3 id="studentChartTitle">Factor vs outcome split</h3>
+          <p id="studentChartCopy">
+            Each row shows the outcome mix within one factor level.
+          </p>
+          <div class="chart-toolbar" id="studentViewModes" aria-label="Student chart view modes"></div>
+          <div class="legend" id="studentLegend"></div>
+          <div class="chart-shell" id="studentChart"></div>
+          <p class="footnote" id="studentFootnote">
+            Cooler tones indicate better outcomes, warmer tones indicate worse outcomes. Read each row from left to right, not as a causal timeline.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4. INTRO — moved below chart as a reference note -->
+    <section class="section fade-up">
+      <div class="split-notes">
+        <article class="note-card">
+          <span class="section-kicker">Reading the chart</span>
+          <h3>Every bar sums to 100% within one factor level.</h3>
+          <p>
+            Watch how the darker segments grow or shrink as the factor level changes.
+          </p>
+          <div class="pill-row" style="margin-top: 12px;">
+            <span class="meta-pill" id="studentOutcomeDef">Outcome definition: —</span>
+          </div>
+        </article>
+        <article class="note-card">
+          <span class="section-kicker">About this view</span>
+          <h3>Four habits and signals, ranked by how strongly they align with your chosen outcome.</h3>
+          <p>
+            Pick an outcome, pick a factor — each bar shows how the outcome split shifts across that factor's levels.
+          </p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    Need the full survey wording or sample profile? Open <a href="method.html">Data &amp; Method</a>. Want to place the sample in a wider benchmark? Open <a href="context.html">Global Context</a>.
+  </footer>
+
+  <script src="assets/vendor/d3.v7.min.js" defer></script>
+  <script src="data/local-survey-bundle.js" defer></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/charts.js" defer></script>
+  <script src="assets/theme.js" defer></script>
+  <script src="assets/student.js" defer></script>
+</body>
+</html>

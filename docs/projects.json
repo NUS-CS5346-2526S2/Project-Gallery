@@ -1,0 +1,82 @@
+[
+  {
+    "id": "group1",
+    "group": "Group 1",
+    "title": "Seeing Through the Haze",
+    "summary": "Visualizes how Singapore's haze episodes are shaped by air quality readings, regional fires, rainfall, wind, and climate patterns.",
+    "thumbnail": "assets/thumbnails/group1.png",
+    "primaryUrl": "projects/group1/index.html"
+  },
+  {
+    "id": "group2",
+    "group": "Group 2",
+    "title": "Singapore HDB Resale Flat Prices",
+    "summary": "Visualizes Singapore HDB resale prices through location maps, room-type trends, price drivers, and recent transaction patterns.",
+    "thumbnail": "assets/thumbnails/group2.png",
+    "primaryUrl": "projects/group2/index.html"
+  },
+  {
+    "id": "group3",
+    "group": "Group 3",
+    "title": "The True Impacts of AI",
+    "summary": "Visualizes the social, economic, and environmental impacts of artificial intelligence through an interactive scrollytelling report.",
+    "thumbnail": "assets/thumbnails/group3.png",
+    "primaryUrl": "projects/group3/index.html"
+  },
+  {
+    "id": "group4",
+    "group": "Group 4",
+    "title": "Sleep Signals",
+    "summary": "Visualizes how student sleep patterns, daytime strain, and academic pressure relate to educational outcomes.",
+    "thumbnail": "assets/thumbnails/group4.png",
+    "primaryUrl": "projects/group4/index.html"
+  },
+  {
+    "id": "group5",
+    "group": "Group 5",
+    "title": "Patterns of Car Ownership in Singapore",
+    "summary": "Visualizes how Singapore car ownership is shaped by policy signals, purchasing decisions, renewals, and de-registration.",
+    "thumbnail": "assets/thumbnails/group5.png",
+    "primaryUrl": "https://lbco17922.github.io/CS5346-Group5-VisualExplainer/"
+  },
+  {
+    "id": "group6",
+    "group": "Group 6",
+    "title": "Global Migration Trends",
+    "summary": "Visualizes global migration patterns with maps, flow views, country classifications, and supporting trend charts.",
+    "thumbnail": "assets/thumbnails/group6.png",
+    "primaryUrl": "projects/group6/index.html"
+  },
+  {
+    "id": "group7",
+    "group": "Group 7",
+    "title": "Magnificent 7: Layoffs & Financial Impact",
+    "summary": "Visualizes layoffs, stock performance, and capital expenditure across the Magnificent 7 technology companies from 2020 to 2025.",
+    "thumbnail": "assets/thumbnails/group7.png",
+    "primaryUrl": "https://woon17.github.io/mag7/"
+  },
+  {
+    "id": "group8",
+    "group": "Group 8",
+    "title": "Singaporeans and Foreign Labour",
+    "summary": "Visualizes Singapore labour and migration narratives through employment records, migration flows, and public sentiment analysis.",
+    "thumbnail": "assets/thumbnails/group8.png",
+    "primaryUrl": "projects/group8/index.html"
+  },
+  {
+    "id": "group9",
+    "group": "Group 9",
+    "title": "Walk2Ride: Sheltered Walking Network",
+    "summary": "Visualizes MRT and LRT station shelter coverage, ridership, rainfall, nearby facilities, and station-level coverage mismatches.",
+    "thumbnail": "assets/thumbnails/group9.png",
+    "primaryUrl": "https://z3roll.github.io/walk2ride/"
+  },
+  {
+    "id": "group10",
+    "group": "Group 10",
+    "title": "Singapore Rail & Residents",
+    "summary": "Visualizes how Singapore rail access and resident distribution co-evolved between 2000 and 2020.",
+    "thumbnail": "assets/thumbnails/group10.png",
+    "primaryUrl": "projects/group10/index.html"
+  }
+]

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-label="HDB Flat Buying Guide visualization thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="heat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#bfdbfe"/>
+      <stop offset="0.5" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <rect x="64" y="64" width="1152" height="672" rx="28" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+  <text x="104" y="126" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="800">HDB Flat Buying Guide</text>
+  <text x="104" y="170" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="22">Resale price patterns across Singapore towns, room types, and transactions</text>
+  <g transform="translate(104 230)">
+    <rect width="540" height="390" rx="20" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <path d="M80 220 C130 150 210 170 250 110 C300 42 395 78 432 142 C478 220 408 320 306 320 C208 320 128 294 80 220Z" fill="#dbeafe" stroke="#60a5fa" stroke-width="4"/>
+    <circle cx="180" cy="205" r="42" fill="#38bdf8" opacity=".82"/>
+    <circle cx="275" cy="156" r="58" fill="#2563eb" opacity=".78"/>
+    <circle cx="358" cy="235" r="66" fill="#0f172a" opacity=".76"/>
+    <circle cx="242" cy="272" r="48" fill="#0284c7" opacity=".72"/>
+    <path d="M112 332 H474" stroke="#94a3b8" stroke-width="2"/>
+    <path d="M112 350 H350" stroke="#cbd5e1" stroke-width="2"/>
+    <rect x="74" y="52" width="142" height="42" rx="21" fill="#0f172a"/>
+    <text x="100" y="80" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Median price</text>
+  </g>
+  <g transform="translate(704 230)">
+    <rect width="430" height="154" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+    <rect x="32" y="42" width="72" height="84" rx="8" fill="#93c5fd"/>
+    <rect x="124" y="76" width="72" height="50" rx="8" fill="#60a5fa"/>
+    <rect x="216" y="26" width="72" height="100" rx="8" fill="#2563eb"/>
+    <rect x="308" y="58" width="72" height="68" rx="8" fill="#0f172a"/>
+    <text x="32" y="138" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="16">Room type comparison</text>
+  </g>
+  <g transform="translate(704 424)">
+    <rect width="430" height="196" rx="18" fill="#f8fafc" stroke="#cbd5e1"/>
+    <circle cx="86" cy="92" r="40" fill="#bae6fd"/>
+    <circle cx="176" cy="74" r="58" fill="#7dd3fc"/>
+    <circle cx="286" cy="106" r="72" fill="#0ea5e9"/>
+    <circle cx="354" cy="70" r="34" fill="#075985"/>
+    <text x="32" y="160" fill="#64748b" font-family="Inter, Arial, sans-serif" font-size="16">Price drivers and transactions</text>
+  </g>
+  <rect x="104" y="660" width="1030" height="12" rx="6" fill="url(#heat)"/>
+</svg>

@@ -1,0 +1,20 @@
+sector_key,label,level,parent,ssic_2020_code,colour
+manufacturing,Manufacturing,1,,C10-32,#e45756
+mfg_food_bev,Mfg Food Bev,2,manufacturing,C10-12,#888888
+mfg_paper_rubber,Mfg Paper Rubber,2,manufacturing,"C17, 18, 22",#888888
+mfg_petrochem,Mfg Petrochem,2,manufacturing,C19-21,#888888
+mfg_metal_machinery,Mfg Metal Machinery,2,manufacturing,"C25,28",#888888
+mfg_electronics,Mfg Electronics,2,manufacturing,C26,#888888
+mfg_transport_equip,Mfg Transport Equip,2,manufacturing,C29-30,#888888
+mfg_other,Mfg Other,2,manufacturing,,#888888
+construction,Construction,1,,F41-43,#f58518
+services,Services,1,,G46-U99,#4c78a8
+wholesale_retail,Wholesale & Retail Trade,2,services,G46-47,#54a24b
+transport_storage,Transportation & Storage,2,services,H49-53,#72b7b2
+accomm_food,Accommodation & Food Services,2,services,I55-56,#b279a2
+info_comms,Information & Communications,2,services,J58-63,#eeca3b
+real_estate,Real Estate Services,2,services,L68,#9ecae9
+professional,Professional Services,2,services,M69-75,#d67195
+admin_support,Administrative & Support Services,2,services,N77-82,#b07aa1
+community_social,"Community, Social & Personal Services",2,services,O84-U99,#79706e
+others,"Others (Agri, Mining, Utilities)",1,,"A, B, D, E",#9d9d9d

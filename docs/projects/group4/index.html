@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sleep Signals | What Shapes Student Outcomes?</title>
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("sleep-signals-theme");
+      if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
+    } catch (error) {}
+  </script>
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="brand-lockup" href="index.html">
+        <span class="brand-mark">SS</span>
+        <span class="brand-text">
+          <small>CS5346 Information Visualisation</small>
+          <strong>Sleep Signals</strong>
+        </span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link active" href="index.html">Overview</a>
+        <a class="nav-link" href="student.html">Student</a>
+        <a class="nav-link" href="educator.html">Educator</a>
+        <a class="nav-link" href="context.html">Global Context</a>
+        <a class="nav-link" href="method.html">Data &amp; Method</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero fade-up">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">From Sleep to Scores</span>
+          <h1>What in this survey actually lines up with worse student outcomes?</h1>
+          <p>
+            996 students surveyed. Choose the view that matches your role.
+          </p>
+          <div class="audience-grid">
+            <a class="audience-card audience-card-student" href="student.html">
+              <span class="chip">Student</span>
+              <h3>I am a student</h3>
+              <p>
+                Start from habits and sleep signals, then inspect how outcomes shift across each factor.
+              </p>
+              <span class="audience-link">Open student view →</span>
+            </a>
+            <a class="audience-card audience-card-educator" href="educator.html">
+              <span class="chip">Teacher</span>
+              <h3>I am a teacher</h3>
+              <p>
+                Start from ranked factors and compare which patterns deserve attention across the cohort.
+              </p>
+              <span class="audience-link">Open educator view →</span>
+            </a>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-secondary" href="context.html">Compare global context</a>
+            <a class="btn btn-secondary" href="method.html">See the dataset and method</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <span class="section-kicker">Two-layer evidence base</span>
+          <h2>Awareness, not diagnosis.</h2>
+          <p>
+            Local survey (996 responses) paired with a cross-country benchmark layer for broader context.
+          </p>
+          <div class="stat-grid" id="heroStats">
+            <div class="loading-state">Loading survey profile…</div>
+          </div>
+
+        </aside>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Headline findings</span>
+          <h2>Key findings.</h2>
+        </div>
+      </div>
+      <div class="finding-grid" id="findingGrid">
+        <div class="loading-state">Loading findings…</div>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="section-head">
+        <div>
+          <span class="section-kicker">Where to go</span>
+          <h2>Four pages, four jobs.</h2>
+        </div>
+      </div>
+      <div class="route-grid">
+        <article class="route-card">
+          <span class="chip">Student</span>
+          <h3>Habits and signals, ranked</h3>
+          <p>
+            Ranked factors with one chart showing how outcomes shift across each factor's levels.
+          </p>
+          <a class="route-link" href="student.html">Go to student view →</a>
+        </article>
+        <article class="route-card">
+          <span class="chip">Educator</span>
+          <h3>Factor ranking and heatmap in one view</h3>
+          <p>
+            Compare factor association strength and outcome distribution without switching between charts.
+          </p>
+          <a class="route-link" href="educator.html">Go to educator view →</a>
+        </article>
+        <article class="route-card">
+          <span class="chip">Transparency</span>
+          <h3>Sample profile, survey wording, and caveats</h3>
+          <p>
+            Who was surveyed, how variables are defined, and why these are associations not causal claims.
+          </p>
+          <a class="route-link" href="method.html">Go to data &amp; method →</a>
+        </article>
+        <article class="route-card">
+          <span class="chip">Global context</span>
+          <h3>Sleep and academic pressure across countries</h3>
+          <p>
+            See how the local survey sits against student sleep patterns reported in other countries.
+          </p>
+          <a class="route-link" href="context.html">Go to global context →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section fade-up">
+      <div class="split-notes">
+        <article class="note-card">
+          <span class="section-kicker">Interpretation</span>
+          <h3>Associations, not causes</h3>
+          <p>
+            Reverse causality is possible — high stress may worsen sleep, and poor sleep may worsen performance. This dataset supports pattern-finding, not diagnosis.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Sleep Signals · CS5346 Information Visualisation · Group 4
+  </footer>
+
+  <script src="assets/vendor/d3.v7.min.js" defer></script>
+  <script src="data/local-survey-bundle.js" defer></script>
+  <script src="data/global-sleep-benchmarks.js" defer></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/charts.js" defer></script>
+  <script src="assets/theme.js" defer></script>
+  <script src="assets/index.js" defer></script>
+</body>
+</html>
