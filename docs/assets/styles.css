@@ -122,9 +122,15 @@ h1 {
 }
 
 .header-teaching {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--line);
+  border-radius: 8px;
   color: var(--muted);
   font-size: 13px;
   margin-top: 18px;
+  max-width: 780px;
+  padding: 10px 12px;
 }
 
 .summary-panel {
