@@ -25,6 +25,10 @@ function formatGroupLabel(group) {
 }
 
 function renderProjectCard(project) {
+  const members = project.members
+    ? `<p class="project-members">${escapeHtml(project.members)}</p>`
+    : "";
+
   return `
     <article class="project-card" data-project="${escapeHtml(project.id)}">
       <a class="project-image-link" href="${escapeHtml(project.primaryUrl)}"${linkTarget(project.primaryUrl)} aria-label="Open ${escapeHtml(project.title)}">
@@ -32,6 +36,7 @@ function renderProjectCard(project) {
       </a>
       <div class="project-body">
         <div class="group-label">${escapeHtml(formatGroupLabel(project.group))}</div>
+        ${members}
         <h2>${escapeHtml(project.title)}</h2>
         <p>${escapeHtml(project.summary)}</p>
       </div>

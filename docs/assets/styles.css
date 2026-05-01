@@ -236,7 +236,15 @@ main {
   color: var(--teal);
   font-size: 12px;
   font-weight: 850;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+.project-card .project-members {
+  color: #71807b;
+  font-size: 13px;
+  line-height: 1.35;
+  margin: 0 0 12px;
+  overflow-wrap: break-word;
 }
 
 .project-card h2 {

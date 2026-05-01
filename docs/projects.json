@@ -2,6 +2,7 @@
   {
     "id": "group1",
     "group": "Group 1",
+    "members": "Ho Shaowei, Koh Kai Yit, L. Kaushik Rangaraj, Linda Chang, See Cheng Jiang",
     "title": "Seeing Through the Haze",
     "summary": "Visualizes how Singapore's haze episodes are shaped by air quality readings, regional fires, rainfall, wind, and climate patterns.",
     "thumbnail": "assets/thumbnails/group1.png",
@@ -10,6 +11,7 @@
   {
     "id": "group2",
     "group": "Group 2",
+    "members": "Liu Xin Ying, Ler Lian Ping, Jonathan Lee Jia Jun, Huang Kexi",
     "title": "Singapore HDB Resale Flat Prices",
     "summary": "Visualizes Singapore HDB resale prices through location maps, room-type trends, price drivers, and recent transaction patterns.",
     "thumbnail": "assets/thumbnails/group2.png",
@@ -18,6 +20,7 @@
   {
     "id": "group3",
     "group": "Group 3",
+    "members": "Phang Dao Yi, Joseph, Evan Ang Jia-Jun, Nicholas Tan Yu Da, Lim You Ren",
     "title": "The True Impacts of AI",
     "summary": "Visualizes the social, economic, and environmental impacts of artificial intelligence through an interactive scrollytelling report.",
     "thumbnail": "assets/thumbnails/group3.png",
@@ -26,6 +29,7 @@
   {
     "id": "group4",
     "group": "Group 4",
+    "members": "Song Haoran, Li Yilun, Lucas Giam, Benecia Tang",
     "title": "Sleep Signals",
     "summary": "Visualizes how student sleep patterns, daytime strain, and academic pressure relate to educational outcomes.",
     "thumbnail": "assets/thumbnails/group4.png",
@@ -34,6 +38,7 @@
   {
     "id": "group5",
     "group": "Group 5",
+    "members": "Filbert Reinaldha, Lionel Cheng Li Bing, Yak Wei De",
     "title": "Patterns of Car Ownership in Singapore",
     "summary": "Visualizes how Singapore car ownership is shaped by policy signals, purchasing decisions, renewals, and de-registration.",
     "thumbnail": "assets/thumbnails/group5.png",
@@ -42,6 +47,7 @@
   {
     "id": "group6",
     "group": "Group 6",
+    "members": "Izabella Rodrigues, Kavindu Warnakulasuriya, Praveen Sasikumar, Soujanya Lohanathen, Yadeesha Weerasinghe",
     "title": "Global Migration Trends",
     "summary": "Visualizes global migration patterns with maps, flow views, country classifications, and supporting trend charts.",
     "thumbnail": "assets/thumbnails/group6.png",
@@ -50,6 +56,7 @@
   {
     "id": "group7",
     "group": "Group 7",
+    "members": "Yiwei Liu, Shufa Wen, Isuru Anuranga Wijesinghe, Haochen Zhao",
     "title": "Magnificent 7: Layoffs & Financial Impact",
     "summary": "Visualizes layoffs, stock performance, and capital expenditure across the Magnificent 7 technology companies from 2020 to 2025.",
     "thumbnail": "assets/thumbnails/group7.png",
@@ -58,6 +65,7 @@
   {
     "id": "group8",
     "group": "Group 8",
+    "members": "Wong Ryan, Shivansh Srivastava, Charles Andrew Lim",
     "title": "Singaporeans and Foreign Labour",
     "summary": "Visualizes Singapore labour and migration narratives through employment records, migration flows, and public sentiment analysis.",
     "thumbnail": "assets/thumbnails/group8.png",
@@ -66,6 +74,7 @@
   {
     "id": "group9",
     "group": "Group 9",
+    "members": "Cui Chenhang, Wang Helin, Yuan Zhiyu, Zhuang Mingqiao",
     "title": "Walk2Ride: Sheltered Walking Network",
     "summary": "Visualizes MRT and LRT station shelter coverage, ridership, rainfall, nearby facilities, and station-level coverage mismatches.",
     "thumbnail": "assets/thumbnails/group9.png",
@@ -74,6 +83,7 @@
   {
     "id": "group10",
     "group": "Group 10",
+    "members": "Lu Shuyu, Yu Zizhen, Hao Zeyu",
     "title": "Singapore Rail & Residents",
     "summary": "Visualizes how Singapore rail access and resident distribution co-evolved between 2000 and 2020.",
     "thumbnail": "assets/thumbnails/group10.png",
