@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore EV Adoption & EEAI Policy Impact</title>
+    <meta name="description"
+        content="Interactive visualization of Singapore's EV uptake driven by the Enhanced EV Early Adoption Incentive (EEAI) policy from 2021.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            min-height: 100vh;
+            padding: 40px 20px 60px;
+            color: #e2e8f0;
+        }
+
+        /* ── Page Header ── */
+        .page-header {
+            max-width: 1040px;
+            margin: 0 auto 28px;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(52, 211, 153, 0.15);
+            border: 1px solid rgba(52, 211, 153, 0.35);
+            color: #34d399;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            border-radius: 30px;
+            margin-bottom: 14px;
+        }
+
+        .kicker::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            background: #34d399;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #34d399;
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.7);
+            }
+        }
+
+        h1 {
+            font-size: clamp(22px, 3.5vw, 32px);
+            font-weight: 800;
+            color: #f1f5f9;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        h1 span {
+            color: #34d399;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.6;
+            max-width: 740px;
+        }
+
+        .subtitle b {
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+
+        /* ── Chart Card ── */
+        .chart-card {
+            max-width: 1040px;
+            margin: 0 auto;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px 36px 28px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        /* ── Controls ── */
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
+
+        .controls-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-right: 4px;
+        }
+
+        .btn {
+            padding: 9px 22px;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            background: rgba(255, 255, 255, 0.04);
+            color: #94a3b8;
+            border-radius: 30px;
+            transition: all 0.25s ease;
+            font-weight: 600;
+            font-size: 13px;
+            font-family: inherit;
+            letter-spacing: 0.01em;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.09);
+            color: #e2e8f0;
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .btn.active {
+            background: linear-gradient(135deg, #059669, #34d399);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(52, 211, 153, 0.35);
+        }
+
+        .btn.active-ice {
+            background: linear-gradient(135deg, #b91c1c, #f87171);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(248, 113, 113, 0.35);
+        }
+
+        .btn.active-both {
+            background: linear-gradient(135deg, #1e40af, #60a5fa);
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(96, 165, 250, 0.35);
+        }
+
+        /* ── Legend ── */
+        .legend {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #94a3b8;
+        }
+
+        .legend-bar {
+            width: 18px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .legend-line {
+            width: 28px;
+            height: 3px;
+            border-radius: 2px;
+            position: relative;
+        }
+
+        .legend-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: inherit;
+        }
+
+        .legend-ev-bar {
+            background: rgba(52, 211, 153, 0.55);
+        }
+
+        .legend-ice-bar {
+            background: rgba(251, 146, 60, 0.45);
+        }
+
+        .legend-ev-line {
+            background: #34d399;
+        }
+
+        .legend-ice-line {
+            background: #f87171;
+        }
+
+        /* ── Tooltip ── */
+        .tooltip {
+            position: absolute;
+            padding: 14px 18px;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #e2e8f0;
+            border-radius: 12px;
+            font-size: 12.5px;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            min-width: 190px;
+            transition: opacity 0.15s ease;
+        }
+
+        .tooltip-year {
+            font-size: 13px;
+            font-weight: 700;
+            color: #f1f5f9;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 8px;
+            margin-bottom: 8px;
+        }
+
+        .tooltip-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            margin-top: 5px;
+        }
+
+        .tooltip-label {
+            color: #94a3b8;
+        }
+
+        .tooltip-val {
+            font-weight: 600;
+        }
+
+        .tooltip-ev {
+            color: #34d399;
+        }
+
+        .tooltip-ice-fleet {
+            color: #fb923c;
+        }
+
+        .tooltip-ice-pos {
+            color: #34d399;
+        }
+
+        .tooltip-ice-neg {
+            color: #f87171;
+        }
+
+        /* ── SVG Elements ── */
+        .grid line {
+            stroke: rgba(255, 255, 255, 0.04);
+            stroke-width: 1;
+        }
+
+        .grid path {
+            display: none;
+        }
+
+        .domain {
+            display: none;
+        }
+
+        text {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        /* ── Stats Strip ── */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 14px 18px;
+            transition: background 0.25s;
+        }
+
+        .stat-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .stat-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 6px;
+        }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: #f1f5f9;
+        }
+
+        .stat-value.green {
+            color: #34d399;
+        }
+
+        .stat-value.red {
+            color: #f87171;
+        }
+
+        .stat-desc {
+            font-size: 11px;
+            color: #64748b;
+            margin-top: 3px;
+        }
+
+        /* ── Footer ── */
+        .chart-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 11px;
+            color: #475569;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        @media (max-width: 680px) {
+            .chart-card {
+                padding: 20px 14px;
+            }
+
+            .stats-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-header">
+        <div class="kicker">Policy Impact Analysis</div>
+        <h1>Singapore's <span>EV Revolution</span> &amp; EEAI Policy Effect</h1>
+        <p class="subtitle">
+            Tracking how the <b>Enhanced EV Early Adoption Incentive (EEAI)</b>, introduced in 2021,
+            catalysed a structural shift in Singapore's vehicle population — accelerating EV uptake
+            while driving a sustained decline in ICE vehicle numbers.
+        </p>
+    </div>
+
+    <div class="chart-card">
+        <div class="controls">
+            <span class="controls-label">View:</span>
+            <button id="btn-ev" class="btn" onclick="update('ev')">🌿 EV Momentum</button>
+            <button id="btn-ice" class="btn" onclick="update('ice')">🔥 ICE Momentum</button>
+            <button id="btn-both" class="btn active-both active" onclick="update('both')">📊 Full Comparison</button>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-bar legend-ev-bar"></div>
+                <span>EV Fleet Size (left axis)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-bar legend-ice-bar"></div>
+                <span>ICE Fleet Size (left axis)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line legend-ev-line"></div>
+                <span>EV Annual Change (right axis)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-line legend-ice-line"></div>
+                <span>ICE Annual Change (right axis)</span>
+            </div>
+        </div>
+
+        <div id="chart"></div>
+
+        <div class="stats-strip">
+            <div class="stat-card">
+                <div class="stat-label">EV Growth (2021–2025)</div>
+                <div class="stat-value green">+1,569%</div>
+                <div class="stat-desc">From 2,942 → 49,110 EVs</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">ICE Fleet Decline (since EEAI)</div>
+                <div class="stat-value red">−97,052</div>
+                <div class="stat-desc">Vehicles removed 2021–2025</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">EEAI Introduced</div>
+                <div class="stat-value" style="color:#60a5fa;">Jan 2021</div>
+                <div class="stat-desc">Key policy inflection point</div>
+            </div>
+        </div>
+
+        <div class="chart-footer">
+            <span>Source: Land Transport Authority (LTA) Singapore, Annual Vehicle Statistics</span>
+            <span>Data period: 2015–2025 &nbsp;|&nbsp; CS5346 Information Visualisation</span>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        const data = [
+            { "year": "2015", "ev": 1, "ice": 595808, "ev_abs": 0, "ice_abs": 0 },
+            { "year": "2016", "ev": 12, "ice": 591023, "ev_abs": 11, "ice_abs": -4785 },
+            { "year": "2017", "ev": 314, "ice": 590963, "ev_abs": 302, "ice_abs": -60 },
+            { "year": "2018", "ev": 560, "ice": 587312, "ev_abs": 246, "ice_abs": -3651 },
+            { "year": "2019", "ev": 1120, "ice": 593266, "ev_abs": 560, "ice_abs": 5954 },
+            { "year": "2020", "ev": 1217, "ice": 590410, "ev_abs": 97, "ice_abs": -2856 },
+            { "year": "2021", "ev": 2942, "ice": 586676, "ev_abs": 1725, "ice_abs": -3734 },
+            { "year": "2022", "ev": 6531, "ice": 577133, "ev_abs": 3589, "ice_abs": -9543 },
+            { "year": "2023", "ev": 11941, "ice": 558727, "ev_abs": 5410, "ice_abs": -18406 },
+            { "year": "2024", "ev": 26225, "ice": 530792, "ev_abs": 14284, "ice_abs": -27935 },
+            { "year": "2025", "ev": 49110, "ice": 489624, "ev_abs": 22885, "ice_abs": -41168 }
+        ];
+
+        const fmt = d3.format(",");
+        const fmtK = d3.format(".2~s");
+
+        const margin = { top: 60, right: 90, bottom: 55, left: 90 },
+            width = 940 - margin.left - margin.right,
+            height = 480 - margin.top - margin.bottom;
+
+        const svg = d3.select("#chart").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .style("overflow", "visible")
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // ── Defs: gradients + arrowheads ──
+        const defs = svg.append("defs");
+
+        // EV gradient
+        const evGrad = defs.append("linearGradient").attr("id", "evGrad").attr("x1", "0%").attr("x2", "0%").attr("y1", "0%").attr("y2", "100%");
+        evGrad.append("stop").attr("offset", "0%").attr("stop-color", "#34d399").attr("stop-opacity", 0.9);
+        evGrad.append("stop").attr("offset", "100%").attr("stop-color", "#34d399").attr("stop-opacity", 0.2);
+
+        // ICE gradient (orange)
+        const iceGrad = defs.append("linearGradient").attr("id", "iceGrad").attr("x1", "0%").attr("x2", "0%").attr("y1", "0%").attr("y2", "100%");
+        iceGrad.append("stop").attr("offset", "0%").attr("stop-color", "#fb923c").attr("stop-opacity", 0.80);
+        iceGrad.append("stop").attr("offset", "100%").attr("stop-color", "#fb923c").attr("stop-opacity", 0.10);
+
+        // EV line glow filter
+        const glowFilter = defs.append("filter").attr("id", "glow").attr("x", "-20%").attr("y", "-20%").attr("width", "140%").attr("height", "140%");
+        glowFilter.append("feGaussianBlur").attr("stdDeviation", "3.5").attr("result", "blur");
+        const feMerge = glowFilter.append("feMerge");
+        feMerge.append("feMergeNode").attr("in", "blur");
+        feMerge.append("feMergeNode").attr("in", "SourceGraphic");
+
+        // Arrowhead – EV
+        defs.append("marker").attr("id", "arrow-ev").attr("viewBox", "0 -5 10 10").attr("refX", 9).attr("refY", 0)
+            .attr("markerWidth", 6).attr("markerHeight", 6).attr("orient", "auto")
+            .append("path").attr("d", "M0,-5L10,0L0,5").attr("fill", "#34d399");
+
+        // Arrowhead – ICE (orange)
+        defs.append("marker").attr("id", "arrow-ice").attr("viewBox", "0 -5 10 10").attr("refX", 9).attr("refY", 0)
+            .attr("markerWidth", 6).attr("markerHeight", 6).attr("orient", "auto")
+            .append("path").attr("d", "M0,-5L10,0L0,5").attr("fill", "#fb923c");
+
+        // Arrowhead – neutral
+        defs.append("marker").attr("id", "arrow-neutral").attr("viewBox", "0 -5 10 10").attr("refX", 9).attr("refY", 0)
+            .attr("markerWidth", 6).attr("markerHeight", 6).attr("orient", "auto")
+            .append("path").attr("d", "M0,-5L10,0L0,5").attr("fill", "#60a5fa");
+
+        // ── Scales ──
+        const x = d3.scaleBand().range([0, width]).domain(data.map(d => d.year)).padding(0.28);
+        const yLeft = d3.scaleLinear().range([height, 0]);
+        const yRight = d3.scaleLinear().range([height, 0]);
+
+        // ── Grid + Axes ──
+        const gridG = svg.append("g").attr("class", "grid");
+        const xAxisG = svg.append("g").attr("transform", `translate(0,${height})`);
+        const yAxisLeftG = svg.append("g").attr("class", "axis-left");
+        const yAxisRightG = svg.append("g").attr("class", "axis-right").attr("transform", `translate(${width},0)`);
+
+        // Axis labels (static)
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -margin.left + 16)
+            .attr("x", -height / 2)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "11px")
+            .attr("font-weight", "600")
+            .attr("letter-spacing", "0.05em")
+            .attr("fill", "#64748b")
+            .text("FLEET SIZE (VEHICLES)");
+
+        svg.append("text")
+            .attr("transform", "rotate(90)")
+            .attr("y", -width - margin.right + 16)
+            .attr("x", height / 2)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "11px")
+            .attr("font-weight", "600")
+            .attr("letter-spacing", "0.05em")
+            .attr("fill", "#64748b")
+            .text("NET ANNUAL CHANGE");
+
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", height + margin.bottom - 6)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "11px")
+            .attr("font-weight", "600")
+            .attr("letter-spacing", "0.05em")
+            .attr("fill", "#64748b")
+            .text("YEAR");
+
+        // ── EEAI policy band (permanent) ──
+        const eeaiBand = svg.insert("g", "*").attr("class", "eeai-band");
+
+        // ── Tooltip logic ──
+        const tooltip = d3.select("#tooltip");
+
+        function showTip(event, d, viewType) {
+            let html = `<div class="tooltip-year">📅 ${d.year}</div>`;
+            if (viewType !== 'ice') {
+                html += `<div class="tooltip-row">
+                <span class="tooltip-label">⚡ EV Fleet</span>
+                <span class="tooltip-val tooltip-ev">${fmt(d.ev)}</span>
+            </div>`;
+                if (d.year !== '2015') html += `<div class="tooltip-row">
+                <span class="tooltip-label">EV Annual Gain</span>
+                <span class="tooltip-val tooltip-ev">+${fmt(d.ev_abs)}</span>
+            </div>`;
+            }
+            if (viewType !== 'ev') {
+                html += `<div class="tooltip-row">
+                <span class="tooltip-label">🔥 ICE Fleet</span>
+                <span class="tooltip-val tooltip-ice-fleet">${fmt(d.ice)}</span>
+            </div>`;
+                if (d.year !== '2015') {
+                    const iceClass = d.ice_abs >= 0 ? 'tooltip-ice-pos' : 'tooltip-ice-neg';
+                    const iceSign = d.ice_abs >= 0 ? '+' : '';
+                    html += `<div class="tooltip-row">
+                    <span class="tooltip-label">ICE Annual Change</span>
+                    <span class="tooltip-val ${iceClass}">${iceSign}${fmt(d.ice_abs)}</span>
+                </div>`;
+                }
+            }
+            tooltip.html(html)
+                .style("opacity", 1)
+                .style("left", "0px")   // temp to measure width
+                .style("top", "-9999px")
+                .style("opacity", 0);
+            const tipW = tooltip.node().offsetWidth;
+            tooltip
+                .style("left", (event.pageX - tipW - 16) + "px")
+                .style("top", (event.pageY - 20) + "px")
+                .style("opacity", 1);
+        }
+        function hideTip() { tooltip.style("opacity", 0); }
+
+        // ── Main update function ──
+        let currentView = 'both';
+
+        function update(viewType) {
+            currentView = viewType;
+
+            // Button states
+            ['ev', 'ice', 'both'].forEach(v => {
+                const btn = document.getElementById(`btn-${v}`);
+                btn.className = 'btn';
+                if (v === viewType) {
+                    if (v === 'ev') btn.classList.add('active', 'active');
+                    if (v === 'ice') btn.classList.add('active', 'active-ice');
+                    if (v === 'both') btn.classList.add('active', 'active-both');
+                }
+            });
+
+            // Domains
+            let maxPop = viewType === 'ev' ? d3.max(data, d => d.ev) :
+                viewType === 'ice' ? d3.max(data, d => d.ice) :
+                    d3.max(data, d => Math.max(d.ev, d.ice));
+            yLeft.domain([0, maxPop * 1.18]).nice();
+
+            // Use global range for consistency across all views
+            const minAbs = d3.min(data, d => Math.min(d.ev_abs, d.ice_abs));
+            const maxAbs = d3.max(data, d => Math.max(d.ev_abs, d.ice_abs));
+            yRight.domain([minAbs - 8000, maxAbs + 10000]).nice();
+
+            // Axes
+            gridG.transition().duration(700)
+                .call(d3.axisLeft(yLeft).ticks(6).tickSize(-width).tickFormat(""));
+
+            xAxisG.transition().duration(700)
+                .call(d3.axisBottom(x).tickSize(0).tickPadding(12))
+                .selectAll("text")
+                .attr("fill", "#64748b")
+                .attr("font-size", "12px")
+                .attr("font-weight", "500");
+
+            yAxisLeftG.transition().duration(700)
+                .call(d3.axisLeft(yLeft).ticks(6).tickFormat(d => fmtK(d)))
+                .selectAll("text").attr("fill", "#94a3b8").attr("font-size", "11px");
+
+            yAxisRightG.transition().duration(700)
+                .call(d3.axisRight(yRight).ticks(8).tickFormat(d => fmtK(d)))
+                .selectAll("text").attr("fill", "#94a3b8").attr("font-size", "11px");
+
+            // Remove domain lines
+            svg.selectAll(".domain").attr("stroke", "none");
+
+            // ── EEAI band ──
+            eeaiBand.selectAll("*").remove();
+            const eeaiX = x("2021");
+            const bandW = x("2025") + x.bandwidth() - eeaiX;
+
+            // Shaded band
+            eeaiBand.append("rect")
+                .attr("x", eeaiX)
+                .attr("y", 0)
+                .attr("width", bandW)
+                .attr("height", height)
+                .attr("fill", "rgba(96, 165, 250, 0.04)")
+                .attr("rx", 4);
+
+            // Left border line of EEAI band
+            eeaiBand.append("line")
+                .attr("x1", eeaiX).attr("x2", eeaiX)
+                .attr("y1", 0).attr("y2", height)
+                .attr("stroke", "rgba(96, 165, 250, 0.40)")
+                .attr("stroke-width", 1.5)
+                .attr("stroke-dasharray", "5,4");
+
+            // EEAI top label
+            eeaiBand.append("text")
+                .attr("x", eeaiX + bandW / 2)
+                .attr("y", -28)
+                .attr("text-anchor", "middle")
+                .attr("font-size", "11px")
+                .attr("font-weight", "700")
+                .attr("letter-spacing", "0.06em")
+                .attr("fill", "rgba(96, 165, 250, 0.85)")
+                .text("EEAI POLICY PERIOD");
+
+            eeaiBand.append("line")
+                .attr("x1", eeaiX).attr("x2", eeaiX + bandW)
+                .attr("y1", -18).attr("y2", -18)
+                .attr("stroke", "rgba(96, 165, 250, 0.5)")
+                .attr("stroke-width", 1)
+                .attr("marker-end", "url(#arrow-neutral)");
+
+            // ── Bars ──
+            const subGroups = viewType === 'both' ? ['ev', 'ice'] : [viewType];
+            const xSub = d3.scaleBand().domain(subGroups).range([0, x.bandwidth()]).padding(0.08);
+
+            const barSel = svg.selectAll(".rect-bar").data(
+                data.flatMap(d => subGroups.map(k => ({ ...d, key: k })))
+                , d => d.year + d.key);
+
+            barSel.exit().transition().duration(400).attr("height", 0).attr("y", height).remove();
+
+            const barEnter = barSel.enter()
+                .append("rect")
+                .attr("class", "rect-bar")
+                .attr("rx", 3)
+                .attr("x", d => x(d.year) + xSub(d.key))
+                .attr("width", xSub.bandwidth())
+                .attr("y", height)
+                .attr("height", 0)
+                .attr("fill", d => d.key === 'ev' ? "url(#evGrad)" : "url(#iceGrad)")
+                .style("cursor", "pointer")
+                .on("mousemove", (e, d) => showTip(e, d, viewType))
+                .on("mouseleave", hideTip);
+
+            barEnter.merge(barSel)
+                .transition().duration(700).ease(d3.easeCubicOut)
+                .attr("x", d => x(d.year) + xSub(d.key))
+                .attr("width", xSub.bandwidth())
+                .attr("fill", d => d.key === 'ev' ? "url(#evGrad)" : "url(#iceGrad)")
+                .attr("y", d => yLeft(d[d.key]))
+                .attr("height", d => height - yLeft(d[d.key]));
+
+            // ── Trend Lines ──
+            svg.selectAll(".growth-line, .dot-ev, .dot-ice").remove();
+
+            const lineGen = (key) => d3.line()
+                .x(d => x(d.year) + x.bandwidth() / 2)
+                .y(d => yRight(d[key + '_abs']))
+                .curve(d3.curveMonotoneX);
+
+            if (viewType !== 'ice') {
+                const pathEV = svg.append("path")
+                    .datum(data.slice(1))
+                    .attr("class", "growth-line")
+                    .attr("fill", "none")
+                    .attr("stroke", "#34d399")
+                    .attr("stroke-width", 3)
+                    .attr("stroke-linecap", "round")
+                    .attr("filter", "url(#glow)")
+                    .attr("d", lineGen('ev'));
+
+                // Animate line draw
+                const totalLen = pathEV.node().getTotalLength();
+                pathEV.attr("stroke-dasharray", totalLen).attr("stroke-dashoffset", totalLen)
+                    .transition().duration(1000).ease(d3.easeLinear).attr("stroke-dashoffset", 0);
+
+                // Dots
+                svg.selectAll(".dot-ev").data(data.slice(1)).enter()
+                    .append("circle").attr("class", "dot-ev")
+                    .attr("cx", d => x(d.year) + x.bandwidth() / 2)
+                    .attr("cy", d => yRight(d.ev_abs))
+                    .attr("r", 0)
+                    .attr("fill", "#34d399")
+                    .attr("stroke", "#0f172a")
+                    .attr("stroke-width", 2)
+                    .style("cursor", "pointer")
+                    .on("mousemove", (e, d) => showTip(e, d, viewType))
+                    .on("mouseleave", hideTip)
+                    .transition().delay(900).duration(300)
+                    .attr("r", 4.5);
+            }
+
+            if (viewType !== 'ev') {
+                const pathICE = svg.append("path")
+                    .datum(data.slice(1))
+                    .attr("class", "growth-line")
+                    .attr("fill", "none")
+                    .attr("stroke", "#fb923c")
+                    .attr("stroke-width", 3)
+                    .attr("stroke-linecap", "round")
+                    .attr("d", lineGen('ice'));
+
+                const totalLen2 = pathICE.node().getTotalLength();
+                pathICE.attr("stroke-dasharray", totalLen2).attr("stroke-dashoffset", totalLen2)
+                    .transition().duration(1000).ease(d3.easeLinear).attr("stroke-dashoffset", 0);
+
+                svg.selectAll(".dot-ice").data(data.slice(1)).enter()
+                    .append("circle").attr("class", "dot-ice")
+                    .attr("cx", d => x(d.year) + x.bandwidth() / 2)
+                    .attr("cy", d => yRight(d.ice_abs))
+                    .attr("r", 0)
+                    .attr("fill", "#fb923c")
+                    .attr("stroke", "#0f172a")
+                    .attr("stroke-width", 2)
+                    .style("cursor", "pointer")
+                    .on("mousemove", (e, d) => showTip(e, d, viewType))
+                    .on("mouseleave", hideTip)
+                    .transition().delay(900).duration(300)
+                    .attr("r", 4.5);
+            }
+
+            // ── Zero reference line ──
+            svg.selectAll(".zero-line").remove();
+            svg.append("line")
+                .attr("class", "zero-line")
+                .attr("x1", 0).attr("x2", width)
+                .attr("y1", yRight(0)).attr("y2", yRight(0))
+                .attr("stroke", "rgba(255,255,255,0.15)")
+                .attr("stroke-width", 1)
+                .attr("stroke-dasharray", "5,5");
+
+            // ── Annotations ──
+            svg.selectAll(".annotation-group").remove();
+            const ann = svg.append("g").attr("class", "annotation-group");
+
+            // annotationBox: box always sits ABOVE arrowTY; arrow points straight down into the data point.
+            // arrowTX = x centre of target point, arrowTY = y of target point.
+            // The box is centred on arrowTX and its bottom is placed ~12px above the target.
+            // annotationBox: box always sits ABOVE arrowTY; arrow points straight down.
+            // xOffset shifts the box horizontally relative to arrowTX (to avoid collisions).
+            function annotationBox(g, arrowTX, arrowTY, titleText, subText, arrowColor, xOffset) {
+                const bw = 162, bh = 50;
+                const gap = 14;
+                const dx = xOffset || 0;
+                const x0 = arrowTX - bw / 2 + dx;  // apply horizontal offset to box
+                const y0 = arrowTY - bh - gap - 20;
+
+                // Accent left border
+                g.append("rect")
+                    .attr("x", x0).attr("y", y0)
+                    .attr("width", 3).attr("height", bh)
+                    .attr("rx", 2)
+                    .attr("fill", arrowColor);
+
+                g.append("rect")
+                    .attr("x", x0 + 3).attr("y", y0)
+                    .attr("width", bw - 3).attr("height", bh)
+                    .attr("rx", 8).attr("ry", 8)
+                    .attr("fill", "rgba(15,23,42,0.92)")
+                    .attr("stroke", "rgba(255,255,255,0.10)")
+                    .attr("stroke-width", 1);
+
+                g.append("text")
+                    .attr("x", x0 + 16).attr("y", y0 + 20)
+                    .attr("font-size", "11px").attr("font-weight", "700")
+                    .attr("fill", arrowColor)
+                    .text(titleText);
+                g.append("text")
+                    .attr("x", x0 + 16).attr("y", y0 + 36)
+                    .attr("font-size", "10px").attr("font-weight", "400")
+                    .attr("fill", "#94a3b8")
+                    .text(subText);
+
+                // Arrow: straight down from arrowTX (not box centre) to data point
+                const arrowMarkerId = arrowColor === '#34d399' ? 'arrow-ev'
+                    : arrowColor === '#fb923c' ? 'arrow-ice'
+                        : 'arrow-neutral';
+                g.append("line")
+                    .attr("x1", arrowTX).attr("y1", y0 + bh + 2)
+                    .attr("x2", arrowTX).attr("y2", arrowTY - 6)
+                    .attr("stroke", arrowColor)
+                    .attr("stroke-width", 1.5)
+                    .attr("stroke-dasharray", "3,3")
+                    .attr("marker-end", `url(#${arrowMarkerId})`);
+            }
+
+            // COE Peak annotation (ICE)
+            // In 'both' view: shift left so it doesn't collide with the 2021 EV box
+            if (viewType !== 'ev') {
+                const lx = x("2019") + x.bandwidth() / 2;
+                const ly = yRight(5954);
+                const xOff2019 = viewType === 'both' ? -20 : 0;
+                annotationBox(ann, lx, ly, "2019 ICE GROWTH PEAK", "COE quota effect (2018)", "#fb923c", xOff2019);
+            }
+
+            // EEAI Inflection annotation (EV)
+            // In 'both' view: shift right so it doesn't collide with the 2019 ICE box
+            if (viewType !== 'ice') {
+                const lx = x("2021") + x.bandwidth() / 2;
+                const ly = yRight(1725);
+                const xOff2021 = viewType === 'both' ? 30 : 0;
+                annotationBox(ann, lx, ly, "2021 EV INFLECTION", "EEAI Policy Launch", "#34d399", xOff2021);
+            }
+            // 2024 EV surge
+            /*if (viewType !== 'ice') {
+                const lx = x("2024") + x.bandwidth() / 2;
+                const ly = yRight(14284);
+                annotationBox(ann, lx, ly, "2024 SURGE", "EEAI extended to 2025", "#34d399", 0);
+            }*/
+        }
+        update('both');
+    </script>
+</body>
+
+</html>

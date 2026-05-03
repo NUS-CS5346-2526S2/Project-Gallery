@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driven by Policy — Car Ownership in Singapore</title>
+  <script src="https://cdn.jsdelivr.net/npm/scrollama@3.2.0/build/scrollama.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+	<script type="module" src="https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js"></script>
+	<script type="module">
+    import { TableauEventType } from 'https://public.tableau.com/javascripts/api/tableau.embedding.3.latest.min.js';
+    const tableauViz = document.getElementById('tableauViz');
+    window.addEventListener('resize', () => tableauViz.resize());
+  </script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream: #F5F0E8;
+      --ink: #1A1812;
+      --muted: #6B6558;
+      --accent: #C9441A;
+      --accent-lt: #F0D9CE;
+      --rule: rgba(26, 24, 18, 0.12);
+      --panel-bg: #FDFAF5;
+      --viz-bg: #EEEAE0;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --sidebar-w: 42vw;
+      --sticky-top: 0px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    /* ── MASTHEAD ─────────────────────────────────────────────── */
+    #masthead {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10vh 8vw 10vh;
+      position: relative;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    #masthead::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(90deg,
+          transparent,
+          transparent calc(var(--sidebar-w) - 1px),
+          var(--rule) var(--sidebar-w));
+      pointer-events: none;
+    }
+
+    .masthead-eyebrow {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .masthead-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      max-width: 14ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .masthead-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .masthead-subtitle {
+      font-size: 1.35rem;
+      color: var(--muted);
+      max-width: 44ch;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .masthead-deck {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 44ch;
+      line-height: 1.6;
+    }
+
+    .scroll-cue {
+      margin-top: 4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: 0.7;
+    }
+
+    .scroll-cue-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* ── INTRO SECTION ───────────────────────────────────────── */
+    #intro {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 10vh 2rem 8vh;
+      text-align: center;
+    }
+
+    #intro p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    #intro p+p {
+      margin-top: 1.5rem;
+    }
+
+    .drop-cap::first-letter {
+      font-family: var(--serif);
+      font-size: 4.5em;
+      font-weight: 700;
+      float: left;
+      line-height: 0.78;
+      margin: 0.08em 0.1em 0 0;
+      color: var(--accent);
+    }
+
+    /* ── SCROLLY LAYOUT ──────────────────────────────────────── */
+    #scrolly {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    /* Story column — left, scrolling */
+    #story {
+      width: var(--sidebar-w);
+      flex-shrink: 0;
+      padding: 0 4vw 20vh 8vw;
+    }
+
+    /* Viz panel — right, sticky */
+    #viz-panel {
+      position: sticky;
+      top: var(--sticky-top);
+      width: calc(100vw - var(--sidebar-w));
+      height: 100vh;
+      background: var(--viz-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-left: 1px solid var(--rule);
+    }
+
+    /* Individual viz screens */
+    .viz-screen {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+			padding-right: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      will-change: opacity, transform;
+    }
+
+    .viz-screen.leaving {
+      opacity: 0;
+      transform: translateY(-16px);
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 1, 1),
+        transform 0.35s cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    .viz-screen.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+      transition-delay: 0.1s;
+    }
+
+    .viz-label {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      align-self: flex-start;
+    }
+		
+		/* Chapter 2 */
+		#coe-table {
+			font-size: 14px;
+			border-collapse: collapse;
+		}
+		
+		#coe-table th, #coe-table td {
+			padding: 2px 6px;
+			border: 1px solid #4d1f10;
+		}
+		
+		#coe-table tr td:first-child {
+			text-align: center;
+		}
+
+    /* Chapter 3 — left column period headers */
+    .step-period-header {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--fg);
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+      margin: 0 0 1.1rem 0;
+      line-height: 1.2;
+    }
+
+    /* Chapter 3 — prominent period label */
+    #viz-brand-hook .viz-label,
+    #viz-brand-stable .viz-label,
+    #viz-brand-covid .viz-label,
+    #viz-brand-frozen .viz-label,
+    #viz-brand-ev .viz-label,
+    #viz-brand-neworder .viz-label {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: none;
+      color: var(--fg);
+      background: rgba(255,255,255,0.06);
+      border-left: 4px solid var(--accent);
+      padding: 0.65rem 0.9rem;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      align-self: stretch;
+    }
+
+    .viz-frame {
+      width: 100%;
+      flex: 1;
+      border: none;
+      border-radius: 4px;
+      background: #fff;
+    }
+
+    .viz-placeholder {
+      width: 100%;
+      flex: 1;
+      border-radius: 4px;
+      background: #fff;
+      border: 1.5px dashed rgba(26, 24, 18, 0.18);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .viz-placeholder-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .viz-placeholder-icon svg {
+      width: 22px;
+      height: 22px;
+      color: var(--accent);
+    }
+
+    .viz-placeholder-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .viz-placeholder-hint {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 28ch;
+    }
+
+    .viz-placeholder-tag {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent-lt);
+      color: var(--accent);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* Chapter 3 video players */
+    #viz-brand-hook video, #viz-brand-stable video,
+    #viz-brand-covid video, #viz-brand-frozen video, #viz-brand-ev video,
+    #viz-brand-neworder video {
+      width: 100%;
+      flex: 1;
+      border-radius: 4px;
+      object-fit: contain;
+      background: #1a1812;
+    }
+
+    .video-hint {
+      margin-top: 0.75rem;
+      font-size: 15px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      align-self: center;
+    }
+
+    /* ── STORY STEPS ─────────────────────────────────────────── */
+    .chapter-header {
+      padding-top: 12vh;
+      padding-bottom: 3rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .chapter-num {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .chapter-title {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .chapter-question {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--muted);
+      border-left: 2px solid var(--accent);
+      padding-left: 1rem;
+      margin-top: 1rem;
+    }
+
+    .step {
+      padding: 8vh 0;
+      min-height: 40vh;
+    }
+
+    .step p {
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.85;
+    }
+
+    .step p+p {
+      margin-top: 1.2rem;
+    }
+
+    .step-callout {
+      margin: 1.5rem 0;
+      background: var(--accent-lt);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 4px 4px 0;
+      padding: 1rem 1.25rem;
+      font-size: 1.15rem;
+      color: var(--ink);
+    }
+
+    .step-callout strong {
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* ── INLINE CLIP (left-side "GIF") ───────────────────────── */
+    .step-clip {
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--rule);
+      background: #1a1812;
+    }
+
+    /* Steps that open with a clip need less top padding — the clip itself
+       creates enough visual separation from the previous step */
+    .step:has(.step-clip) {
+      padding-top: 4vh;
+    }
+
+    .step-clip video {
+      aspect-ratio: 1080 / 630;
+      width: 100%;
+      display: block;
+      object-fit: contain;
+    }
+
+    .step-clip-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--viz-bg);
+      padding: 5px 10px;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── CONCLUSION ──────────────────────────────────────────── */
+    #conclusion {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 12vh 2rem 12vh;
+      text-align: center;
+      border-top: 1px solid var(--rule);
+    }
+
+    #conclusion .concl-eyebrow {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    #conclusion h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 2rem;
+    }
+
+    #conclusion p {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 52ch;
+      margin: 0 auto;
+    }
+
+    #conclusion p+p {
+      margin-top: 1.5rem;
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 3rem 8vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+    }
+
+    /* ── PROGRESS BAR ────────────────────────────────────────── */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--accent);
+      width: 0%;
+      z-index: 100;
+      transition: width 0.1s linear;
+    }
+
+    /* ── CHAPTER NAV ─────────────────────────────────────────── */
+    #chapter-nav {
+      position: fixed;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 50;
+    }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--rule);
+      border: 1px solid var(--muted);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .nav-dot.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.4);
+    }
+
+    /* ── MOBILE VIZ SLOTS ───────────────────────────────────── */
+    .mobile-viz-slot {
+      display: none;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 860px) {
+      #viz-panel {
+        display: none;
+      }
+
+      #chapter-nav {
+        display: none;
+      }
+
+      #scrolly {
+        display: block;
+      }
+
+      #story {
+        width: 100%;
+        padding: 0 6vw 8vh;
+      }
+
+      .mobile-viz-slot {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        /* No fixed height — let content (video/iframe) dictate height */
+        background: var(--viz-bg);
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        margin-bottom: 2rem;
+        padding: 1.25rem;
+        overflow: visible;
+      }
+
+      .mobile-viz-slot .viz-label {
+        margin-bottom: 0.75rem;
+      }
+
+      /* Tableau iframes: give them a sensible fixed height */
+      .mobile-viz-slot .viz-placeholder,
+      .mobile-viz-slot .viz-frame {
+        width: 100%;
+        min-height: 300px;
+      }
+
+      /* Videos: let aspect-ratio do the work — no clipping */
+      .mobile-viz-slot video {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        object-fit: contain;
+        background: #1a1812;
+      }
+    }
+		
+		/* ── TABLEAU HIGHLIGHT OVERLAYS ─────────────────────────── */
+    .tableau-highlight-wrapper {
+      position: relative;
+      width: 100%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .tableau-highlight-wrapper tableau-viz {
+      width: 100%;
+      flex: 1;
+    }
+
+    /* Each overlay covers one quadrant of the 2×2 dashboard.
+       Coordinates assume Tableau renders a 2-column, 2-row layout.
+       Tweak the % values if your dashboard has a header/title row. */
+    .chart-overlay {
+      position: absolute;
+      background: rgba(26, 24, 18, 0);   /* transparent by default */
+      pointer-events: none;              /* never block Tableau interaction */
+      border-radius: 4px;
+      transition: background 0.45s ease;
+    }
+
+    /* Top: Cat AB */
+    #overlay-AB { top: 12%;  left: 3%; width: 74%; height: 40%; }
+    /* Bottom: Cat CD */
+    #overlay-CD { top: 52%; left: 3%;   width: 74%; height: 44%; }
+    
+    /* Dimmed state: darkens the overlay pane */
+    .chart-overlay.dimmed {
+      background: rgba(26, 24, 18, 0.55);
+    }
+
+    /* Highlighted state: subtle bright ring so the active charts pop */
+    .chart-overlay.highlighted {
+      background: rgba(26, 24, 18, 0);
+      box-shadow: inset 0 0 0 2px rgba(201, 68, 26, 0.55);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- ── CHAPTER NAV DOTS ─────────────────────────────────── -->
+  <nav id="chapter-nav" aria-label="Chapter navigation">
+    <div class="nav-dot active" data-target="chapter-1" title="EV Subsidies"></div>
+    <div class="nav-dot" data-target="chapter-2" title="PQP & Renewal"></div>
+    <div class="nav-dot" data-target="chapter-3" title="Brand Rankings"></div>
+  </nav>
+
+  <!-- ── MASTHEAD ─────────────────────────────────────────── -->
+  <header id="masthead">
+    <p class="masthead-eyebrow">Information Visualization &nbsp;·&nbsp; Singapore Car Ownership</p>
+    <h1 class="masthead-title">Driven by <em>Policy</em></h1>
+    <p class="masthead-subtitle">How Singapore shapes the cars its people buy, keep, and surrender.</p>
+    <p class="masthead-deck">
+      Singapore has one of the most expensive car ownership ecosystems in the world — by design.
+      Every purchase, every renewal, every decommissioning is a response to a policy signal.
+      This is the story of how policy shapes choice, and how choice shapes the roads we drive on.
+    </p>
+    <div class="scroll-cue">
+      <span class="scroll-cue-line"></span>
+      <span>Scroll to explore</span>
+    </div>
+  </header>
+
+  <!-- ── INTRO ─────────────────────────────────────────────── -->
+  <section id="intro">
+    <p class="drop-cap">
+      Singapore's roads are, in a very real sense, planned. The government controls how many cars
+      can exist on the island, what it costs to own one, and increasingly, what kind of car
+      you should buy. Behind every transaction lies a web of incentives, premiums, and quotas.
+    </p>
+    <p>
+      We examine three lenses — EV adoption incentives, COE renewal economics, and brand-level
+      market share — to show how policy cascades into individual decisions, and how those decisions
+      collectively reshape the city's roads.
+    </p>
+  </section>
+
+  <!-- ── SCROLLY ────────────────────────────────────────────── -->
+  <div id="scrolly">
+
+    <!-- LEFT: narrative steps -->
+    <div id="story">
+
+      <!-- ── CHAPTER 1 ── -->
+      <div class="chapter-header" id="chapter-1">
+        <p class="chapter-num">Chapter 1 of 3</p>
+        <h2 class="chapter-title">The Electric Push</h2>
+        <p class="chapter-question">
+          How has the introduction of EV subsidy policy influenced the decision to buy electric cars in Singapore?
+        </p>
+      </div>
+      <!-- mobile viz: chapter 1 -->
+      <div class="mobile-viz-slot">
+        <p class="viz-label">Chapter 1 &nbsp;·&nbsp; EV Adoption</p>
+        <iframe src="q1-assets/D4.html" class="viz-frame" style="min-height:520px; border:none; border-radius:4px;"
+          title="EV vs ICE Policy Impact – D4"></iframe>
+      </div>
+
+    <div class="step" data-viz="viz-ev-1">
+        <p>
+          Petrol has been Singapore's default for decades. But in 2021, the government began
+          aggressively reorienting the market toward electric vehicles — through a combination
+          of enhanced road tax rebates, the EV Early Adoption Incentive (EEAI), and expanded
+          charging infrastructure grants.
+        </p>
+        <p>
+          The effects were near-immediate. EV registrations, previously negligible, began
+          climbing steeply from 2022 onward. The chart on the right tracks the annual registrations for EV and ICE cars from 2015-2025. 
+        </p>
+      </div>
+
+      <div class="step" data-viz="viz-ev-1">
+        <div class="step-callout">
+          <strong>Key signal:</strong> The steepest growth began not with infrastructure, but
+          with financial incentives directly reducing upfront cost — suggesting price sensitivity
+          remains the dominant barrier.
+        </div>
+        <p>
+          Let's take a look at the cost of ownership for both ICE and EV vehicles in Singapore at the major turning points in this graph.
+        </p>
+				<div style="overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; margin: 20px 0;">
+					<table border="1" style="border-collapse: collapse; min-width: 700px; width: 100%; font-family: 'Inter', sans-serif; text-align: left;">
+						<thead>
+							<tr style="background-color: #2d3436; color: white;">
+								<th style="padding: 12px;">Cost Item</th>
+								<th style="padding: 12px;">ICE or EV (2018)</th>
+								<th style="padding: 12px;">ICE (2021)</th>
+								<th style="padding: 12px;">EV (2021)</th>
+								<th style="padding: 12px;">ICE (2026 est.)</th>
+								<th style="padding: 12px;">EV (2026 est.)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="padding: 10px;">Vehicle OMV (Car Price)</td>
+								<td style="padding: 10px;">$25,000</td>
+								<td style="padding: 10px;">$25,000</td>
+								<td style="padding: 10px;">$25,000</td>
+								<td style="padding: 10px;">$25,000</td>
+								<td style="padding: 10px;">$25,000</td>
+							</tr>
+							<tr>
+								<td style="padding: 10px;">COE Price</td>
+								<td style="padding: 10px;">$25,000</td>
+								<td style="padding: 10px;">$45,000</td>
+								<td style="padding: 10px;">$45,000</td>
+								<td style="padding: 10px;">$108,000</td>
+								<td style="padding: 10px;">$108,000</td>
+							</tr>
+							<tr style="color: #27ae60; font-weight: bold;">
+								<td style="padding: 10px;">Tax Incentives (EEAI + VES)</td>
+								<td style="padding: 10px;">$0</td>
+								<td style="padding: 10px;">$0</td>
+								<td style="padding: 10px;">-$22,000</td>
+								<td style="padding: 10px;">$0</td>
+								<td style="padding: 10px;">-$27,000</td>
+							</tr>
+							<tr>
+								<td style="padding: 10px;">Misc Costs (ARF, GST, Duty)</td>
+								<td style="padding: 10px;">$34,320</td>
+								<td style="padding: 10px;">$34,320</td>
+								<td style="padding: 10px;">$34,320</td>
+								<td style="padding: 10px;">$35,050</td>
+								<td style="padding: 10px;">$35,050</td>
+							</tr>
+							<tr style="background-color: #f1f2f6; font-weight: 800; font-size: 1.1em;">
+								<td style="padding: 12px;">Cost of Car Ownership</td>
+								<td style="padding: 12px;">$84,320</td>
+								<td style="padding: 12px;">$104,320</td>
+								<td style="padding: 12px;">$82,320</td>
+								<td style="padding: 12px;">$168,050</td>
+								<td style="padding: 12px;">$141,050</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+      </div>
+
+      <div class="step" data-viz="viz-ev-1">
+        <p>
+          In a country where car ownership is a luxury, price is the ultimate lever. Aggressive subsidies have made the EV transition inevitable, incentivizing drivers to switch faster than the island-wide charging network can even be completed.
+        </p>
+        <p>
+          In other words, the policy didn't just grow the EV market — it shaped which segment
+          of it grew fastest.
+        </p>
+      </div>
+
+      <!-- ── CHAPTER 2 ── -->
+      <div class="chapter-header" id="chapter-2">
+        <p class="chapter-num">Chapter 2 of 3</p>
+        <h2 class="chapter-title">Keep or Let Go?</h2>
+        <p class="chapter-question">
+          How does the Prevailing Quota Premium affect the decision to revalidate or decommission an owned car in
+          Singapore?
+        </p>
+      </div>
+      <!-- mobile viz: chapter 2 -->
+      <div class="mobile-viz-slot">
+        <p class="viz-label">Chapter 2 &nbsp;·&nbsp; PQP vs. Renewal Decisions</p>
+        <tableau-viz id="quarterlyViz"       
+					src='https://public.tableau.com/views/PQPvsDeregistrationRevalidation/Quarterly'      
+					toolbar="bottom" device="phone" width="100%" hide-tabs>
+				</tableau-viz>
+      </div>
+
+      <div class="step" data-viz="viz-pqp">
+        <p>
+          Buying a new ride is only half the equation. 
+				</p>
+				<p>
+					For hundreds of thousands of Singaporeans who already
+					owned a vehicle, a different clock is ticking - the Certificate of Entitlement. 
+					After 10 years, they face a pivotal question, whether their vehicle is still worth to pay
+					the CoE Revalidation cost, or they walk away and re-enter the market for a new one?
+        </p>
+        <p>
+          That decision is anchored by one number: the Prevailing Quota Premium, or PQP.
+        </p>
+				<div class="step-callout">
+          <strong>Prevailing Quota Premium</strong> is the calculated moving average of the last 3 months of CoE bids -
+					meaning it directly reflects how hot or cold the market is at one moment.
+					<br /><br />
+					2 options for CoE revalidation - 5-year renewal for 50% PQP of the month, or 10-year renewal
+					for the full price of PQP of the month.
+        </div>
+				<div class="step-callout">
+          <strong>CoE Categories</strong> 
+					<table id="coe-table">
+						<thead>
+							<tr>
+								<th>Category</th>
+								<th>Vehicle Classification</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>A</td>
+								<td>
+									ICE / Hybrid Cars with engines <= 1.600cc or Max Power Output <= 97kW (130bhp)
+									<br /><br />
+									EV Cars with Max Power Output <= 110kW (147bhp)
+								</td>
+							</tr>
+							<tr>
+								<td>B</td>
+								<td>
+									ICE / Hybrid Cars with engines > 1.600cc or Max Power Output > 97kW (130bhp)
+									<br /><br />
+									EV Cars with Max Power Output > 110kW (147bhp)
+								</td>
+							</tr>
+							<tr>
+								<td>C</td>
+								<td>Goods Vehicles and Buses</td>
+							</tr>
+							<tr>
+								<td>D</td>
+								<td>Motorcycles</td>
+							</tr>
+						</tbody>
+					</table>
+        </div>
+      </div>
+
+      <div class="step" data-viz="viz-pqp"  data-highlight="AB">
+        <p>
+          When PQP is high, renewal becomes expensive — often exceeding the market value
+          of the car itself. Owners might opt to decommission and exit, or re-enter as new buyers.
+          When PQP dips, the math flips: renewing is cheaper than replacing.
+        </p>
+				<p>
+					This is effectively seen in car ownerships. The graphs of Category A and Category B depict 
+					increasing renewals when PQP was at fairly low points and 
+					low renewals count when PQP was high.
+					Slight renewal spikes could also be seen on several PQP drop points in earlier years.
+				</p>
+				<div class="step-callout">
+          <strong>Watch for:</strong> Clusters of renewal activity that follow PQP drops, signalling
+					real relationship between cost and the owner's decision point.
+        </div>
+				<div class="step-callout">
+          <strong>Insight:</strong> More Cat A car owners chose to renew for 5 years, while more Cat B car owners renewed for 10 years.
+        </div>
+				<p>
+					On the other hand, the same cannot be said with the other categories.
+				</p>
+			</div>
+			<div class="step" data-viz="viz-pqp"  data-highlight="CD">
+				<p>
+					Category C is for goods vehicle and bus. The ratio between decommissioning and revalidation
+					in this category constantly changed in 10 years, but one can see that within this period,
+					5-years revalidation has been popular.
+				</p>
+				<p>
+					In plain sight, holders of Category D CoE also didn't seem to be budged by the PQP.
+					Deregistrations still dominated, but both 5-year and 10-year renewals were quite the options in the last 10 years. 
+				</p>
+        <div class="step-callout">
+          <strong>Watch for:</strong> Renewal levels of Cat C and D seemingly unhinged by the rise and fall of PQP.
+        </div>
+      </div>
+			
+      <!-- ── CHAPTER 3 ── -->
+      <div class="chapter-header" id="chapter-3">
+        <p class="chapter-num">Chapter 3 of 3</p>
+        <h2 class="chapter-title">Who's Winning the Roads?</h2>
+        <p class="chapter-question">
+          How have the rankings of car sales per brand changed throughout the years?
+        </p>
+      </div>
+      <!-- mobile viz: chapter 3 -->
+      <div class="mobile-viz-slot">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; Brand Sales Rankings</p>
+        <div class="viz-placeholder">
+          <div class="viz-placeholder-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="7" width="4" height="10" rx="1" />
+              <rect x="9" y="4" width="4" height="13" rx="1" />
+              <rect x="16" y="2" width="4" height="15" rx="1" />
+            </svg>
+          </div>
+          <p class="viz-placeholder-title">Brand Sales Rankings · Full Animation</p>
+          <video controls muted playsinline src="q3-assets/car_video_02.mp4"
+            style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+          </video>
+          <p class="video-hint">▶ Play · pause · and scrub to any moment in the animation</p>
+        </div>
+      </div>
+
+      <div class="step" data-viz="viz-brand-hook">
+        <p>
+          All those subsidy-influenced purchases and PQP-driven re-entries eventually translate
+          into demand for specific cars. And when buyers re-enter the market, they don't all
+          make the same choice.
+        </p>
+        <p>
+          Brand rankings — which manufacturer sold the most cars each year — capture how policy
+          signals and market shifts crystallise into purchasing decisions at scale.
+        </p>
+      </div>
+
+      <!-- Step 3-1: Hook -->
+      <div class="step" data-viz="viz-brand-hook">
+        <h3 class="step-period-header">Full Animation &nbsp;·&nbsp; Jan 2016 – May 2025</h3>
+        <p>
+          Nine years. Dozens of brands. Over a million registrations. The animation on the right
+          compresses Singapore's entire car market from January 2016 to May 2025 into under
+          two minutes. Use the player to pause and scrub through it at any point
+          as you read.
+        </p>
+        <p>
+          Watch the bars race. Then scroll to understand why they move the way they do.
+        </p>
+      </div>
+
+      <!-- Step 3-2: Stable Era -->
+      <div class="step" data-viz="viz-brand-stable">
+        <h3 class="step-period-header">The Stable Era &nbsp;·&nbsp; 2016 – 2019</h3>
+        <p>
+          From 2016 through 2019, the market was calm and predictable. Toyota and Honda traded
+          the top spot back and forth — a rivalry decades in the making, rooted in Southeast Asia's
+          long-standing preference for Japanese reliability and value.
+        </p>
+        <p>
+          But this stability had a structural ceiling. Singapore's Certificate of Entitlement
+          system issues a fixed monthly quota of permits to own a car. Quota reductions throughout
+          this period kept even the dominant brands below roughly 2,000 monthly registrations,
+          regardless of consumer demand.
+        </p>
+        <div class="step-callout">
+          <strong>Notice:</strong> The bars move, but the names at the top barely change.
+          The market was orderly — until it wasn't.
+        </div>
+      </div>
+
+      <!-- Step 3-3: COVID Cliff -->
+      <div class="step" data-viz="viz-brand-covid">
+        <h3 class="step-period-header">The COVID Cliff &nbsp;·&nbsp; 2020</h3>
+        <p>
+          In April and May 2020, Singapore entered a strict COVID-19 circuit breaker.
+          Every car dealership was ordered to close. The result is one of the most dramatic
+          single moments in the entire animation — the bars collapse to almost nothing.
+        </p>
+        <p>
+          In May 2020, just 48 new cars were registered across the entire island. That is a
+          99.2% drop compared to the same month a year earlier.
+        </p>
+        <div class="step-callout">
+          <strong>Watch:</strong> The bars nearly disappear. What had been a stable, competitive
+          market becomes a flatline in a single month.
+        </div>
+      </div>
+
+      <!-- Step 3-4: Frozen Years -->
+      <div class="step" data-viz="viz-brand-frozen">
+        <h3 class="step-period-header">The Frozen Years &nbsp;·&nbsp; 2021 – 2022</h3>
+        <p>
+          When dealerships reopened, volumes recovered — but never fully. A global semiconductor
+          chip shortage, which ran from 2020 through 2023, disrupted automotive production
+          worldwide, causing an estimated 9.5 million units of lost output in 2021 alone.
+          Singapore's supply-constrained market felt this acutely.
+        </p>
+        <p>
+          Then, around August 2021, something new appears in the chart: Tesla. The Model Y's
+          first Singapore deliveries coincided precisely with the launch of the EV Early Adoption
+          Incentive — a government rebate of up to S$45,000 on electric vehicles. A new era
+          had quietly begun.
+        </p>
+        <div class="step-callout">
+          <strong>Watch for:</strong> Tesla materialising near the bottom of the chart and
+          beginning its climb — a small bar that signals a very large shift to come.
+        </div>
+      </div>
+
+      <!-- Step 3-5: EV Revolution -->
+      <div class="step" data-viz="viz-brand-ev">
+        <h3 class="step-period-header">The EV Revolution &nbsp;·&nbsp; 2022 – 2025</h3>
+        <p>
+          BYD entered Singapore's market in 2022. By 2024, it had overtaken Toyota to become
+          the island's best-selling car brand — the first time in decades that a non-Japanese
+          manufacturer had led the market.
+        </p>
+        <p>
+          Its rise was not accidental. Aggressive pricing, a diverse all-electric lineup, and
+          the tailwind of Singapore's Green Plan 2030 — which targets all new car registrations
+          to be cleaner-energy models by 2030 — made BYD the direct beneficiary of the same
+          policy environment that brought Tesla in three years earlier.
+        </p>
+        <div class="step-callout">
+          <strong>Watch:</strong> BYD's bar enters from nowhere and rockets upward. Notice also
+          how the stacked segments inside each bar shift — the market is not just changing
+          who wins, but what kind of car they sell.
+        </div>
+      </div>
+
+      <!-- Step 3-6: New Order -->
+      <div class="step" data-viz="viz-brand-neworder">
+        <h3 class="step-period-header">The New Order &nbsp;·&nbsp; May 2025</h3>
+        <p>
+          By May 2025, the final frame tells a story that would have been unrecognisable
+          in 2016. BYD leads with 825 registrations. Toyota follows at 668. A second Chinese
+          brand — GAC — has appeared in the top ten.
+        </p>
+        <p>
+          Japanese brands, which collectively held over 50% of the market in 2019, had fallen
+          to roughly 35% by 2025. The same policy levers that once entrenched their dominance
+          — COE quotas, rebate structures, Green Plan targets — have now systematically
+          redirected demand toward an entirely different set of winners.
+        </p>
+        <div class="step-callout">
+          <strong>The takeaway:</strong> Singapore's roads are not shaped by consumer preference
+          alone. They are the outcome of deliberate policy — and the brands that understand
+          this earliest are the ones that lead.
+        </div>
+      </div>
+      <div class="step" data-viz="viz-brand-neworder">
+        <p>
+          Rankings don't just reflect brand preference. They encode the combined effect of
+          COE category distribution, EV readiness, model pricing relative to PQP-influenced
+          budgets, and the timing of new model launches against quota cycles.
+        </p>
+        <p>
+          A brand's rise or fall is rarely a story about the cars alone.
+        </p>
+      </div>
+
+    </div>
+    <!-- end #story -->
+
+    <!-- RIGHT: sticky viz panel -->
+    <div id="viz-panel">
+
+      <!-- Chapter 1 - EV vs ICE Chart -->
+      <div class="viz-screen active" id="viz-ev-1">
+        <p class="viz-label">Chapter 1 &nbsp;·&nbsp; EV Adoption</p>
+        <iframe src="q1-assets/D4.html" class="viz-frame" style="min-height:520px; border:none; border-radius:4px;"
+          title="EV vs ICE Policy Impact – D4"></iframe>
+      </div>
+
+      <!-- Chapter 2 - PQP vs Revalidation / Deregistration -->
+      <div class="viz-screen" id="viz-pqp">
+        <p class="viz-label">Chapter 2 &nbsp;·&nbsp; PQP vs Renewal Decisions</p>
+        <tableau-viz id="quarterlyViz"       
+					src='https://public.tableau.com/views/PQPvsDeregistrationRevalidation/Quarterly'      
+					toolbar="bottom" hide-tabs>
+				</tableau-viz>
+				<!-- 4 overlay panes, one per chart quadrant (top-left=A, top-right=B, btm-left=C, btm-right=D) -->
+				<div class="chart-overlay" id="overlay-AB"></div>
+				<div class="chart-overlay" id="overlay-CD"></div>
+      </div>
+
+      <!-- Chapter 3 — Hook: full animation with controls -->
+      <div class="viz-screen" id="viz-brand-hook">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; Full Animation · Jan 2016 – May 2025</p>
+        <video controls muted playsinline src="q3-assets/car_video_02.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+        <p class="video-hint">▶ Play · pause · and scrub to any moment in the animation</p>
+      </div>
+
+      <!-- Chapter 3 — Stable Era -->
+      <div class="viz-screen" id="viz-brand-stable">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The Stable Era · 2016 – 2019</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_stable_era.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — COVID Cliff -->
+      <div class="viz-screen" id="viz-brand-covid">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The COVID Cliff · 2020</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_covid_cliff.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — Frozen Years -->
+      <div class="viz-screen" id="viz-brand-frozen">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The Frozen Years · 2021 – 2022</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_frozen_years.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — EV Revolution -->
+      <div class="viz-screen" id="viz-brand-ev">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The EV Revolution · 2022 – 2025</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_ev_revolution.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+      <!-- Chapter 3 — New Order -->
+      <div class="viz-screen" id="viz-brand-neworder">
+        <p class="viz-label">Chapter 3 &nbsp;·&nbsp; The New Order · May 2025</p>
+        <video controls muted playsinline src="q3-assets/clip_gamma_new_order.mp4"
+          style="width:100%; flex:1; border-radius:4px; object-fit:contain; background:#1a1812;">
+        </video>
+      </div>
+
+    </div>
+    <!-- end #viz-panel -->
+
+  </div>
+  <!-- end #scrolly -->
+
+  <!-- ── CONCLUSION ─────────────────────────────────────────── -->
+  <section id="conclusion">
+    <p class="concl-eyebrow">Conclusion</p>
+    <h2>Singapore's roads are planned.</h2>
+    <p>
+      Taken together, these three lenses — EV adoption, renewal decisions, and brand performance
+      — reveal a market that is anything but free. Every purchase, every renewal, every
+      decommissioning is a response to a policy signal.
+    </p>
+    <p>
+      The EV subsidy didn't just add new cars to the road; it redirected which cars, from
+      which brands, at which price points. The PQP didn't just reflect market conditions;
+      it was shaped by upstream quota decisions that made certain choices rational and others
+      untenable. And brand rankings don't just record consumer preference; they encode the
+      cumulative logic of years of structured incentives.
+    </p>
+    <p>
+      Singapore has some of the most expensive roads in the world. They are also some of the
+      most deliberately designed.
+    </p>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer>
+    <span>CS5346 Information Visualization &nbsp;·&nbsp; Group 5</span>
+    <span>Data sources: LTA, Singapore Open Data Portal</span>
+  </footer>
+
+  <!-- ── SCROLLAMA LOGIC ────────────────────────────────────── -->
+  <script>
+    const scroller = scrollama();
+    const navDots = document.querySelectorAll('.nav-dot');
+    const progressBar = document.getElementById('progress-bar');
+
+    // Throttled progress bar using rAF
+    let rafPending = false;
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+      rafPending = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!rafPending) {
+        rafPending = true;
+        requestAnimationFrame(updateProgress);
+      }
+    }, { passive: true });
+
+    // Smooth viz crossfade: outgoing gets .leaving, then .active is applied after a frame
+    let currentVizId = null;
+    function showViz(id) {
+      if (id === currentVizId) return;
+
+      // Pause any video in the outgoing screen
+      const outgoing = document.getElementById(currentVizId);
+      if (outgoing) {
+        const outgoingVideo = outgoing.querySelector('video');
+        if (outgoingVideo) outgoingVideo.pause();
+      }
+
+      currentVizId = id;
+
+      const all = document.querySelectorAll('.viz-screen');
+      const incoming = document.getElementById(id);
+      if (!incoming) return;
+
+      all.forEach(el => {
+        if (el === incoming) return;
+        if (el.classList.contains('active')) {
+          el.classList.add('leaving');
+          el.classList.remove('active');
+          el.addEventListener('transitionend', () => {
+            el.classList.remove('leaving');
+          }, { once: true });
+        }
+      });
+
+      // Small delay so leaving transition starts first, then activate and play incoming video
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          incoming.classList.add('active');
+          const incomingVideo = incoming.querySelector('video');
+          if (incomingVideo) {
+            incomingVideo.currentTime = 0;
+            incomingVideo.play().catch(() => {});
+          }
+        });
+      });
+    }
+
+    function setNavDot(chapterId) {
+      navDots.forEach(d => d.classList.remove('active'));
+      const chapterMap = { 'chapter-1': 0, 'chapter-2': 1, 'chapter-3': 2 };
+      const idx = chapterMap[chapterId];
+      if (idx !== undefined && navDots[idx]) navDots[idx].classList.add('active');
+    }
+
+    // Nav dot click
+    navDots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const targets = ['chapter-1', 'chapter-2', 'chapter-3'];
+        const el = document.getElementById(targets[i]);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+		
+		// ── CHART HIGHLIGHT OVERLAY ──────────────────────────────────────────────
+    const overlays = {
+      AB: document.getElementById('overlay-AB'),
+      CD: document.getElementById('overlay-CD'),
+    };
+
+    function applyHighlight(mode) {
+      // mode: 'AB' | 'CD' | null (null = clear all)
+      Object.entries(overlays).forEach(([key, el]) => {
+        if (!el) return;
+        el.classList.remove('dimmed', 'highlighted');
+        if (!mode) return;                     // null → reset, all transparent
+        const inFocus = mode.includes(key);
+        el.classList.add(inFocus ? 'highlighted' : 'dimmed');
+      });
+    }
+
+    // Scrollama init — offset 0.55 so trigger fires when step is comfortably in view
+    scroller
+      .setup({ step: '.step', offset: 0.55, debug: false })
+      .onStepEnter(({ element }) => {
+        const vizId = element.getAttribute('data-viz');
+        if (vizId) {
+          showViz(vizId);
+          if (vizId.startsWith('viz-ev')) setNavDot('chapter-1');
+          if (vizId.startsWith('viz-pqp')) setNavDot('chapter-2');
+          if (vizId.startsWith('viz-brand')) setNavDot('chapter-3'); // matches viz-brand-intro/hook/stable/covid/frozen/ev/neworder
+        }
+				
+				// Drive chart highlights for Chapter 2
+        const highlight = element.getAttribute('data-highlight');
+        if (vizId === 'viz-pqp') {
+          applyHighlight(highlight || null);   // null clears if no tag
+        } else {
+          applyHighlight(null);                // leaving ch2 → reset
+        }
+      });
+
+    window.addEventListener('resize', scroller.resize);
+  </script>
+
+</body>
+
+</html>
